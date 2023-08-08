@@ -1,0 +1,601 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1F9922D32A81EB71000852CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D22A81EB71000852CF /* AppDelegate.swift */; };
+		1F9922D52A81EB71000852CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D42A81EB71000852CF /* SceneDelegate.swift */; };
+		1F9922D72A81EB71000852CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D62A81EB71000852CF /* ViewController.swift */; };
+		1F9922DA2A81EB71000852CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F9922D82A81EB71000852CF /* Main.storyboard */; };
+		1F9922DC2A81EB72000852CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F9922DB2A81EB72000852CF /* Assets.xcassets */; };
+		1F9922DF2A81EB72000852CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F9922DD2A81EB72000852CF /* LaunchScreen.storyboard */; };
+		1F9922EA2A81EB72000852CF /* CoffeTimeMVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922E92A81EB72000852CF /* CoffeTimeMVCTests.swift */; };
+		1F9922F42A81EB72000852CF /* CoffeTimeMVCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922F32A81EB72000852CF /* CoffeTimeMVCUITests.swift */; };
+		1F9922F62A81EB72000852CF /* CoffeTimeMVCUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922F52A81EB72000852CF /* CoffeTimeMVCUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1F9922E62A81EB72000852CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F9922C72A81EB71000852CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F9922CE2A81EB71000852CF;
+			remoteInfo = CoffeTimeMVC;
+		};
+		1F9922F02A81EB72000852CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F9922C72A81EB71000852CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F9922CE2A81EB71000852CF;
+			remoteInfo = CoffeTimeMVC;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1F9922CF2A81EB71000852CF /* CoffeTimeMVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeTimeMVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F9922D22A81EB71000852CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1F9922D42A81EB71000852CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1F9922D62A81EB71000852CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1F9922D92A81EB71000852CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1F9922DB2A81EB72000852CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1F9922DE2A81EB72000852CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1F9922E02A81EB72000852CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F9922E52A81EB72000852CF /* CoffeTimeMVCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoffeTimeMVCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F9922E92A81EB72000852CF /* CoffeTimeMVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeTimeMVCTests.swift; sourceTree = "<group>"; };
+		1F9922EF2A81EB72000852CF /* CoffeTimeMVCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoffeTimeMVCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F9922F32A81EB72000852CF /* CoffeTimeMVCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeTimeMVCUITests.swift; sourceTree = "<group>"; };
+		1F9922F52A81EB72000852CF /* CoffeTimeMVCUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeTimeMVCUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1F9922CC2A81EB71000852CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F9922E22A81EB72000852CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F9922EC2A81EB72000852CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1F9922C62A81EB71000852CF = {
+			isa = PBXGroup;
+			children = (
+				1F9922D12A81EB71000852CF /* CoffeTimeMVC */,
+				1F9922E82A81EB72000852CF /* CoffeTimeMVCTests */,
+				1F9922F22A81EB72000852CF /* CoffeTimeMVCUITests */,
+				1F9922D02A81EB71000852CF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1F9922D02A81EB71000852CF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F9922CF2A81EB71000852CF /* CoffeTimeMVC.app */,
+				1F9922E52A81EB72000852CF /* CoffeTimeMVCTests.xctest */,
+				1F9922EF2A81EB72000852CF /* CoffeTimeMVCUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1F9922D12A81EB71000852CF /* CoffeTimeMVC */ = {
+			isa = PBXGroup;
+			children = (
+				1F9922D22A81EB71000852CF /* AppDelegate.swift */,
+				1F9922D42A81EB71000852CF /* SceneDelegate.swift */,
+				1F9922D62A81EB71000852CF /* ViewController.swift */,
+				1F9922D82A81EB71000852CF /* Main.storyboard */,
+				1F9922DB2A81EB72000852CF /* Assets.xcassets */,
+				1F9922DD2A81EB72000852CF /* LaunchScreen.storyboard */,
+				1F9922E02A81EB72000852CF /* Info.plist */,
+			);
+			path = CoffeTimeMVC;
+			sourceTree = "<group>";
+		};
+		1F9922E82A81EB72000852CF /* CoffeTimeMVCTests */ = {
+			isa = PBXGroup;
+			children = (
+				1F9922E92A81EB72000852CF /* CoffeTimeMVCTests.swift */,
+			);
+			path = CoffeTimeMVCTests;
+			sourceTree = "<group>";
+		};
+		1F9922F22A81EB72000852CF /* CoffeTimeMVCUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1F9922F32A81EB72000852CF /* CoffeTimeMVCUITests.swift */,
+				1F9922F52A81EB72000852CF /* CoffeTimeMVCUITestsLaunchTests.swift */,
+			);
+			path = CoffeTimeMVCUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1F9922CE2A81EB71000852CF /* CoffeTimeMVC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F9922F92A81EB72000852CF /* Build configuration list for PBXNativeTarget "CoffeTimeMVC" */;
+			buildPhases = (
+				1F9922CB2A81EB71000852CF /* Sources */,
+				1F9922CC2A81EB71000852CF /* Frameworks */,
+				1F9922CD2A81EB71000852CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoffeTimeMVC;
+			productName = CoffeTimeMVC;
+			productReference = 1F9922CF2A81EB71000852CF /* CoffeTimeMVC.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1F9922E42A81EB72000852CF /* CoffeTimeMVCTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F9922FC2A81EB72000852CF /* Build configuration list for PBXNativeTarget "CoffeTimeMVCTests" */;
+			buildPhases = (
+				1F9922E12A81EB72000852CF /* Sources */,
+				1F9922E22A81EB72000852CF /* Frameworks */,
+				1F9922E32A81EB72000852CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F9922E72A81EB72000852CF /* PBXTargetDependency */,
+			);
+			name = CoffeTimeMVCTests;
+			productName = CoffeTimeMVCTests;
+			productReference = 1F9922E52A81EB72000852CF /* CoffeTimeMVCTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1F9922EE2A81EB72000852CF /* CoffeTimeMVCUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F9922FF2A81EB72000852CF /* Build configuration list for PBXNativeTarget "CoffeTimeMVCUITests" */;
+			buildPhases = (
+				1F9922EB2A81EB72000852CF /* Sources */,
+				1F9922EC2A81EB72000852CF /* Frameworks */,
+				1F9922ED2A81EB72000852CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F9922F12A81EB72000852CF /* PBXTargetDependency */,
+			);
+			name = CoffeTimeMVCUITests;
+			productName = CoffeTimeMVCUITests;
+			productReference = 1F9922EF2A81EB72000852CF /* CoffeTimeMVCUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1F9922C72A81EB71000852CF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					1F9922CE2A81EB71000852CF = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					1F9922E42A81EB72000852CF = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 1F9922CE2A81EB71000852CF;
+					};
+					1F9922EE2A81EB72000852CF = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 1F9922CE2A81EB71000852CF;
+					};
+				};
+			};
+			buildConfigurationList = 1F9922CA2A81EB71000852CF /* Build configuration list for PBXProject "CoffeTimeMVC" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1F9922C62A81EB71000852CF;
+			productRefGroup = 1F9922D02A81EB71000852CF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1F9922CE2A81EB71000852CF /* CoffeTimeMVC */,
+				1F9922E42A81EB72000852CF /* CoffeTimeMVCTests */,
+				1F9922EE2A81EB72000852CF /* CoffeTimeMVCUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1F9922CD2A81EB71000852CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F9922DF2A81EB72000852CF /* LaunchScreen.storyboard in Resources */,
+				1F9922DC2A81EB72000852CF /* Assets.xcassets in Resources */,
+				1F9922DA2A81EB71000852CF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F9922E32A81EB72000852CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F9922ED2A81EB72000852CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1F9922CB2A81EB71000852CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F9922D72A81EB71000852CF /* ViewController.swift in Sources */,
+				1F9922D32A81EB71000852CF /* AppDelegate.swift in Sources */,
+				1F9922D52A81EB71000852CF /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F9922E12A81EB72000852CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F9922EA2A81EB72000852CF /* CoffeTimeMVCTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F9922EB2A81EB72000852CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F9922F62A81EB72000852CF /* CoffeTimeMVCUITestsLaunchTests.swift in Sources */,
+				1F9922F42A81EB72000852CF /* CoffeTimeMVCUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1F9922E72A81EB72000852CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F9922CE2A81EB71000852CF /* CoffeTimeMVC */;
+			targetProxy = 1F9922E62A81EB72000852CF /* PBXContainerItemProxy */;
+		};
+		1F9922F12A81EB72000852CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F9922CE2A81EB71000852CF /* CoffeTimeMVC */;
+			targetProxy = 1F9922F02A81EB72000852CF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1F9922D82A81EB71000852CF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F9922D92A81EB71000852CF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1F9922DD2A81EB72000852CF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F9922DE2A81EB72000852CF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1F9922F72A81EB72000852CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1F9922F82A81EB72000852CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1F9922FA2A81EB72000852CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CoffeTimeMVC/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = learn.CoffeTimeMVC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1F9922FB2A81EB72000852CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CoffeTimeMVC/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = learn.CoffeTimeMVC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1F9922FD2A81EB72000852CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = learn.CoffeTimeMVCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoffeTimeMVC.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CoffeTimeMVC";
+			};
+			name = Debug;
+		};
+		1F9922FE2A81EB72000852CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = learn.CoffeTimeMVCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoffeTimeMVC.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CoffeTimeMVC";
+			};
+			name = Release;
+		};
+		1F9923002A81EB72000852CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = learn.CoffeTimeMVCUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CoffeTimeMVC;
+			};
+			name = Debug;
+		};
+		1F9923012A81EB72000852CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = learn.CoffeTimeMVCUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CoffeTimeMVC;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1F9922CA2A81EB71000852CF /* Build configuration list for PBXProject "CoffeTimeMVC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F9922F72A81EB72000852CF /* Debug */,
+				1F9922F82A81EB72000852CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F9922F92A81EB72000852CF /* Build configuration list for PBXNativeTarget "CoffeTimeMVC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F9922FA2A81EB72000852CF /* Debug */,
+				1F9922FB2A81EB72000852CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F9922FC2A81EB72000852CF /* Build configuration list for PBXNativeTarget "CoffeTimeMVCTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F9922FD2A81EB72000852CF /* Debug */,
+				1F9922FE2A81EB72000852CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F9922FF2A81EB72000852CF /* Build configuration list for PBXNativeTarget "CoffeTimeMVCUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F9923002A81EB72000852CF /* Debug */,
+				1F9923012A81EB72000852CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1F9922C72A81EB71000852CF /* Project object */;
+}
