@@ -73,26 +73,15 @@ extension LoginView {
         logoLabel.setTitle("CoffeTime", subtitle: "территория кофе")
     }
     
-    func configureInputs() {
-        emailInput.translatesAutoresizingMaskIntoConstraints = false
-        passwordInput.translatesAutoresizingMaskIntoConstraints = false
-        passwordInput.placeholder = "Password"
-            
-        addSubview(emailInput)
-        addSubview(passwordInput)
-        
-        NSLayoutConstraint.activate([
-            emailInput.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            emailInput.centerYAnchor.constraint(equalTo: self.centerYAnchor,constant: -40),
-            emailInput.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
-            emailInput.heightAnchor.constraint(equalToConstant: 40),
-                
-            passwordInput.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            passwordInput.topAnchor.constraint(equalTo: emailInput.bottomAnchor, constant: 30),
-            passwordInput.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
-            passwordInput.heightAnchor.constraint(equalToConstant: 40)
-        ])
+    func configureEmailInput() {
+        configureInput(input: emailInput, yValue: -40)
     }
+    
+    func configurePassInput() {
+        passwordInput.placeholder = "Password"
+        configureInput(input: passwordInput, yValue: 30)
+    }
+    
     
     func configureLoginButton() {
         loginButton.title = "Далее"
@@ -101,20 +90,6 @@ extension LoginView {
     
     func configureRegistrationButton() {
         configureButton(button: registrationButton, offset: 0.13)
-    }
-    
-    private func configureButton(button: UIButton, offset: CGFloat) {
-        let buttonBottomOffset = -screenHeight * offset
-        let buttonWidth = screenWidth * 0.8
-        
-        addSubview(button)
-        
-        NSLayoutConstraint.activate([
-            button.centerXAnchor.constraint(equalTo: centerXAnchor),
-            button.heightAnchor.constraint(equalToConstant: 50),
-            button.widthAnchor.constraint(equalToConstant: buttonWidth),
-            button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: buttonBottomOffset),
-        ])
     }
 }
 
@@ -126,5 +101,31 @@ private extension LoginView {
         self.passwordInput.alpha = alphaValue
         self.loginButton.alpha = alphaValue
         self.registrationButton.alpha = alphaValue
+    }
+    
+    func configureInput(input: UIView, yValue: CGFloat) {
+        input.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(input)
+        
+        NSLayoutConstraint.activate([
+            input.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            input.centerYAnchor.constraint(equalTo: self.centerYAnchor,constant: yValue),
+            input.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
+            input.heightAnchor.constraint(equalToConstant: 40),
+        ])
+    }
+    
+    func configureButton(button: UIButton, offset: CGFloat) {
+        let buttonBottomOffset = -screenHeight * offset
+        let buttonWidth = screenWidth * 0.8
+        
+        addSubview(button)
+        
+        NSLayoutConstraint.activate([
+            button.centerXAnchor.constraint(equalTo: centerXAnchor),
+            button.heightAnchor.constraint(equalToConstant: 50),
+            button.widthAnchor.constraint(equalToConstant: buttonWidth),
+            button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: buttonBottomOffset),
+        ])
     }
 }

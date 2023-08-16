@@ -31,7 +31,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.loginView.configureInputs()
+        self.loginView.configureEmailInput()
+        self.loginView.configurePassInput()
         self.loginView.configureLoginButton()
         self.loginView.configureRegistrationButton()
     }
