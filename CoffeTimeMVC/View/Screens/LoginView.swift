@@ -103,7 +103,7 @@ private extension LoginView {
         self.registrationButton.alpha = alphaValue
     }
     
-    func configureInput(input: UIView, yValue: CGFloat) {
+    func configureInput(input: BaseInput, yValue: CGFloat) {
         input.translatesAutoresizingMaskIntoConstraints = false
         addSubview(input)
         
