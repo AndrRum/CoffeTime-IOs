@@ -95,31 +95,25 @@ extension LoginView {
     }
     
     func configureLoginButton() {
-        let buttonBottomOffset = -screenHeight * 0.20
-        let buttonWidth = screenWidth * 0.8
         loginButton.title = "Далее"
-        
-        addSubview(loginButton)
-        
-        NSLayoutConstraint.activate([
-            loginButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            loginButton.heightAnchor.constraint(equalToConstant: 50),
-            loginButton.widthAnchor.constraint(equalToConstant: buttonWidth),
-            loginButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: buttonBottomOffset),
-        ])
+        configureButton(button: loginButton, offset: 0.20)
     }
     
     func configureRegistrationButton() {
-        let buttonBottomOffset = -screenHeight * 0.13
+        configureButton(button: registrationButton, offset: 0.13)
+    }
+    
+    private func configureButton(button: UIButton, offset: CGFloat) {
+        let buttonBottomOffset = -screenHeight * offset
         let buttonWidth = screenWidth * 0.8
         
-        addSubview(registrationButton)
+        addSubview(button)
         
         NSLayoutConstraint.activate([
-            registrationButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            registrationButton.heightAnchor.constraint(equalToConstant: 50),
-            registrationButton.widthAnchor.constraint(equalToConstant: buttonWidth),
-            registrationButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: buttonBottomOffset),
+            button.centerXAnchor.constraint(equalTo: centerXAnchor),
+            button.heightAnchor.constraint(equalToConstant: 50),
+            button.widthAnchor.constraint(equalToConstant: buttonWidth),
+            button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: buttonBottomOffset),
         ])
     }
 }
