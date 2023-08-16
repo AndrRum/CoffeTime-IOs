@@ -11,6 +11,7 @@ import Foundation
 import UIKit
 
 class LogoLabel: UIView {
+    
     private let titleLabel = UILabel()
     private let subtitleLabel = UILabel()
     
@@ -60,7 +61,7 @@ class LogoLabel: UIView {
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 self.subtitleLabel.text?.append(char)
             }
-            delay += 0.2 
+            delay += 0.2
         }
     }
 }

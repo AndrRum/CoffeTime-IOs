@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EmailInput: UIView {
+class EmailInput: BaseInput {
 
     private let emailTextField: UITextField = {
         let textField = UITextField()
@@ -49,33 +49,7 @@ class EmailInput: UIView {
 
 extension EmailInput {
     private func configureUI() {
-        addSubview(emailTextField)
-        addSubview(bottomBorder)
-        addSubview(loginIconImageView)
-        
-        emailTextField.tintColor = .white
-        
-        let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
-        emailTextField.leftView = leftView
-        emailTextField.leftViewMode = .always
-
-        NSLayoutConstraint.activate([
-            emailTextField.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-            emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            emailTextField.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 4),
-        
-            
-            bottomBorder.topAnchor.constraint(equalTo: emailTextField.bottomAnchor),
-            bottomBorder.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
-            bottomBorder.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
-            bottomBorder.heightAnchor.constraint(equalToConstant: 1),
-            
-            loginIconImageView.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor, constant: -10),
-            loginIconImageView.centerYAnchor.constraint(equalTo: emailTextField.centerYAnchor),
-            loginIconImageView.widthAnchor.constraint(equalToConstant: 20),
-            loginIconImageView.heightAnchor.constraint(equalToConstant: 20),
-        ])
+        super.configureUI(textField: emailTextField, iconView: loginIconImageView, trailingView: loginIconImageView, bottomBorder: bottomBorder)
     }
     
     func setFocus() {

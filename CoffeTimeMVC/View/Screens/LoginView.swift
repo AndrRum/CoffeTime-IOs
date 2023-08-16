@@ -38,18 +38,6 @@ class LoginView: UIView {
     }
 }
 
-private extension LoginView {
-    
-    func opacityUIHandler(alphaValue: CGFloat) {
-        self.logoLabel.alpha = alphaValue
-        self.emailInput.alpha = alphaValue
-        self.passwordInput.alpha = alphaValue
-        self.loginButton.alpha = alphaValue
-        self.registrationButton.alpha = alphaValue
-    }
-}
-
-
 extension LoginView {
     
     func animConfigureUI() {
@@ -133,5 +121,16 @@ extension LoginView {
             registrationButton.widthAnchor.constraint(equalToConstant: buttonWidth),
             registrationButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: buttonBottomOffset),
         ])
+    }
+}
+
+private extension LoginView {
+    
+    func opacityUIHandler(alphaValue: CGFloat) {
+        self.logoLabel.alpha = alphaValue
+        self.emailInput.alpha = alphaValue
+        self.passwordInput.alpha = alphaValue
+        self.loginButton.alpha = alphaValue
+        self.registrationButton.alpha = alphaValue
     }
 }
