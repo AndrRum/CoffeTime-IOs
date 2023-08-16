@@ -18,12 +18,18 @@ class LoginView: UIView {
     private(set) var logoLabel = LogoLabel()
     private(set) var emailInput = EmailInput()
     private(set) var passwordInput = PasswordInput()
+    private(set) var loginButton = BaseButton()
+    private(set) var registrationButton = RegistrationButton()
+    
+    private let screenHeight = UIScreen.main.bounds.height
+    private let screenWidth = UIScreen.main.bounds.width
     
     weak var delegate: LoginViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        opacityUIHandler(alphaValue: 0)
         configureLogo()
     }
     
@@ -32,26 +38,30 @@ class LoginView: UIView {
     }
 }
 
+private extension LoginView {
+    
+    func opacityUIHandler(alphaValue: CGFloat) {
+        self.logoLabel.alpha = alphaValue
+        self.emailInput.alpha = alphaValue
+        self.passwordInput.alpha = alphaValue
+        self.loginButton.alpha = alphaValue
+        self.registrationButton.alpha = alphaValue
+    }
+}
+
 
 extension LoginView {
     
     func animConfigureUI() {
-        let screenHeight = UIScreen.main.bounds.height
         let yOffset = screenHeight * 0.3
 
         let initialY = self.center.y - self.logoLabel.frame.size.height / 2 - yOffset
         self.logoLabel.center = CGPoint(x: self.center.x, y: self.center.y)
-        self.logoLabel.alpha = 0
-        self.emailInput.alpha = 0
-        self.passwordInput.alpha = 0
 
         UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseInOut, animations: {
-            self.logoLabel.alpha = 1
             self.logoLabel.center = CGPoint(x: self.center.x, y: initialY)
             
-            self.emailInput.alpha = 1
-            self.passwordInput.alpha = 1
-            
+            self.opacityUIHandler(alphaValue: 1)
             self.emailInput.setFocus()
         })
     }
@@ -96,4 +106,32 @@ extension LoginView {
         ])
     }
     
+    func configureLoginButton() {
+        let buttonBottomOffset = -screenHeight * 0.20
+        let buttonWidth = screenWidth * 0.8
+        loginButton.title = "Далее"
+        
+        addSubview(loginButton)
+        
+        NSLayoutConstraint.activate([
+            loginButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            loginButton.heightAnchor.constraint(equalToConstant: 50),
+            loginButton.widthAnchor.constraint(equalToConstant: buttonWidth),
+            loginButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: buttonBottomOffset),
+        ])
+    }
+    
+    func configureRegistrationButton() {
+        let buttonBottomOffset = -screenHeight * 0.13
+        let buttonWidth = screenWidth * 0.8
+        
+        addSubview(registrationButton)
+        
+        NSLayoutConstraint.activate([
+            registrationButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            registrationButton.heightAnchor.constraint(equalToConstant: 50),
+            registrationButton.widthAnchor.constraint(equalToConstant: buttonWidth),
+            registrationButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: buttonBottomOffset),
+        ])
+    }
 }

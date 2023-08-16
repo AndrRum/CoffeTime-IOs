@@ -10,6 +10,9 @@
 		1F2E0A722A88C18300C990E1 /* Lobster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F2E0A6E2A88BAA400C990E1 /* Lobster-Regular.ttf */; };
 		1F2E0A9E2A8904F600C990E1 /* EmailInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E0A9D2A8904F600C990E1 /* EmailInput.swift */; };
 		1F2E0AA12A8C306300C990E1 /* PasswordInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E0AA02A8C306300C990E1 /* PasswordInput.swift */; };
+		1F2E0AA32A8D5C3800C990E1 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E0AA22A8D5C3800C990E1 /* BaseButton.swift */; };
+		1F2E0AA52A8D627500C990E1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E0AA42A8D627400C990E1 /* Colors.swift */; };
+		1F2E0AA72A8D6A4600C990E1 /* RegistrationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E0AA62A8D6A4600C990E1 /* RegistrationButton.swift */; };
 		1F9922D32A81EB71000852CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D22A81EB71000852CF /* AppDelegate.swift */; };
 		1F9922D52A81EB71000852CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D42A81EB71000852CF /* SceneDelegate.swift */; };
 		1F9922D72A81EB71000852CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D62A81EB71000852CF /* ViewController.swift */; };
@@ -79,6 +82,9 @@
 		1F2E0A6E2A88BAA400C990E1 /* Lobster-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lobster-Regular.ttf"; path = "/Users/andrrum/react/CoffeTimeMVC/CoffeTimeMVC/Fonts/Lobster-Regular.ttf"; sourceTree = "<absolute>"; };
 		1F2E0A9D2A8904F600C990E1 /* EmailInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailInput.swift; sourceTree = "<group>"; };
 		1F2E0AA02A8C306300C990E1 /* PasswordInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordInput.swift; sourceTree = "<group>"; };
+		1F2E0AA22A8D5C3800C990E1 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
+		1F2E0AA42A8D627400C990E1 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		1F2E0AA62A8D6A4600C990E1 /* RegistrationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationButton.swift; sourceTree = "<group>"; };
 		1F9922CF2A81EB71000852CF /* CoffeTimeMVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeTimeMVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F9922D22A81EB71000852CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F9922D42A81EB71000852CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -323,6 +329,8 @@
 		1F9923F02A860F6F000852CF /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				1F2E0AA22A8D5C3800C990E1 /* BaseButton.swift */,
+				1F2E0AA62A8D6A4600C990E1 /* RegistrationButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -355,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				1F99242A2A881402000852CF /* Fonts.swift */,
+				1F2E0AA42A8D627400C990E1 /* Colors.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -499,6 +508,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F9923D12A842E34000852CF /* EntityModelMapProtocol.swift in Sources */,
+				1F2E0AA52A8D627500C990E1 /* Colors.swift in Sources */,
 				1F9923C32A842D8F000852CF /* Product+CoreDataProperties.swift in Sources */,
 				1F2E0A9E2A8904F600C990E1 /* EmailInput.swift in Sources */,
 				1F9923CB2A842D8F000852CF /* AllProducts+CoreDataProperties.swift in Sources */,
@@ -516,6 +526,7 @@
 				1F9923CA2A842D8F000852CF /* AllProducts+CoreDataClass.swift in Sources */,
 				1F9922D72A81EB71000852CF /* ViewController.swift in Sources */,
 				1F9923F42A861040000852CF /* LoginView.swift in Sources */,
+				1F2E0AA32A8D5C3800C990E1 /* BaseButton.swift in Sources */,
 				1F9923CD2A842D8F000852CF /* CafeProduct+CoreDataProperties.swift in Sources */,
 				1F9923C52A842D8F000852CF /* AllCafe+CoreDataProperties.swift in Sources */,
 				1F99242B2A881402000852CF /* Fonts.swift in Sources */,
@@ -526,6 +537,7 @@
 				1F9923E92A860CFF000852CF /* AllProductsService.swift in Sources */,
 				1F9923E52A860CAA000852CF /* UserDataService.swift in Sources */,
 				1F9923C02A842D8F000852CF /* ProductAttribute+CoreDataClass.swift in Sources */,
+				1F2E0AA72A8D6A4600C990E1 /* RegistrationButton.swift in Sources */,
 				1F9922D32A81EB71000852CF /* AppDelegate.swift in Sources */,
 				1F9923C12A842D8F000852CF /* ProductAttribute+CoreDataProperties.swift in Sources */,
 				1F9923DD2A8430A8000852CF /* CafeProductModel.swift in Sources */,

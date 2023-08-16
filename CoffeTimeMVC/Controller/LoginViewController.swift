@@ -30,7 +30,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.loginView.configureInputs()
+        self.loginView.configureLoginButton()
+        self.loginView.configureRegistrationButton()
     }
     
     private func setupLoginView() {

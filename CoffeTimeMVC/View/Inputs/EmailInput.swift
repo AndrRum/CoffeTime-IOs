@@ -64,6 +64,7 @@ extension EmailInput {
             emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             emailTextField.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 4),
+        
             
             bottomBorder.topAnchor.constraint(equalTo: emailTextField.bottomAnchor),
             bottomBorder.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
