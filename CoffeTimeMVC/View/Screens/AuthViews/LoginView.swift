@@ -63,8 +63,8 @@ extension LoginView {
     }
     
     func configureLogo() {
-        addSubview(logoLabel)
         logoLabel.setTitle("CoffeTime", subtitle: "территория кофе")
+        addSubview(logoLabel)
     }
     
     func configureEmailInput() {

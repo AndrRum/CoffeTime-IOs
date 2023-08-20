@@ -18,7 +18,7 @@ class BaseAuthView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    internal func configureBackground() {
+    func configureBackground() {
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "LoginBkg")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
@@ -32,7 +32,7 @@ class BaseAuthView: UIView {
         backgroundImage.layer.addSublayer(gradientLayer)
     }
     
-    internal func configureInput(input: BaseInput, yValue: CGFloat) {
+    func configureInput(input: BaseInput, yValue: CGFloat) {
         input.translatesAutoresizingMaskIntoConstraints = false
         addSubview(input)
         
@@ -44,7 +44,7 @@ class BaseAuthView: UIView {
         ])
     }
     
-    internal func configureButton(button: UIButton, offset: CGFloat) {
+    func configureButton(button: UIButton, offset: CGFloat) {
         let screenHeight = UIScreen.main.bounds.height
         let screenWidth = UIScreen.main.bounds.width
         
