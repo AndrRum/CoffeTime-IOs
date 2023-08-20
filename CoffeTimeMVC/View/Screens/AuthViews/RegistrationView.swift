@@ -20,9 +20,6 @@ class RegistrationView: BaseAuthView {
     private(set) var repeatPassInput = PasswordInput()
     private(set) var registrationButton = BaseButton()
     
-    private let screenHeight = UIScreen.main.bounds.height
-    private let screenWidth = UIScreen.main.bounds.width
-    
     weak var delegate: RegistrationViewDelegate?
     
     override init(frame: CGRect) {
@@ -38,6 +35,7 @@ class RegistrationView: BaseAuthView {
 extension RegistrationView {
     
     func configureLogo() {
+        let screenHeight = UIScreen.main.bounds.height
         logoLabel.translatesAutoresizingMaskIntoConstraints = false
         logoLabel.setTitle("CoffeTime", subtitle: "территория кофе", isTypedSubtitle: false)
         addSubview(logoLabel)

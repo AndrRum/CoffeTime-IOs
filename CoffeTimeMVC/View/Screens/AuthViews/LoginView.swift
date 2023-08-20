@@ -21,8 +21,6 @@ class LoginView: BaseAuthView {
     private(set) var loginButton = BaseButton()
     private(set) var registrationButton = RegistrationButton()
     
-    private let screenHeight = UIScreen.main.bounds.height
-    private let screenWidth = UIScreen.main.bounds.width
     private var isConfigured = false
     
     weak var delegate: LoginViewDelegate?
@@ -47,6 +45,7 @@ extension LoginView {
             return
         }
         
+        let screenHeight = UIScreen.main.bounds.height
         let yOffset = screenHeight * 0.3
 
         let initialY = self.center.y - self.logoLabel.frame.size.height / 2 - yOffset
