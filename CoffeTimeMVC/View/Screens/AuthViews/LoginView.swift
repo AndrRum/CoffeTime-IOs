@@ -30,8 +30,6 @@ class LoginView: BaseAuthView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        UINavigationBar.appearance().tintColor = .white
-        
         opacityUIHandler(alphaValue: 0)
         configureLogo()
     }

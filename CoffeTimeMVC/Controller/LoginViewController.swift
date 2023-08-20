@@ -50,6 +50,10 @@ class LoginViewController: UIViewController {
 extension LoginViewController: LoginViewDelegate {
     
     func navigateToRegistrationScreen() {
+        let backButtonTitle = "Назад"
+        self.navigationController?.navigationBar.tintColor = .white
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: backButtonTitle, style: .plain, target: nil, action: nil)
+        
         show(regViewController, sender: self)
     }
 }
