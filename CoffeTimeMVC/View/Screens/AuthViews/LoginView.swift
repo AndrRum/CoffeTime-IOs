@@ -68,22 +68,22 @@ extension LoginView {
     }
     
     func configureEmailInput() {
-        configureInput(input: emailInput, yValue: -40)
+        super.configureInput(input: emailInput, yValue: -40)
     }
     
     func configurePassInput() {
         passwordInput.placeholder = "Password"
-        configureInput(input: passwordInput, yValue: 30)
+        super.configureInput(input: passwordInput, yValue: 30)
     }
     
     
     func configureLoginButton() {
         loginButton.title = "Далее"
-        configureButton(button: loginButton, offset: 0.20)
+        super.configureButton(button: loginButton, offset: 0.20)
     }
     
     func configureRegistrationButton() {
-        configureButton(button: registrationButton, offset: 0.13)
+        super.configureButton(button: registrationButton, offset: 0.13)
         registrationButton.addTarget(self, action: #selector(navigateToRegistrationScreen), for: .touchUpInside)
     }
 }

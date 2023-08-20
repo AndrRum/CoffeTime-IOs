@@ -52,22 +52,22 @@ extension RegistrationView {
     }
     
     func configureEmailInput() {
-        configureInput(input: emailInput, yValue: -40)
+        super.configureInput(input: emailInput, yValue: -40)
     }
     
     func configurePassInput() {
         passwordInput.placeholder = "Password"
-        configureInput(input: passwordInput, yValue: 30)
+        super.configureInput(input: passwordInput, yValue: 30)
     }
     
     func configureRepeatPassInput() {
         repeatPassInput.placeholder = "Repeat password"
-        configureInput(input: repeatPassInput, yValue: 100)
+        super.configureInput(input: repeatPassInput, yValue: 100)
     }
     
     
     func configureRegistrationButton() {
         registrationButton.title = "Зарегистрироваться"
-        configureButton(button: registrationButton, offset: 0.13)
+        super.configureButton(button: registrationButton, offset: 0.13)
     }
 }
