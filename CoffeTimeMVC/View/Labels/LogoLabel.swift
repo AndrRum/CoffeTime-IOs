@@ -48,20 +48,24 @@ class LogoLabel: UIView {
         ])
     }
     
-    func setTitle(_ title: String, subtitle: String) {
+    func setTitle(_ title: String, subtitle: String, isTypedSubtitle: Bool = true) {
         titleLabel.text = title
-        subtitleLabel.text = ""
         
-        typeSubtitle(subtitle)
+        if (isTypedSubtitle) {
+            subtitleLabel.text = ""
+            typeSubtitle(subtitle)
+        } else {
+            subtitleLabel.text = subtitle
+        }
     }
     
     private func typeSubtitle(_ subtitle: String) {
-        var delay: TimeInterval = 0.0
+        var delay: TimeInterval = 0.5
         for char in subtitle {
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 self.subtitleLabel.text?.append(char)
             }
-            delay += 0.2
+            delay += 0.1
         }
     }
 }

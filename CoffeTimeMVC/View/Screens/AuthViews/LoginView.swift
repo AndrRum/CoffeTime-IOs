@@ -10,10 +10,10 @@ import UIKit
 
 
 protocol LoginViewDelegate: AnyObject {
-  
+    func navigateToRegistrationScreen()
 }
 
-class LoginView: UIView {
+class LoginView: BaseAuthView {
     
     private(set) var logoLabel = LogoLabel()
     private(set) var emailInput = EmailInput()
@@ -23,11 +23,14 @@ class LoginView: UIView {
     
     private let screenHeight = UIScreen.main.bounds.height
     private let screenWidth = UIScreen.main.bounds.width
+    private var isConfigured = false
     
     weak var delegate: LoginViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        UINavigationBar.appearance().tintColor = .white
         
         opacityUIHandler(alphaValue: 0)
         configureLogo()
@@ -41,6 +44,11 @@ class LoginView: UIView {
 extension LoginView {
     
     func animConfigureUI() {
+        
+        guard !isConfigured else {
+            return
+        }
+        
         let yOffset = screenHeight * 0.3
 
         let initialY = self.center.y - self.logoLabel.frame.size.height / 2 - yOffset
@@ -52,20 +60,8 @@ extension LoginView {
             self.opacityUIHandler(alphaValue: 1)
             self.emailInput.setFocus()
         })
-    }
-    
-    func configureBackground() {
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "LoginBkg")
-        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
-        self.insertSubview(backgroundImage, at: 0)
-
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = backgroundImage.bounds
-        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.white.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
-        backgroundImage.layer.addSublayer(gradientLayer)
+        
+        isConfigured = true
     }
     
     func configureLogo() {
@@ -90,6 +86,7 @@ extension LoginView {
     
     func configureRegistrationButton() {
         configureButton(button: registrationButton, offset: 0.13)
+        registrationButton.addTarget(self, action: #selector(navigateToRegistrationScreen), for: .touchUpInside)
     }
 }
 
@@ -102,30 +99,10 @@ private extension LoginView {
         self.loginButton.alpha = alphaValue
         self.registrationButton.alpha = alphaValue
     }
-    
-    func configureInput(input: BaseInput, yValue: CGFloat) {
-        input.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(input)
-        
-        NSLayoutConstraint.activate([
-            input.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            input.centerYAnchor.constraint(equalTo: self.centerYAnchor,constant: yValue),
-            input.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
-            input.heightAnchor.constraint(equalToConstant: 40),
-        ])
-    }
-    
-    func configureButton(button: UIButton, offset: CGFloat) {
-        let buttonBottomOffset = -screenHeight * offset
-        let buttonWidth = screenWidth * 0.8
-        
-        addSubview(button)
-        
-        NSLayoutConstraint.activate([
-            button.centerXAnchor.constraint(equalTo: centerXAnchor),
-            button.heightAnchor.constraint(equalToConstant: 50),
-            button.widthAnchor.constraint(equalToConstant: buttonWidth),
-            button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: buttonBottomOffset),
-        ])
+}
+
+extension LoginView: LoginViewDelegate {
+    @objc func navigateToRegistrationScreen() {
+        delegate?.navigateToRegistrationScreen()
     }
 }

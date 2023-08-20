@@ -11,6 +11,7 @@ class LoginViewController: UIViewController {
     
     private var loginView = LoginView()
     private var loginService: UserDataServiceProtocol!
+    private let regViewController = RegistrationViewController()
        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,4 +49,7 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginViewDelegate {
     
+    func navigateToRegistrationScreen() {
+        show(regViewController, sender: self)
+    }
 }

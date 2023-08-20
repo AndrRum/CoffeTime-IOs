@@ -14,6 +14,9 @@
 		1F2E0AA52A8D627500C990E1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E0AA42A8D627400C990E1 /* Colors.swift */; };
 		1F2E0AA72A8D6A4600C990E1 /* RegistrationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E0AA62A8D6A4600C990E1 /* RegistrationButton.swift */; };
 		1F2E0AA92A8D766100C990E1 /* BaseInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E0AA82A8D766100C990E1 /* BaseInput.swift */; };
+		1F2E0AAB2A92236100C990E1 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E0AAA2A92236100C990E1 /* RegistrationView.swift */; };
+		1F2E0AAD2A92284000C990E1 /* RegistartionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E0AAC2A92284000C990E1 /* RegistartionViewController.swift */; };
+		1F2E0AAF2A923ED000C990E1 /* BaseAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E0AAE2A923ED000C990E1 /* BaseAuthView.swift */; };
 		1F9922D32A81EB71000852CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D22A81EB71000852CF /* AppDelegate.swift */; };
 		1F9922D52A81EB71000852CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D42A81EB71000852CF /* SceneDelegate.swift */; };
 		1F9922D72A81EB71000852CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D62A81EB71000852CF /* ViewController.swift */; };
@@ -87,6 +90,9 @@
 		1F2E0AA42A8D627400C990E1 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1F2E0AA62A8D6A4600C990E1 /* RegistrationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationButton.swift; sourceTree = "<group>"; };
 		1F2E0AA82A8D766100C990E1 /* BaseInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInput.swift; sourceTree = "<group>"; };
+		1F2E0AAA2A92236100C990E1 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		1F2E0AAC2A92284000C990E1 /* RegistartionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistartionViewController.swift; sourceTree = "<group>"; };
+		1F2E0AAE2A923ED000C990E1 /* BaseAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAuthView.swift; sourceTree = "<group>"; };
 		1F9922CF2A81EB71000852CF /* CoffeTimeMVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeTimeMVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F9922D22A81EB71000852CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F9922D42A81EB71000852CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +170,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F2E0AB02A9240E800C990E1 /* AuthViews */ = {
+			isa = PBXGroup;
+			children = (
+				1F9923F32A861040000852CF /* LoginView.swift */,
+				1F2E0AAA2A92236100C990E1 /* RegistrationView.swift */,
+				1F2E0AAE2A923ED000C990E1 /* BaseAuthView.swift */,
+			);
+			path = AuthViews;
+			sourceTree = "<group>";
+		};
 		1F9922C62A81EB71000852CF = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				1F9923052A81ECE7000852CF /* LoginViewController.swift */,
+				1F2E0AAC2A92284000C990E1 /* RegistartionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -316,7 +333,7 @@
 		1F9923EE2A860EF0000852CF /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				1F9923F32A861040000852CF /* LoginView.swift */,
+				1F2E0AB02A9240E800C990E1 /* AuthViews */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -531,7 +548,9 @@
 				1F9922D72A81EB71000852CF /* ViewController.swift in Sources */,
 				1F9923F42A861040000852CF /* LoginView.swift in Sources */,
 				1F2E0AA32A8D5C3800C990E1 /* BaseButton.swift in Sources */,
+				1F2E0AAD2A92284000C990E1 /* RegistartionViewController.swift in Sources */,
 				1F9923CD2A842D8F000852CF /* CafeProduct+CoreDataProperties.swift in Sources */,
+				1F2E0AAF2A923ED000C990E1 /* BaseAuthView.swift in Sources */,
 				1F9923C52A842D8F000852CF /* AllCafe+CoreDataProperties.swift in Sources */,
 				1F99242B2A881402000852CF /* Fonts.swift in Sources */,
 				1F9924282A881091000852CF /* LogoLabel.swift in Sources */,
@@ -555,6 +574,7 @@
 				1F99230D2A81F7BB000852CF /* CoffeTimeDataList.xcdatamodeld in Sources */,
 				1F9923E32A860C8A000852CF /* AllCafeService.swift in Sources */,
 				1F9922D52A81EB71000852CF /* SceneDelegate.swift in Sources */,
+				1F2E0AAB2A92236100C990E1 /* RegistrationView.swift in Sources */,
 				1F9923D72A842FC0000852CF /* UserDataModel.swift in Sources */,
 				1F9923CE2A842D8F000852CF /* AllCafeProduct+CoreDataClass.swift in Sources */,
 			);
