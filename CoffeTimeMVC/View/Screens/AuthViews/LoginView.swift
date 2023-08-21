@@ -11,6 +11,7 @@ import UIKit
 
 protocol LoginViewDelegate: AnyObject {
     func navigateToRegistrationScreen()
+    func loginButtonTapped()
 }
 
 class LoginView: BaseAuthView {
@@ -40,7 +41,6 @@ class LoginView: BaseAuthView {
 extension LoginView {
     
     func animConfigureUI() {
-        
         guard !isConfigured else {
             return
         }
@@ -75,15 +75,38 @@ extension LoginView {
         super.configureInput(input: passwordInput, yValue: 30)
     }
     
-    
     func configureLoginButton() {
         loginButton.title = "Далее"
         super.configureButton(button: loginButton, offset: 0.20)
+        
+        self.loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
     
     func configureRegistrationButton() {
         super.configureButton(button: registrationButton, offset: 0.13)
         registrationButton.addTarget(self, action: #selector(navigateToRegistrationScreen), for: .touchUpInside)
+    }
+}
+
+extension LoginView {
+    
+    func isEmailValid() -> Bool {
+        return emailInput.isValidEmail()
+    }
+    
+    func isPasswordValid() -> Bool {
+        return passwordInput.isValidPassword()
+    }
+}
+
+extension LoginView: LoginViewDelegate {
+    
+    @objc func navigateToRegistrationScreen() {
+        delegate?.navigateToRegistrationScreen()
+    }
+    
+    @objc func loginButtonTapped() {
+        delegate?.loginButtonTapped()
     }
 }
 
@@ -95,11 +118,5 @@ private extension LoginView {
         self.passwordInput.alpha = alphaValue
         self.loginButton.alpha = alphaValue
         self.registrationButton.alpha = alphaValue
-    }
-}
-
-extension LoginView: LoginViewDelegate {
-    @objc func navigateToRegistrationScreen() {
-        delegate?.navigateToRegistrationScreen()
     }
 }

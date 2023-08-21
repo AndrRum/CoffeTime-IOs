@@ -55,4 +55,15 @@ extension LoginViewController: LoginViewDelegate {
         
         show(regViewController, sender: self)
     }
+    
+    func loginButtonTapped() {
+        let isEmailValid = loginView.emailInput.isValidEmail()
+        let isPassValid = loginView.passwordInput.isValidPassword()
+               
+        if isEmailValid && isPassValid {
+           
+        } else {
+            
+        }
+    }
 }

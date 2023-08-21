@@ -8,6 +8,8 @@
 import UIKit
 
 class EmailInput: BaseInput {
+    
+    private var validationStrategy: ValidationStrategy?
 
     private let emailTextField: UITextField = {
         let textField = UITextField()
@@ -36,8 +38,10 @@ class EmailInput: BaseInput {
         return view
     }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init() {
+        super.init(frame: .zero, textField: emailTextField, bottomBorder: bottomBorder, iconView: loginIconImageView)
+        
+        validationStrategy = EmailValidationStrategy()
         configureUI()
     }
 
@@ -48,8 +52,13 @@ class EmailInput: BaseInput {
 }
 
 extension EmailInput {
+    
     private func configureUI() {
-        super.configureUI(textField: emailTextField, iconView: loginIconImageView, trailingView: loginIconImageView, bottomBorder: bottomBorder)
+        super.configureUI(trailingView: loginIconImageView)
+    }
+    
+    func isValidEmail() -> Bool {
+        super.isValidInput(validationStrategy: validationStrategy!)
     }
     
     func setFocus() {

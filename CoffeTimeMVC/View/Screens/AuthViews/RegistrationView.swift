@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol RegistrationViewDelegate: AnyObject {
-  
+    func regButtonTapped()
 }
 
 class RegistrationView: BaseAuthView {
@@ -67,5 +67,38 @@ extension RegistrationView {
     func configureRegistrationButton() {
         registrationButton.title = "Зарегистрироваться"
         super.configureButton(button: registrationButton, offset: 0.13)
+        
+        self.registrationButton.addTarget(self, action: #selector(regButtonTapped), for: .touchUpInside)
+    }
+}
+
+extension RegistrationView {
+    
+}
+
+extension RegistrationView {
+    
+    func isEmailValid() -> Bool {
+        return emailInput.isValidEmail()
+    }
+    
+    func isPasswordValid() -> Bool {
+        return passwordInput.isValidPassword()
+    }
+    
+    func isRepeatPasswordValid() -> Bool {
+        return repeatPassInput.isValidRepeatPassword()
+    }
+    
+    func setOrigPass() {
+        let orig = passwordInput.getInputValue()
+        repeatPassInput.setOriginalPassword(orig)
+    }
+}
+
+extension RegistrationView: RegistrationViewDelegate {
+
+    @objc func regButtonTapped() {
+        delegate?.regButtonTapped()
     }
 }

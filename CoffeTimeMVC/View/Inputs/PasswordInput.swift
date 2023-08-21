@@ -18,6 +18,9 @@ class PasswordInput: BaseInput {
             ])
         }
     };
+    
+    private var validationStrategy: ValidationStrategy?
+    private var repeatPasswordStrategy: ValidationStrategy?
 
     private let passwordTextField: UITextField = {
         let textField = UITextField()
@@ -44,8 +47,11 @@ class PasswordInput: BaseInput {
         return view
     }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init() {
+        super.init(frame: .zero, textField: passwordTextField, bottomBorder: bottomBorder, iconView: eyeButton)
+        
+        validationStrategy = PasswordValidationStrategy()
+        repeatPasswordStrategy = RepeatPasswordValidationStrategy(originalPassword: "")
         configureUI()
     }
 
@@ -56,8 +62,9 @@ class PasswordInput: BaseInput {
 }
 
 extension PasswordInput {
+    
     private func configureUI() {
-        super.configureUI(textField: passwordTextField, iconView: eyeButton, trailingView: eyeButton, bottomBorder: bottomBorder)
+        super.configureUI(trailingView: eyeButton)
         
         eyeButton.addTarget(self, action: #selector(eyeButtonTapped), for: .touchUpInside)
     }
@@ -65,6 +72,26 @@ extension PasswordInput {
     @objc private func eyeButtonTapped() {
         passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
         eyeButton.isSelected = !passwordTextField.isSecureTextEntry
+    }
+    
+    func isValidPassword() -> Bool {
+       return super.isValidInput(validationStrategy: validationStrategy!)
+    }
+    
+    func isValidRepeatPassword() -> Bool {
+        return super.isValidInput(validationStrategy: repeatPasswordStrategy!)
+    }
+       
+    func setOriginalPassword(_ originalPassword: String) {
+        if let currentRepeatPasswordStrategy = repeatPasswordStrategy as? RepeatPasswordValidationStrategy {
+                  
+            let newRepeatPasswordStrategy = RepeatPasswordValidationStrategy(originalPassword: originalPassword)
+            repeatPasswordStrategy = newRepeatPasswordStrategy
+        }
+    }
+    
+    func getInputValue() -> String {
+        return passwordTextField.text ?? ""
     }
     
     func setFocus() {

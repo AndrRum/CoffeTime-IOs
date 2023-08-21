@@ -10,7 +10,26 @@ import UIKit
 
 class BaseInput: UIView {
     
-    func configureUI(textField: UITextField, iconView: UIView, trailingView: UIView, bottomBorder: UIView) {
+    private let textField: UITextField
+    private let bottomBorder: UIView
+    private let iconView: UIView
+       
+    init(frame: CGRect, textField: UITextField, bottomBorder: UIView, iconView: UIView) {
+        self.textField = textField
+        self.bottomBorder = bottomBorder
+        self.iconView = iconView
+           
+        super.init(frame: frame)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension BaseInput {
+    
+    func configureUI(trailingView: UIView) {
            addSubview(textField)
            addSubview(bottomBorder)
            addSubview(iconView)
@@ -38,5 +57,38 @@ class BaseInput: UIView {
                iconView.widthAnchor.constraint(equalToConstant: 24),
                iconView.heightAnchor.constraint(equalToConstant: 24),
            ])
-       }
+    }
+    
+    func isValidInput(validationStrategy: ValidationStrategy) -> Bool {
+        let isValid = updateValidationState(validationStrategy: validationStrategy)
+        return isValid
+    }
+}
+
+private extension BaseInput {
+    
+    func updateValidationState(validationStrategy: ValidationStrategy) -> Bool {
+        guard let text = textField.text else { return false }
+                    
+        let isValid = validationStrategy.isValid(text: text)
+        
+        if isValid {
+            configureValidationUI(borderColor: .lightGray, textColor: .white, iconColor: .white)
+        } else {
+            configureValidationUI(borderColor: .red, textColor: .systemRed, iconColor: .red)
+        }
+        
+        return isValid
+    }
+
+    
+    func configureValidationUI(borderColor: UIColor, textColor: UIColor, iconColor: UIColor) {
+        bottomBorder.backgroundColor = borderColor
+        let attributedText = NSAttributedString(string: textField.text ?? "", attributes: [
+                NSAttributedString.Key.foregroundColor: textColor,
+        ])
+        textField.attributedText = attributedText
+        textField.textColor = textColor
+        iconView.tintColor = iconColor
+    }
 }

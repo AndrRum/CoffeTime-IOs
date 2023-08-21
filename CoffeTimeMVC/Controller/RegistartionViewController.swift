@@ -37,5 +37,12 @@ class RegistrationViewController: UIViewController {
 
 
 extension RegistrationViewController: RegistrationViewDelegate {
-    
+    func regButtonTapped() {
+        registrationView.setOrigPass()
+        let isEmailValid = registrationView.isEmailValid()
+        let isPasswordValid = registrationView.isPasswordValid()
+        let isRepeatPasswordValid = registrationView.isRepeatPasswordValid()
+        
+        if isEmailValid && isPasswordValid && isRepeatPasswordValid {}
+    }
 }

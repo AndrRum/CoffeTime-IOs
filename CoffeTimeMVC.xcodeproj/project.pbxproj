@@ -17,6 +17,7 @@
 		1F2E0AAB2A92236100C990E1 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E0AAA2A92236100C990E1 /* RegistrationView.swift */; };
 		1F2E0AAD2A92284000C990E1 /* RegistartionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E0AAC2A92284000C990E1 /* RegistartionViewController.swift */; };
 		1F2E0AAF2A923ED000C990E1 /* BaseAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E0AAE2A923ED000C990E1 /* BaseAuthView.swift */; };
+		1F44C1FE2A94030200613176 /* ValidationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C1FD2A94030200613176 /* ValidationStrategy.swift */; };
 		1F9922D32A81EB71000852CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D22A81EB71000852CF /* AppDelegate.swift */; };
 		1F9922D52A81EB71000852CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D42A81EB71000852CF /* SceneDelegate.swift */; };
 		1F9922D72A81EB71000852CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D62A81EB71000852CF /* ViewController.swift */; };
@@ -93,6 +94,7 @@
 		1F2E0AAA2A92236100C990E1 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		1F2E0AAC2A92284000C990E1 /* RegistartionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistartionViewController.swift; sourceTree = "<group>"; };
 		1F2E0AAE2A923ED000C990E1 /* BaseAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAuthView.swift; sourceTree = "<group>"; };
+		1F44C1FD2A94030200613176 /* ValidationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationStrategy.swift; sourceTree = "<group>"; };
 		1F9922CF2A81EB71000852CF /* CoffeTimeMVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeTimeMVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F9922D22A81EB71000852CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F9922D42A81EB71000852CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				1F2E0A9D2A8904F600C990E1 /* EmailInput.swift */,
 				1F2E0AA02A8C306300C990E1 /* PasswordInput.swift */,
 				1F2E0AA82A8D766100C990E1 /* BaseInput.swift */,
+				1F44C1FD2A94030200613176 /* ValidationStrategy.swift */,
 			);
 			path = Inputs;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				1F9923C62A842D8F000852CF /* UserData+CoreDataClass.swift in Sources */,
 				1F9923E12A860ADF000852CF /* ProductService.swift in Sources */,
 				1F9923CC2A842D8F000852CF /* CafeProduct+CoreDataClass.swift in Sources */,
+				1F44C1FE2A94030200613176 /* ValidationStrategy.swift in Sources */,
 				1F9923D32A842F5A000852CF /* ProductModel.swift in Sources */,
 				1F9923E72A860CC4000852CF /* CafeService.swift in Sources */,
 				1F9923ED2A860E40000852CF /* CafeProductService.swift in Sources */,
