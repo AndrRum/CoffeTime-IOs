@@ -13,11 +13,13 @@ class BaseInput: UIView {
     private let textField: UITextField
     private let bottomBorder: UIView
     private let iconView: UIView
+    private let errorLabel: UILabel
        
-    init(frame: CGRect, textField: UITextField, bottomBorder: UIView, iconView: UIView) {
+    init(frame: CGRect, textField: UITextField, bottomBorder: UIView, iconView: UIView, errorLabel: UILabel) {
         self.textField = textField
         self.bottomBorder = bottomBorder
         self.iconView = iconView
+        self.errorLabel = errorLabel
            
         super.init(frame: frame)
     }
@@ -33,6 +35,7 @@ extension BaseInput {
            addSubview(textField)
            addSubview(bottomBorder)
            addSubview(iconView)
+           addSubview(errorLabel)
            
            textField.tintColor = .white
            
@@ -56,6 +59,10 @@ extension BaseInput {
                
                iconView.widthAnchor.constraint(equalToConstant: 24),
                iconView.heightAnchor.constraint(equalToConstant: 24),
+               
+               errorLabel.topAnchor.constraint(equalTo: bottomBorder.bottomAnchor, constant: 4),
+                errorLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+                errorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
            ])
     }
     
@@ -70,12 +77,15 @@ private extension BaseInput {
     func updateValidationState(validationStrategy: ValidationStrategy) -> Bool {
         guard let text = textField.text else { return false }
                     
-        let isValid = validationStrategy.isValid(text: text)
+        let validationResult = validationStrategy.isValid(text: text)
+        let isValid = validationResult.isValid
         
         if isValid {
             configureValidationUI(borderColor: .lightGray, textColor: .white, iconColor: .white)
+            errorLabel.text = ""
         } else {
-            configureValidationUI(borderColor: .red, textColor: .systemRed, iconColor: .red)
+            configureValidationUI(borderColor: .red, textColor: .white, iconColor: .red)
+            errorLabel.text = validationResult.errorDescription
         }
         
         return isValid

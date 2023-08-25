@@ -37,9 +37,17 @@ class EmailInput: BaseInput {
         view.backgroundColor = .lightGray
         return view
     }()
+    
+    private let errorLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .red
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     init() {
-        super.init(frame: .zero, textField: emailTextField, bottomBorder: bottomBorder, iconView: loginIconImageView)
+        super.init(frame: .zero, textField: emailTextField, bottomBorder: bottomBorder, iconView: loginIconImageView, errorLabel: errorLabel)
         
         validationStrategy = EmailValidationStrategy()
         configureUI()

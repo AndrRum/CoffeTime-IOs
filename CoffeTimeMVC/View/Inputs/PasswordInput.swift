@@ -46,9 +46,17 @@ class PasswordInput: BaseInput {
         view.backgroundColor = .lightGray
         return view
     }()
+    
+    private let errorLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .red
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     init() {
-        super.init(frame: .zero, textField: passwordTextField, bottomBorder: bottomBorder, iconView: eyeButton)
+        super.init(frame: .zero, textField: passwordTextField, bottomBorder: bottomBorder, iconView: eyeButton, errorLabel: errorLabel)
         
         validationStrategy = PasswordValidationStrategy()
         repeatPasswordStrategy = RepeatPasswordValidationStrategy(originalPassword: "")
@@ -83,7 +91,7 @@ extension PasswordInput {
     }
        
     func setOriginalPassword(_ originalPassword: String) {
-        if let currentRepeatPasswordStrategy = repeatPasswordStrategy as? RepeatPasswordValidationStrategy {
+        if repeatPasswordStrategy is RepeatPasswordValidationStrategy {
                   
             let newRepeatPasswordStrategy = RepeatPasswordValidationStrategy(originalPassword: originalPassword)
             repeatPasswordStrategy = newRepeatPasswordStrategy
