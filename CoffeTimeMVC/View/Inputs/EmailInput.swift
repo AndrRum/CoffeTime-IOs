@@ -69,6 +69,10 @@ extension EmailInput {
         super.isValidInput(validationStrategy: validationStrategy!)
     }
     
+    func getEmailInputValue() -> String {
+        super.getInputValue()
+    }
+    
     func setFocus() {
         emailTextField.becomeFirstResponder()
     }

@@ -97,6 +97,14 @@ extension LoginView {
     func isPasswordValid() -> Bool {
         return passwordInput.isValidPassword()
     }
+    
+    func getEmailValue() -> String {
+        return emailInput.getEmailInputValue()
+    }
+    
+    func getPasswordValue() -> String {
+        return passwordInput.getPasswordInputValue()
+    }
 }
 
 extension LoginView: LoginViewDelegate {

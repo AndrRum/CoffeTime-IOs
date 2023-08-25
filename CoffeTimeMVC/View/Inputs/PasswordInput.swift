@@ -98,8 +98,8 @@ extension PasswordInput {
         }
     }
     
-    func getInputValue() -> String {
-        return passwordTextField.text ?? ""
+    func getPasswordInputValue() -> String {
+        super.getInputValue()
     }
     
     func setFocus() {

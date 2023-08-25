@@ -70,6 +70,10 @@ extension BaseInput {
         let isValid = updateValidationState(validationStrategy: validationStrategy)
         return isValid
     }
+    
+    func getInputValue() -> String {
+        return textField.text ?? ""
+    }
 }
 
 private extension BaseInput {

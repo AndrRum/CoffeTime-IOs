@@ -57,8 +57,10 @@ extension LoginViewController: LoginViewDelegate {
     }
     
     func loginButtonTapped() {
-        let isEmailValid = loginView.emailInput.isValidEmail()
-        let isPassValid = loginView.passwordInput.isValidPassword()
+        let isEmailValid = loginView.isEmailValid()
+        let isPassValid = loginView.isPasswordValid()
+        let email = loginView.getEmailValue()
+        let pass = loginView.getPasswordValue()
                
         if isEmailValid && isPassValid {
            

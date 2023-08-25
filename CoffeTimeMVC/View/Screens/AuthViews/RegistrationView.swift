@@ -90,8 +90,16 @@ extension RegistrationView {
         return repeatPassInput.isValidRepeatPassword()
     }
     
+    func getEmailValue() -> String {
+        return emailInput.getEmailInputValue()
+    }
+    
+    func getPasswordValue() -> String {
+        return passwordInput.getPasswordInputValue()
+    }
+    
     func setOrigPass() {
-        let orig = passwordInput.getInputValue()
+        let orig = getPasswordValue()
         repeatPassInput.setOriginalPassword(orig)
     }
 }

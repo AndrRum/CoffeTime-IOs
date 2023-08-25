@@ -9,8 +9,7 @@ import CoreData
 
 protocol UserDataServiceProtocol: AnyObject {
     init(coreDataManager: CoreDataManager)
-    func registerUser(email: String, password: String) -> String
-    func loginUser(email: String, password: String) -> String
+    func authUser(url: String, email: String, password: String) -> String
     func saveResponse(sessionId: String, in userModel: UserDataModel)
 }
 
@@ -25,11 +24,28 @@ class UserDataService: UserDataServiceProtocol {
         self.coreDataManager = coreDataManager
     }
     
-    func registerUser(email: String, password: String) -> String {
-        return ""
-    }
-    
-    func loginUser(email: String, password: String) -> String {
+    func authUser(url: String, email: String, password: String) -> String {
+        
+        let params: [String: String] = [
+            "email": email,
+            "password": password
+        ]
+        
+        httpHelper.sendPostRequest(url: url, jsonData: params, completion:{result, err  in
+            if let error = err {
+                    print("Error:", error)
+                    return
+                }
+                
+            if let response = result {
+                print("Response:", response)
+                    
+                if let sessionId = response["sessionId"] as? String {
+                     print("Sid \(sessionId)")
+                }
+            }
+        })
+        
         return ""
     }
     

@@ -10,8 +10,10 @@ import Foundation
 class HttpRequestHelper {
     typealias CompletionHandler = ([String: Any]?, Error?) -> Void
     
+    private let baseUrl = "http://ci2.dextechnology.com:8000/api"
+    
     func sendPostRequest(url: String, jsonData: [String: Any], completion: @escaping CompletionHandler) {
-        guard let url = URL(string: url) else {
+        guard let url = URL(string: baseUrl + url) else {
             completion(nil, NSError(domain: "Invalid URL", code: -1, userInfo: nil))
             return
         }
