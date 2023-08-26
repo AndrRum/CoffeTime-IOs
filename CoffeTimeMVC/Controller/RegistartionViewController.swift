@@ -11,7 +11,7 @@ import UIKit
 class RegistrationViewController: UIViewController {
     
     private var registrationView = RegistrationView()
-    private var registartionService: UserDataServiceProtocol!
+    private var registartionService = UserDataService()
     
     override func loadView() {
         super.loadView()
@@ -38,11 +38,26 @@ class RegistrationViewController: UIViewController {
 
 extension RegistrationViewController: RegistrationViewDelegate {
     func regButtonTapped() {
+        
         registrationView.setOrigPass()
         let isEmailValid = registrationView.isEmailValid()
         let isPasswordValid = registrationView.isPasswordValid()
         let isRepeatPasswordValid = registrationView.isRepeatPasswordValid()
-        
-        if isEmailValid && isPasswordValid && isRepeatPasswordValid {}
+        let email = registrationView.getEmailValue()
+        let pass = registrationView.getPasswordValue()
+               
+        if isEmailValid && isPasswordValid && isRepeatPasswordValid {
+            registartionService.authUser(url: ApiEndpoints.register, email: email, password: pass) { sessionId in
+                if let sessionId = sessionId {
+                    print("Session ID:", sessionId)
+                    self.registartionService.saveResponse(sessionId: sessionId)
+                    //navigate
+                } else {
+                    print("Authentication failed.")
+                }
+            }
+        } else {
+            print("Invalid email or password.")
+        }
     }
 }

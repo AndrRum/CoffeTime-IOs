@@ -8,7 +8,7 @@
 import Foundation
 
 class HttpRequestHelper {
-    typealias CompletionHandler = ([String: Any]?, Error?) -> Void
+    typealias CompletionHandler = (Any?, Error?) -> Void
     
     private let baseUrl = "http://ci2.dextechnology.com:8000/api"
     
@@ -35,11 +35,17 @@ class HttpRequestHelper {
                 }
                 
                 if let data = data {
-                    do {
-                        let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                        completion(json, nil)
-                    } catch {
-                        completion(nil, error)
+                    if let responseString = String(data: data, encoding: .utf8) {
+                        print("Raw Response Data:", responseString)
+                        completion(responseString, nil) // Return as a string
+                    } else {
+                        do {
+                            let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                            completion(json, nil) // Return as JSON object
+                        } catch {
+                            print("JSON Parsing Error:", error)
+                            completion(nil, error)
+                        }
                     }
                 }
             }

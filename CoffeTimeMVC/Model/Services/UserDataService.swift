@@ -9,13 +9,15 @@ import CoreData
 
 protocol UserDataServiceProtocol: AnyObject {
     init(coreDataManager: CoreDataManager)
-    func authUser(url: String, email: String, password: String) -> String
-    func saveResponse(sessionId: String, in userModel: UserDataModel)
+    func authUser(url: String, email: String, password: String,  completion: @escaping (String?) -> Void)
+    func saveResponse(sessionId: String)
 }
 
 class UserDataService: UserDataServiceProtocol {
+    
     let context: NSManagedObjectContext
     var coreDataManager: CoreDataManager
+    let userModel = UserDataModel()
     
     let httpHelper = HttpRequestHelper()
     
@@ -24,34 +26,40 @@ class UserDataService: UserDataServiceProtocol {
         self.coreDataManager = coreDataManager
     }
     
-    func authUser(url: String, email: String, password: String) -> String {
+    func authUser(url: String, email: String, password: String, completion: @escaping (String?) -> Void) {
         
         let params: [String: String] = [
             "email": email,
             "password": password
         ]
         
-        httpHelper.sendPostRequest(url: url, jsonData: params, completion:{result, err  in
-            if let error = err {
-                    print("Error:", error)
-                    return
-                }
-                
+        httpHelper.sendPostRequest(url: url, jsonData: params) { result, err in
             if let response = result {
-                print("Response:", response)
-                    
-                if let sessionId = response["sessionId"] as? String {
-                     print("Sid \(sessionId)")
+                if let sessionId = response as? String {
+                    print(sessionId)
+                    completion(sessionId)
+                } else {
+                    completion(nil)
                 }
+            } else {
+                completion(nil)
             }
-        })
-        
-        return ""
+        }
     }
     
-    func saveResponse(sessionId: String, in userModel: UserDataModel) {
+    func saveResponse(sessionId: String) {
         do {
-           
+             context.performAndWait {
+                let userDataEntity = userModel.mapToEntityInContext(context)
+                userDataEntity.sessionId = sessionId
+                
+                do {
+                    try context.save()
+                    print("Session ID saved to Core Data.")
+                } catch {
+                    print("Error saving session ID:", error)
+                }
+            }
         }
     }
 }

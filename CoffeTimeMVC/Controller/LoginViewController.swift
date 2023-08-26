@@ -10,7 +10,7 @@ import UIKit
 class LoginViewController: UIViewController {
     
     private var loginView = LoginView()
-    private var loginService: UserDataServiceProtocol!
+    private var loginService = UserDataService()
     private let regViewController = RegistrationViewController()
        
     override func viewWillAppear(_ animated: Bool) {
@@ -63,9 +63,17 @@ extension LoginViewController: LoginViewDelegate {
         let pass = loginView.getPasswordValue()
                
         if isEmailValid && isPassValid {
-           
+            loginService.authUser(url: ApiEndpoints.login, email: email, password: pass) { sessionId in
+                if let sessionId = sessionId {
+                    print("Session ID:", sessionId)
+                    self.loginService.saveResponse(sessionId: sessionId)
+                    //navigate
+                } else {
+                    print("Authentication failed.")
+                }
+            }
         } else {
-            
+            print("Invalid email or password.")
         }
     }
 }
