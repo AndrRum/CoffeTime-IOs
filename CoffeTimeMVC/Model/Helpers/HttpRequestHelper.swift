@@ -29,13 +29,24 @@ class HttpRequestHelper {
             let session = URLSession.shared
             
             let task = session.dataTask(with: request) { data, response, error in
+
                 if let error = error {
                     completion(nil, error)
                     return
                 }
                 
-                if let data = data {
-                    if let responseString = String(data: data, encoding: .utf8) {
+                if let httpResponse = response as? HTTPURLResponse {
+                    let statusCode = httpResponse.statusCode
+                    print("Status Code:", statusCode)
+                    
+                    if statusCode == 500 {
+                                        
+                        NotificationCenter.default.post(name:NSNotification.Name("HttpErrorStatus500"), object: nil)
+                        return
+                    }
+                                               
+                    if let data = data {
+                        if let responseString = String(data: data, encoding: .utf8) {
                         print("Raw Response Data:", responseString)
                         completion(responseString, nil) // Return as a string
                     } else {
@@ -50,7 +61,10 @@ class HttpRequestHelper {
                 }
             }
             
-            task.resume()
+        }
+            
+        task.resume()
+            
         } catch {
             completion(nil, error)
         }

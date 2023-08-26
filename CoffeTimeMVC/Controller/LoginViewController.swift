@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
     private var loginView = LoginView()
     private var loginService = UserDataService()
     private let regViewController = RegistrationViewController()
+    private let errorViewController = ErrorViewController()
        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -32,10 +33,28 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(handleHttpErrorStatus500), name: NSNotification.Name("HttpErrorStatus500"), object: nil)
+        
         self.loginView.configureEmailInput()
         self.loginView.configurePassInput()
         self.loginView.configureLoginButton()
         self.loginView.configureRegistrationButton()
+    }
+    
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func handleHttpErrorStatus500() {
+        showHttpErrorView()
+    }
+
+    func showHttpErrorView() {
+        DispatchQueue.main.async {
+           self.errorViewController.modalPresentationStyle = .overFullScreen
+            self.present(self.errorViewController, animated: true, completion: nil)
+        }
     }
     
     private func setupLoginView() {

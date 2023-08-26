@@ -17,6 +17,8 @@
 		1F2E0AAB2A92236100C990E1 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E0AAA2A92236100C990E1 /* RegistrationView.swift */; };
 		1F2E0AAD2A92284000C990E1 /* RegistartionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E0AAC2A92284000C990E1 /* RegistartionViewController.swift */; };
 		1F2E0AAF2A923ED000C990E1 /* BaseAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E0AAE2A923ED000C990E1 /* BaseAuthView.swift */; };
+		1F3411722A9A358D007F228C /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3411712A9A358D007F228C /* ErrorView.swift */; };
+		1F3411742A9A35B2007F228C /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3411732A9A35B2007F228C /* ErrorViewController.swift */; };
 		1F44C1FE2A94030200613176 /* ValidationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C1FD2A94030200613176 /* ValidationStrategy.swift */; };
 		1F52BE982A987E010003995F /* ApiEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52BE972A987E010003995F /* ApiEndpoints.swift */; };
 		1F9922D32A81EB71000852CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D22A81EB71000852CF /* AppDelegate.swift */; };
@@ -95,6 +97,8 @@
 		1F2E0AAA2A92236100C990E1 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		1F2E0AAC2A92284000C990E1 /* RegistartionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistartionViewController.swift; sourceTree = "<group>"; };
 		1F2E0AAE2A923ED000C990E1 /* BaseAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAuthView.swift; sourceTree = "<group>"; };
+		1F3411712A9A358D007F228C /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		1F3411732A9A35B2007F228C /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		1F44C1FD2A94030200613176 /* ValidationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationStrategy.swift; sourceTree = "<group>"; };
 		1F52BE972A987E010003995F /* ApiEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoints.swift; sourceTree = "<group>"; };
 		1F9922CF2A81EB71000852CF /* CoffeTimeMVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeTimeMVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -269,6 +273,7 @@
 			children = (
 				1F9923052A81ECE7000852CF /* LoginViewController.swift */,
 				1F2E0AAC2A92284000C990E1 /* RegistartionViewController.swift */,
+				1F3411732A9A35B2007F228C /* ErrorViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				1F2E0AB02A9240E800C990E1 /* AuthViews */,
+				1F3411712A9A358D007F228C /* ErrorView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -540,8 +546,10 @@
 				1F9923CB2A842D8F000852CF /* AllProducts+CoreDataProperties.swift in Sources */,
 				1F9923DB2A843002000852CF /* AllProductsModel.swift in Sources */,
 				1F9923C42A842D8F000852CF /* AllCafe+CoreDataClass.swift in Sources */,
+				1F3411742A9A35B2007F228C /* ErrorViewController.swift in Sources */,
 				1F9923C92A842D8F000852CF /* Cafe+CoreDataProperties.swift in Sources */,
 				1F9923C62A842D8F000852CF /* UserData+CoreDataClass.swift in Sources */,
+				1F3411722A9A358D007F228C /* ErrorView.swift in Sources */,
 				1F9923E12A860ADF000852CF /* ProductService.swift in Sources */,
 				1F9923CC2A842D8F000852CF /* CafeProduct+CoreDataClass.swift in Sources */,
 				1F44C1FE2A94030200613176 /* ValidationStrategy.swift in Sources */,
