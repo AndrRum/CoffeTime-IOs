@@ -48,7 +48,7 @@ extension ErrorView {
         firstLabel.text = "Directed by"
         firstLabel.textColor = .white
         firstLabel.textAlignment = .center
-        firstLabel.font = UIFont.systemFont(ofSize: 20)
+        firstLabel.font = UIFont.systemFont(ofSize: 24)
         firstLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(firstLabel)
                        
@@ -58,7 +58,7 @@ extension ErrorView {
         secondLabel.text = "ROBERT B. WEIDE"
         secondLabel.textColor = .white
         secondLabel.textAlignment = .center
-        secondLabel.font = UIFont.boldSystemFont(ofSize: 28)
+        secondLabel.font = UIFont.boldSystemFont(ofSize: 26)
         secondLabel.translatesAutoresizingMaskIntoConstraints = false
            self.addSubview(secondLabel)
                        
@@ -76,7 +76,6 @@ extension ErrorView {
         closeButton.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40).isActive = true
                 
         closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
-        
     }
     
     func configureScrollingLabel() {
@@ -89,10 +88,30 @@ extension ErrorView {
         let centerYBetweenSecondLabelAndTop = self.bounds.height / 4
         
         scrollingLabel.centerYAnchor.constraint(equalTo: self.topAnchor, constant: centerYBetweenSecondLabelAndTop).isActive = true
-        scrollingLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
-            
+        scrollingLabel.leadingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+
         UIView.animate(withDuration: 6.0, delay: 0, options: [.repeat, .curveLinear], animations: {
-            self.scrollingLabel.frame.origin.x -= self.bounds.width
+            self.scrollingLabel.frame.origin.x = -self.scrollingLabel.bounds.width
+            self.scrollingLabel.alpha = 1.0
+        }, completion: { [weak self] _ in
+            UIView.animate(withDuration: 0.5, animations: {
+                self?.scrollingLabel.frame.origin.y += 20
+            }, completion: { _ in
+                UIView.animate(withDuration: 0.5, animations: {
+                    self?.scrollingLabel.alpha = 0.0
+                }, completion: { _ in
+                    self?.scrollingLabel.frame.origin.x = self?.bounds.width ?? 0
+                    self?.scrollingLabel.frame.origin.y = centerYBetweenSecondLabelAndTop
+                    self?.startScrolling()
+                })
+            })
+        })
+    }
+
+    private func startScrolling() {
+        UIView.animate(withDuration: 6.0, delay: 0, options: [.repeat, .curveLinear], animations: {
+            self.scrollingLabel.frame.origin.x = -self.scrollingLabel.bounds.width
+            self.scrollingLabel.alpha = 1.0
         }, completion: nil)
     }
     
