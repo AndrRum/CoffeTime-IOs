@@ -16,6 +16,13 @@ class BaseButton: UIButton {
         }
     };
     
+    private(set) var loader: UIActivityIndicatorView = {
+        let loader = UIActivityIndicatorView(style: .medium)
+        loader.color = .white
+        loader.translatesAutoresizingMaskIntoConstraints = false
+        return loader
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -32,5 +39,15 @@ class BaseButton: UIButton {
         titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         layer.cornerRadius = 24
         translatesAutoresizingMaskIntoConstraints = false
+        
+        addSubview(loader)
+        setupLoaderConstraints()
+    }
+    
+    private func setupLoaderConstraints() {
+        NSLayoutConstraint.activate([
+            loader.centerYAnchor.constraint(equalTo: centerYAnchor),
+            loader.leadingAnchor.constraint(equalTo: titleLabel!.trailingAnchor, constant: 10)
+        ])
     }
 }
