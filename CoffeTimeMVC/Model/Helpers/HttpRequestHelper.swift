@@ -41,7 +41,7 @@ class HttpRequestHelper {
                     
                     if statusCode == 500 {
                                         
-                        NotificationCenter.default.post(name:NSNotification.Name("HttpErrorStatus500"), object: nil)
+                        NotificationManager.shared.postNotification(name: "HttpErrorStatus500")
                         return
                     }
                                                

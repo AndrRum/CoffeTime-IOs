@@ -32,8 +32,10 @@ class BaseButton: UIButton {
         super.init(coder: aDecoder)
         commonInit()
     }
+}
 
-    private func commonInit() {
+private extension BaseButton {
+    func commonInit() {
         setTitleColor(.white, for: .normal)
         backgroundColor = Colors.buttonGreen
         titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
@@ -42,12 +44,32 @@ class BaseButton: UIButton {
         
         addSubview(loader)
         setupLoaderConstraints()
+        
+        loader.isHidden = true
     }
     
-    private func setupLoaderConstraints() {
+    func setupLoaderConstraints() {
         NSLayoutConstraint.activate([
             loader.centerYAnchor.constraint(equalTo: centerYAnchor),
             loader.leadingAnchor.constraint(equalTo: titleLabel!.trailingAnchor, constant: 10)
         ])
+    }
+}
+
+extension BaseButton {
+    func startLoader() {
+        DispatchQueue.main.async {
+            self.isEnabled = false
+            self.loader.isHidden = false
+            self.loader.startAnimating()
+        }
+    }
+           
+    func stopLoader() {
+        DispatchQueue.main.async {
+            self.loader.stopAnimating()
+            self.loader.isHidden = true
+            self.isEnabled = true
+        }
     }
 }

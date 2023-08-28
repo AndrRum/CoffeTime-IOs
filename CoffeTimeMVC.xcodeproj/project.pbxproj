@@ -20,6 +20,8 @@
 		1F3411722A9A358D007F228C /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3411712A9A358D007F228C /* ErrorView.swift */; };
 		1F3411742A9A35B2007F228C /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3411732A9A35B2007F228C /* ErrorViewController.swift */; };
 		1F44C1FE2A94030200613176 /* ValidationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C1FD2A94030200613176 /* ValidationStrategy.swift */; };
+		1F4D3C9A2A9D452300915D11 /* AuthViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D3C992A9D452300915D11 /* AuthViewControllerExtension.swift */; };
+		1F4D3C9C2A9D477400915D11 /* NotificationCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D3C9B2A9D477400915D11 /* NotificationCenterManager.swift */; };
 		1F52BE982A987E010003995F /* ApiEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52BE972A987E010003995F /* ApiEndpoints.swift */; };
 		1F9922D32A81EB71000852CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D22A81EB71000852CF /* AppDelegate.swift */; };
 		1F9922D52A81EB71000852CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D42A81EB71000852CF /* SceneDelegate.swift */; };
@@ -100,6 +102,8 @@
 		1F3411712A9A358D007F228C /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		1F3411732A9A35B2007F228C /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		1F44C1FD2A94030200613176 /* ValidationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationStrategy.swift; sourceTree = "<group>"; };
+		1F4D3C992A9D452300915D11 /* AuthViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewControllerExtension.swift; sourceTree = "<group>"; };
+		1F4D3C9B2A9D477400915D11 /* NotificationCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterManager.swift; sourceTree = "<group>"; };
 		1F52BE972A987E010003995F /* ApiEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoints.swift; sourceTree = "<group>"; };
 		1F9922CF2A81EB71000852CF /* CoffeTimeMVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeTimeMVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F9922D22A81EB71000852CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +192,14 @@
 			path = AuthViews;
 			sourceTree = "<group>";
 		};
+		1F4D3C982A9D44F400915D11 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1F4D3C992A9D452300915D11 /* AuthViewControllerExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		1F9922C62A81EB71000852CF = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +258,7 @@
 		1F9923022A81ECA7000852CF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1F4D3C982A9D44F400915D11 /* Extensions */,
 				1F9924292A8813DE000852CF /* Constants */,
 				1F99230A2A81F09B000852CF /* Services */,
 				1F9923092A81F093000852CF /* Models */,
@@ -282,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				1F9923F52A863215000852CF /* HttpRequestHelper.swift */,
+				1F4D3C9B2A9D477400915D11 /* NotificationCenterManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -581,6 +595,7 @@
 				1F9923C12A842D8F000852CF /* ProductAttribute+CoreDataProperties.swift in Sources */,
 				1F9923DD2A8430A8000852CF /* CafeProductModel.swift in Sources */,
 				1F9923DF2A8430DF000852CF /* AllCafeProductsModel.swift in Sources */,
+				1F4D3C9A2A9D452300915D11 /* AuthViewControllerExtension.swift in Sources */,
 				1F9923CF2A842D8F000852CF /* AllCafeProduct+CoreDataProperties.swift in Sources */,
 				1F9923D92A842FDF000852CF /* CafeModel.swift in Sources */,
 				1F9923D52A842F98000852CF /* AllCafeModel.swift in Sources */,
@@ -591,6 +606,7 @@
 				1F9923E32A860C8A000852CF /* AllCafeService.swift in Sources */,
 				1F9922D52A81EB71000852CF /* SceneDelegate.swift in Sources */,
 				1F2E0AAB2A92236100C990E1 /* RegistrationView.swift in Sources */,
+				1F4D3C9C2A9D477400915D11 /* NotificationCenterManager.swift in Sources */,
 				1F9923D72A842FC0000852CF /* UserDataModel.swift in Sources */,
 				1F9923CE2A842D8F000852CF /* AllCafeProduct+CoreDataClass.swift in Sources */,
 			);

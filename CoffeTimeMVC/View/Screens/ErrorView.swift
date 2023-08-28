@@ -17,11 +17,11 @@ class ErrorView: UIView {
     
     weak var delegate: ErrorViewDelegate?
     
-    private let firstLabel = UILabel()
-    private let secondLabel = UILabel()
-    private let closeButton = UIButton()
-    private let scrollingLabel = UILabel()
-    private let imageView = UIImageView(image: UIImage(named: "ErrorImg"))
+    private(set) var firstLabel = UILabel()
+    private(set) var secondLabel = UILabel()
+    private(set) var closeButton = UIButton()
+    private(set) var scrollingLabel = UILabel()
+    private(set) var imageView = UIImageView(image: UIImage(named: "ErrorImg"))
     
     private var isConfigured = false
     

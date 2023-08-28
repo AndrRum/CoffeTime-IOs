@@ -21,7 +21,15 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        NotificationManager.shared.addObserver(observer: self, selector: #selector(handleHttpErrorStatus500), name: "HttpErrorStatus500")
         loginView.animConfigureUI()
+    }
+    
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationManager.shared.removeAllObservers()
     }
 
     
@@ -33,28 +41,15 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(handleHttpErrorStatus500), name: NSNotification.Name("HttpErrorStatus500"), object: nil)
-        
         self.loginView.configureEmailInput()
         self.loginView.configurePassInput()
         self.loginView.configureLoginButton()
         self.loginView.configureRegistrationButton()
     }
     
-
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     @objc func handleHttpErrorStatus500() {
-        showHttpErrorView()
-    }
-
-    func showHttpErrorView() {
-        DispatchQueue.main.async {
-           self.errorViewController.modalPresentationStyle = .overFullScreen
-            self.present(self.errorViewController, animated: true, completion: nil)
-        }
+        showHttpErrorView(from: self, errorViewController: errorViewController)
+        self.loginView.loginButton.stopLoader()
     }
     
     private func setupLoginView() {
@@ -82,6 +77,7 @@ extension LoginViewController: LoginViewDelegate {
         let pass = loginView.getPasswordValue()
                
         if isEmailValid && isPassValid {
+            loginView.loginButton.startLoader()
             loginService.authUser(url: ApiEndpoints.login, email: email, password: pass) { sessionId in
                 if let sessionId = sessionId {
                     print("Session ID:", sessionId)
@@ -90,6 +86,7 @@ extension LoginViewController: LoginViewDelegate {
                 } else {
                     print("Authentication failed.")
                 }
+                self.loginView.loginButton.stopLoader()
             }
         } else {
             print("Invalid email or password.")

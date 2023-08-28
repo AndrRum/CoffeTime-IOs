@@ -36,7 +36,6 @@ class UserDataService: UserDataServiceProtocol {
         httpHelper.sendPostRequest(url: url, jsonData: params) { result, err in
             if let response = result {
                 if let sessionId = response as? String {
-                    print(sessionId)
                     completion(sessionId)
                 } else {
                     completion(nil)
