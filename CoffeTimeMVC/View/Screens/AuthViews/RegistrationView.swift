@@ -74,10 +74,6 @@ extension RegistrationView {
 
 extension RegistrationView {
     
-}
-
-extension RegistrationView {
-    
     func isEmailValid() -> Bool {
         return emailInput.isValidEmail()
     }

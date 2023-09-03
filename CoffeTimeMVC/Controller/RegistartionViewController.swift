@@ -5,7 +5,6 @@
 //  Created by AndrRum on 20.08.2023.
 //
 
-import Foundation
 import UIKit
 
 class RegistrationViewController: UIViewController {
@@ -53,6 +52,7 @@ class RegistrationViewController: UIViewController {
 
 
 extension RegistrationViewController: RegistrationViewDelegate {
+    
     func regButtonTapped() {
         
         registrationView.setOrigPass()
@@ -70,7 +70,7 @@ extension RegistrationViewController: RegistrationViewDelegate {
                 if let sessionId = sessionId {
                     print("Session ID:", sessionId)
                     self.registartionService.saveResponse(sessionId: sessionId)
-                    //navigate
+                    self.navigateToCafeListScreen()
                 } else {
                     print("Authentication failed.")
                 }

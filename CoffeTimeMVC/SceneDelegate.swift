@@ -12,19 +12,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            let loginViewController = LoginViewController()
-            let navigationController = UINavigationController(rootViewController: loginViewController)
+            let userDataService = UserDataService()
+            
+            let navigationController = UINavigationController()
             
             navigationController.interactivePopGestureRecognizer?.isEnabled = false
             window.backgroundColor = .clear
             window.rootViewController = navigationController
             self.window = window
             window.makeKeyAndVisible()
+            
+            
+            userDataService.fetchSid { sessionId in
+                
+                print("sid: \(String(describing: sessionId))")
+                
+                if sessionId != nil {
+                    let cafeListViewController = CafeListViewController()
+                    navigationController.viewControllers = [cafeListViewController]
+                } else {
+                    let loginViewController = LoginViewController()
+                    navigationController.viewControllers = [loginViewController]
+                }
+            }
         }
     }
+
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

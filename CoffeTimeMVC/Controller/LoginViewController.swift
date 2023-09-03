@@ -82,7 +82,7 @@ extension LoginViewController: LoginViewDelegate {
                 if let sessionId = sessionId {
                     print("Session ID:", sessionId)
                     self.loginService.saveResponse(sessionId: sessionId)
-                    //navigate
+                    self.navigateToCafeListScreen()
                 } else {
                     print("Authentication failed.")
                 }

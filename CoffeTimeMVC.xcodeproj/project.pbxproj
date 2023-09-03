@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F248E322AA501C7002ACA5E /* CafeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F248E312AA501C7002ACA5E /* CafeListViewController.swift */; };
+		1F248E342AA501DD002ACA5E /* CafeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F248E332AA501DD002ACA5E /* CafeListView.swift */; };
 		1F2E0A722A88C18300C990E1 /* Lobster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F2E0A6E2A88BAA400C990E1 /* Lobster-Regular.ttf */; };
 		1F2E0A9E2A8904F600C990E1 /* EmailInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E0A9D2A8904F600C990E1 /* EmailInput.swift */; };
 		1F2E0AA12A8C306300C990E1 /* PasswordInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E0AA02A8C306300C990E1 /* PasswordInput.swift */; };
@@ -24,6 +26,9 @@
 		1F4D3C9C2A9D477400915D11 /* NotificationCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D3C9B2A9D477400915D11 /* NotificationCenterManager.swift */; };
 		1F4D3CA22AA137B200915D11 /* rw.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1F4D3CA12AA137B200915D11 /* rw.mp3 */; };
 		1F52BE982A987E010003995F /* ApiEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52BE972A987E010003995F /* ApiEndpoints.swift */; };
+		1F8649E72AA53D6100CEB609 /* AuthViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8649E62AA53D6100CEB609 /* AuthViewControllerExtension.swift */; };
+		1F8649EA2AA53EB600CEB609 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8649E92AA53EB600CEB609 /* HeaderView.swift */; };
+		1F8649EC2AA53F4600CEB609 /* HeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8649EB2AA53F4600CEB609 /* HeaderViewController.swift */; };
 		1F9922D32A81EB71000852CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D22A81EB71000852CF /* AppDelegate.swift */; };
 		1F9922D52A81EB71000852CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D42A81EB71000852CF /* SceneDelegate.swift */; };
 		1F9922D72A81EB71000852CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D62A81EB71000852CF /* ViewController.swift */; };
@@ -90,6 +95,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F248E312AA501C7002ACA5E /* CafeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeListViewController.swift; sourceTree = "<group>"; };
+		1F248E332AA501DD002ACA5E /* CafeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeListView.swift; sourceTree = "<group>"; };
 		1F2E0A6E2A88BAA400C990E1 /* Lobster-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lobster-Regular.ttf"; path = "/Users/andrrum/react/CoffeTimeMVC/CoffeTimeMVC/Fonts/Lobster-Regular.ttf"; sourceTree = "<absolute>"; };
 		1F2E0A9D2A8904F600C990E1 /* EmailInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailInput.swift; sourceTree = "<group>"; };
 		1F2E0AA02A8C306300C990E1 /* PasswordInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordInput.swift; sourceTree = "<group>"; };
@@ -107,6 +114,9 @@
 		1F4D3C9B2A9D477400915D11 /* NotificationCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterManager.swift; sourceTree = "<group>"; };
 		1F4D3CA12AA137B200915D11 /* rw.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rw.mp3; sourceTree = "<group>"; };
 		1F52BE972A987E010003995F /* ApiEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoints.swift; sourceTree = "<group>"; };
+		1F8649E62AA53D6100CEB609 /* AuthViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewControllerExtension.swift; sourceTree = "<group>"; };
+		1F8649E92AA53EB600CEB609 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		1F8649EB2AA53F4600CEB609 /* HeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewController.swift; sourceTree = "<group>"; };
 		1F9922CF2A81EB71000852CF /* CoffeTimeMVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeTimeMVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F9922D22A81EB71000852CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F9922D42A81EB71000852CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -198,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				1F4D3C992A9D452300915D11 /* ViewControllerExtension.swift */,
+				1F8649E62AA53D6100CEB609 /* AuthViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -208,6 +219,14 @@
 				1F4D3CA12AA137B200915D11 /* rw.mp3 */,
 			);
 			path = Audio;
+			sourceTree = "<group>";
+		};
+		1F8649E82AA53E8C00CEB609 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				1F8649E92AA53EB600CEB609 /* HeaderView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		1F9922C62A81EB71000852CF = {
@@ -282,6 +301,7 @@
 		1F9923032A81ECB8000852CF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1F8649E82AA53E8C00CEB609 /* Components */,
 				1F9923EE2A860EF0000852CF /* Screens */,
 				1F9924252A881041000852CF /* Labels */,
 				1F9923F22A860FCA000852CF /* Items */,
@@ -298,6 +318,8 @@
 				1F9923052A81ECE7000852CF /* LoginViewController.swift */,
 				1F2E0AAC2A92284000C990E1 /* RegistartionViewController.swift */,
 				1F3411732A9A35B2007F228C /* ErrorViewController.swift */,
+				1F248E312AA501C7002ACA5E /* CafeListViewController.swift */,
+				1F8649EB2AA53F4600CEB609 /* HeaderViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -370,6 +392,7 @@
 			children = (
 				1F2E0AB02A9240E800C990E1 /* AuthViews */,
 				1F3411712A9A358D007F228C /* ErrorView.swift */,
+				1F248E332AA501DD002ACA5E /* CafeListView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -584,6 +607,7 @@
 				1F9923ED2A860E40000852CF /* CafeProductService.swift in Sources */,
 				1F9923C82A842D8F000852CF /* Cafe+CoreDataClass.swift in Sources */,
 				1F2E0AA92A8D766100C990E1 /* BaseInput.swift in Sources */,
+				1F248E342AA501DD002ACA5E /* CafeListView.swift in Sources */,
 				1F99230F2A81FE25000852CF /* CoreDataManager.swift in Sources */,
 				1F9923CA2A842D8F000852CF /* AllProducts+CoreDataClass.swift in Sources */,
 				1F9922D72A81EB71000852CF /* ViewController.swift in Sources */,
@@ -593,12 +617,15 @@
 				1F52BE982A987E010003995F /* ApiEndpoints.swift in Sources */,
 				1F9923CD2A842D8F000852CF /* CafeProduct+CoreDataProperties.swift in Sources */,
 				1F2E0AAF2A923ED000C990E1 /* BaseAuthView.swift in Sources */,
+				1F8649E72AA53D6100CEB609 /* AuthViewControllerExtension.swift in Sources */,
 				1F9923C52A842D8F000852CF /* AllCafe+CoreDataProperties.swift in Sources */,
+				1F248E322AA501C7002ACA5E /* CafeListViewController.swift in Sources */,
 				1F99242B2A881402000852CF /* Fonts.swift in Sources */,
 				1F9924282A881091000852CF /* LogoLabel.swift in Sources */,
 				1F2E0AA12A8C306300C990E1 /* PasswordInput.swift in Sources */,
 				1F9923F62A863215000852CF /* HttpRequestHelper.swift in Sources */,
 				1F9923C72A842D8F000852CF /* UserData+CoreDataProperties.swift in Sources */,
+				1F8649EC2AA53F4600CEB609 /* HeaderViewController.swift in Sources */,
 				1F9923E92A860CFF000852CF /* AllProductsService.swift in Sources */,
 				1F9923E52A860CAA000852CF /* UserDataService.swift in Sources */,
 				1F9923C02A842D8F000852CF /* ProductAttribute+CoreDataClass.swift in Sources */,
@@ -617,6 +644,7 @@
 				1F99230D2A81F7BB000852CF /* CoffeTimeDataList.xcdatamodeld in Sources */,
 				1F9923E32A860C8A000852CF /* AllCafeService.swift in Sources */,
 				1F9922D52A81EB71000852CF /* SceneDelegate.swift in Sources */,
+				1F8649EA2AA53EB600CEB609 /* HeaderView.swift in Sources */,
 				1F2E0AAB2A92236100C990E1 /* RegistrationView.swift in Sources */,
 				1F4D3C9C2A9D477400915D11 /* NotificationCenterManager.swift in Sources */,
 				1F9923D72A842FC0000852CF /* UserDataModel.swift in Sources */,

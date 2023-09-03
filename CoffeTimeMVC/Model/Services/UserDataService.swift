@@ -48,7 +48,7 @@ class UserDataService: UserDataServiceProtocol {
     
     func saveResponse(sessionId: String) {
         do {
-             context.performAndWait {
+            context.performAndWait {
                 let userDataEntity = userModel.mapToEntityInContext(context)
                 userDataEntity.sessionId = sessionId
                 
@@ -60,6 +60,26 @@ class UserDataService: UserDataServiceProtocol {
                 }
             }
         }
+    }
+    
+    func fetchSid(completion: @escaping (String?) -> Void) {
+        let fetchRequest: NSFetchRequest<UserData> = UserData.fetchRequest()
+            do {
+               let userDataArray = try context.fetch(fetchRequest)
+
+               if let userData = userDataArray.first {
+                   if let sessionId = userData.sessionId {
+                       completion(sessionId)
+                   } else {
+                       completion(nil)
+                   }
+               } else {
+                   completion(nil)
+               }
+           } catch {
+               print("Error fetching UserData from Core Data:", error)
+               completion(nil)
+           }
     }
 }
 
