@@ -40,16 +40,19 @@ extension ErrorViewController: ErrorViewDelegate {
         
     }
     
+    func closeButtonTapped() {
+        goBack()
+    }
+}
+
+private extension ErrorViewController {
+    
     func goBack() {
         self.dismiss(animated: true)
         errorView.resetAnimations()
         stopSound()
     }
     
-    func closeButtonTapped() {
-        goBack()
-    }
-
     func playSound() {
         guard let url = Bundle.main.url(forResource: "rw", withExtension: "mp3") else { return }
 

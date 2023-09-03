@@ -50,8 +50,15 @@ extension ErrorView {
         imageView.alpha = 0.0
     }
     
+    @objc func closeButtonTapped() {
+        delegate?.closeButtonTapped()
+    }
+    
+}
+
+extension ErrorView {
+    
     func configureLabel() {
-        
         firstLabel.text = "Directed by"
         firstLabel.textColor = .white
         firstLabel.textAlignment = .center
@@ -114,11 +121,6 @@ extension ErrorView {
             self.imageView.alpha = 1.0
         }, completion: nil)
     }
-    
-    @objc func closeButtonTapped() {
-        delegate?.closeButtonTapped()
-    }
-    
 }
 
 private extension ErrorView {
