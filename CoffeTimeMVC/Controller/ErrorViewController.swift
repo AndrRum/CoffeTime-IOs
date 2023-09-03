@@ -25,12 +25,6 @@ class ErrorViewController: UIViewController {
         errorView.configureImage()
         playSound()
     }
-    
-    private func setupErrView() {
-        errorView.delegate = self
-        errorView.configureUI()
-        self.view = errorView
-    }
 }
 
 
@@ -46,6 +40,12 @@ extension ErrorViewController: ErrorViewDelegate {
 }
 
 private extension ErrorViewController {
+    
+    func setupErrView() {
+       errorView.delegate = self
+       errorView.configureUI()
+       self.view = errorView
+   }
     
     func goBack() {
         self.dismiss(animated: true)
