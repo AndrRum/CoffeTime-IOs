@@ -23,8 +23,6 @@ class ErrorView: UIView {
     private(set) var scrollingLabel = UILabel()
     private(set) var imageView = UIImageView(image: UIImage(named: "ErrorImg"))
     
-    private var isConfigured = false
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -41,6 +39,15 @@ extension ErrorView {
                 
         configureLabel()
         configureCloseButton()
+    }
+    
+    func resetAnimations() {
+        scrollingLabel.layer.removeAllAnimations()
+        scrollingLabel.frame.origin.x = bounds.width
+        scrollingLabel.alpha = 0.0
+
+        imageView.layer.removeAllAnimations()
+        imageView.alpha = 0.0
     }
     
     func configureLabel() {
@@ -67,7 +74,7 @@ extension ErrorView {
     }
     
     func configureCloseButton() {
-        closeButton.setImage(UIImage(systemName: "xmark"), for: .normal) //
+        closeButton.setImage(UIImage(systemName: "xmark"), for: .normal)
         closeButton.tintColor = .white
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(closeButton)
@@ -89,39 +96,14 @@ extension ErrorView {
         
         scrollingLabel.centerYAnchor.constraint(equalTo: self.topAnchor, constant: centerYBetweenSecondLabelAndTop).isActive = true
         scrollingLabel.leadingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-
-        UIView.animate(withDuration: 6.0, delay: 0, options: [.repeat, .curveLinear], animations: {
-            self.scrollingLabel.frame.origin.x = -self.scrollingLabel.bounds.width
-            self.scrollingLabel.alpha = 1.0
-        }, completion: { [weak self] _ in
-            UIView.animate(withDuration: 0.5, animations: {
-                self?.scrollingLabel.frame.origin.y += 20
-            }, completion: { _ in
-                UIView.animate(withDuration: 0.5, animations: {
-                    self?.scrollingLabel.alpha = 0.0
-                }, completion: { _ in
-                    self?.scrollingLabel.frame.origin.x = self?.bounds.width ?? 0
-                    self?.scrollingLabel.frame.origin.y = centerYBetweenSecondLabelAndTop
-                    self?.startScrolling()
-                })
-            })
-        })
-    }
-
-    private func startScrolling() {
-        UIView.animate(withDuration: 6.0, delay: 0, options: [.repeat, .curveLinear], animations: {
-            self.scrollingLabel.frame.origin.x = -self.scrollingLabel.bounds.width
-            self.scrollingLabel.alpha = 1.0
-        }, completion: nil)
+        
+        configureScrollingAnimation(startScrollPosition: centerYBetweenSecondLabelAndTop)
     }
     
     func configureImage() {
-        guard !isConfigured else {
-            return
-        }
-        
         imageView.translatesAutoresizingMaskIntoConstraints = false
-           self.addSubview(imageView)
+        
+        self.addSubview(imageView)
 
         imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
         imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
@@ -131,12 +113,44 @@ extension ErrorView {
         UIView.animate(withDuration: 3.0, delay: 1.0, options: [], animations: {
             self.imageView.alpha = 1.0
         }, completion: nil)
-        
-        isConfigured = true
     }
     
     @objc func closeButtonTapped() {
         delegate?.closeButtonTapped()
     }
     
+}
+
+private extension ErrorView {
+    
+    func configureScrollingAnimation(startScrollPosition: CGFloat) {
+        let animationDuration: TimeInterval = 6.0
+        
+        let moveLeftAnimation = CABasicAnimation(keyPath: "position.x")
+        moveLeftAnimation.fromValue = bounds.width + scrollingLabel.bounds.width / 2
+        moveLeftAnimation.toValue = -scrollingLabel.bounds.width / 2
+        moveLeftAnimation.duration = animationDuration
+        moveLeftAnimation.repeatCount = .infinity
+        moveLeftAnimation.timingFunction = CAMediaTimingFunction(name: .linear)
+        
+        let fadeOutAnimation = CABasicAnimation(keyPath: "opacity")
+        fadeOutAnimation.fromValue = 1.0
+        fadeOutAnimation.toValue = 0.0
+        fadeOutAnimation.duration = animationDuration
+        fadeOutAnimation.repeatCount = .infinity
+        fadeOutAnimation.timingFunction = CAMediaTimingFunction(name: .linear)
+        
+        let animationGroup = CAAnimationGroup()
+        animationGroup.animations = [moveLeftAnimation, fadeOutAnimation]
+        animationGroup.duration = animationDuration
+        animationGroup.repeatCount = .infinity
+        animationGroup.timingFunction = CAMediaTimingFunction(name: .linear)
+        
+        scrollingLabel.layer.add(animationGroup, forKey: "scrollingAnimation")
+        
+        scrollingLabel.layer.position.x = -scrollingLabel.bounds.width / 2
+        scrollingLabel.layer.opacity = 0.0
+        scrollingLabel.layer.speed = 1.0
+        scrollingLabel.frame.origin.y = startScrollPosition
+    }
 }
