@@ -9,47 +9,57 @@ import Foundation
 import UIKit
 
 protocol CafeListDelegate: AnyObject {
-    
+    func navigateBack() -> Void
 }
 
 class CafeListView: UIView {
     
-    private(set) var headerView = HeaderView()
+    private(set) var backButton = BackButton(frame: .zero)
+    private(set) var pageLabel = PageLabel(title: "CoffeTime")
     
     weak var delegate: CafeListDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configureUI()
     }
 
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 extension CafeListView {
-    func setupUI() {
-        
+    func configureUI() {
         self.backgroundColor = .white
-        addSubview(headerView)
         
-        headerView.configureUI()
-
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-        
-        if #available(iOS 11.0, *) {
-            headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-        } else {
-            headerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-           }
-        
-        headerView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        headerView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        headerView.heightAnchor.constraint(equalToConstant: 65).isActive = true
+        configurePageTitleLabel()
+        configureBackButton()
     }
-}
-
-extension CafeListView: CafeListDelegate {
-   
+    
+    func configurePageTitleLabel() {
+        addSubview(pageLabel)
+        
+        NSLayoutConstraint.activate([
+            pageLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            pageLabel.topAnchor.constraint(equalTo: topAnchor, constant: 60),
+            pageLabel.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+    
+    func configureBackButton() {
+        backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        addSubview(backButton)
+        
+        NSLayoutConstraint.activate([
+            backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 2),
+            backButton.topAnchor.constraint(equalTo: topAnchor, constant: 60),
+            backButton.heightAnchor.constraint(equalToConstant: 40),
+            backButton.widthAnchor.constraint(equalToConstant: 40),
+        ])
+    }
+    
+    @objc func backAction() {
+        delegate?.navigateBack()
+    }
 }

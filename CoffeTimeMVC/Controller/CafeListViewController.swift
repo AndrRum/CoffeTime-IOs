@@ -15,20 +15,24 @@ class CafeListViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
+        navigationController?.navigationBar.isHidden = true
         setupCafeListView()
     }
     
-    override func viewDidLoad() {
-        cafeListView.setupUI()
-    }
     
     func setupCafeListView() {
         cafeListView.delegate = self
         self.view = cafeListView
     }
+    
+    private func goBack() {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 
 extension CafeListViewController: CafeListDelegate {
-    
+    func navigateBack() {
+        goBack()
+    }
 }
