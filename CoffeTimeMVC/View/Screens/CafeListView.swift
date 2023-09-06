@@ -16,6 +16,9 @@ class CafeListView: UIView {
     
     private(set) var pageLabel = PageLabel(title: "CoffeTime")
     private var separatorView = UIView()
+    private let switchButton = UISegmentedControl(items: ["Map", "List"])
+    
+    private var isMarkerMode = true
     
     weak var delegate: CafeListDelegate?
     
@@ -35,6 +38,7 @@ extension CafeListView {
         
         configurePageTitleLabel()
         configureSeparator()
+        configureSwitchButton()
     }
     
     func configurePageTitleLabel() {
@@ -62,10 +66,46 @@ extension CafeListView {
         separatorView.translatesAutoresizingMaskIntoConstraints = false
            
         NSLayoutConstraint.activate([
-            separatorView.topAnchor.constraint(equalTo: pageLabel.bottomAnchor, constant: 9),
+            separatorView.topAnchor.constraint(equalTo: pageLabel.bottomAnchor, constant: 8),
             separatorView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
             separatorView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
             separatorView.heightAnchor.constraint(equalToConstant: 1)
         ])
+    }
+    
+    func configureSwitchButton() {
+        switchButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        switchButton.backgroundColor = .white
+        switchButton.layer.borderWidth = 1.0
+        switchButton.layer.borderColor = UIColor.gray.cgColor
+        switchButton.selectedSegmentTintColor = Colors.buttonGreen
+        
+        switchButton.setImage(UIImage(systemName: "mappin.and.ellipse"), forSegmentAt: 0)
+        switchButton.setImage(UIImage(systemName: "list.dash"), forSegmentAt: 1)
+        
+        switchButton.selectedSegmentIndex = 1
+        switchButton.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
+        
+        addSubview(switchButton)
+        
+        NSLayoutConstraint.activate([
+            switchButton.widthAnchor.constraint(equalToConstant: 130),
+            switchButton.heightAnchor.constraint(equalToConstant: 32),
+            switchButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            switchButton.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 16)
+        ])
+    }
+}
+
+extension CafeListView {
+    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        let selectedIndex = sender.selectedSegmentIndex
+        
+        if selectedIndex == 0 {
+            isMarkerMode = true
+        } else {
+            isMarkerMode = false
+        }
     }
 }
