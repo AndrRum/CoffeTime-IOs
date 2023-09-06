@@ -62,22 +62,24 @@ extension RegistrationViewController: RegistrationViewDelegate {
         let isRepeatPasswordValid = registrationView.isRepeatPasswordValid()
         let email = registrationView.getEmailValue()
         let pass = registrationView.getPasswordValue()
+        
+        let validationCondition = isEmailValid && isPasswordValid && isRepeatPasswordValid
+        
+        if (!validationCondition) {
+            return
+        }
                
-        if isEmailValid && isPasswordValid && isRepeatPasswordValid {
-            registrationView.registrationButton.startLoader()
+        registrationView.registrationButton.startLoader()
             
-            registartionService.authUser(url: ApiEndpoints.register, email: email, password: pass) { sessionId in
-                if let sessionId = sessionId {
-                    print("Session ID:", sessionId)
-                    self.registartionService.saveResponse(sessionId: sessionId)
-                    self.navigateToCafeListScreen()
-                } else {
-                    print("Authentication failed.")
-                }
-                self.registrationView.registrationButton.stopLoader()
+        registartionService.authUser(url: ApiEndpoints.register, email: email, password: pass) { sessionId in
+            if let sessionId = sessionId {
+                print("Session ID:", sessionId)
+                self.registartionService.saveResponse(sessionId: sessionId)
+                self.navigateToCafeListScreen()
+            } else {
+                print("Authentication failed.")
             }
-        } else {
-            print("Invalid email or password.")
+            self.registrationView.registrationButton.stopLoader()
         }
     }
 }

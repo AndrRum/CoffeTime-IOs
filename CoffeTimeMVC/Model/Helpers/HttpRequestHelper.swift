@@ -1,10 +1,3 @@
-//
-//  HttpRequestHelper.swift
-//  CoffeTimeMVC
-//
-//  Created by AndrRum on 11.08.2023.
-//
-
 import Foundation
 
 class HttpRequestHelper {
@@ -29,44 +22,57 @@ class HttpRequestHelper {
             let session = URLSession.shared
             
             let task = session.dataTask(with: request) { data, response, error in
-
+                
                 if let error = error {
-                    completion(nil, error)
-                    return
+                    self.errorHandler(error: error, completion: completion)
                 }
                 
                 if let httpResponse = response as? HTTPURLResponse {
-                    let statusCode = httpResponse.statusCode
-                    print("Status Code:", statusCode)
-                    
-                    if statusCode == 500 {
-                                        
-                        NotificationManager.shared.postNotification(name: "HttpErrorStatus500")
-                        return
-                    }
-                                               
-                    if let data = data {
-                        if let responseString = String(data: data, encoding: .utf8) {
-                        print("Raw Response Data:", responseString)
-                        completion(responseString, nil) // Return as a string
-                    } else {
-                        do {
-                            let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                            completion(json, nil) // Return as JSON object
-                        } catch {
-                            print("JSON Parsing Error:", error)
-                            completion(nil, error)
-                        }
-                    }
+                    self.responseHandler(httpResponse: httpResponse, data: data, completion: completion)
                 }
+                
             }
             
-        }
-            
-        task.resume()
+            task.resume()
             
         } catch {
             completion(nil, error)
+        }
+    }
+}
+
+private extension HttpRequestHelper {
+    func errorHandler(error: Error, completion: @escaping CompletionHandler) {
+        if error.localizedDescription.range(of: "timed out") != nil {
+            NotificationManager.shared.postNotification(name: "HttpErrorStatus500")
+            return
+        }
+        completion(nil, error)
+        return
+    }
+    
+    func responseHandler(httpResponse: HTTPURLResponse, data: Data?, completion: @escaping CompletionHandler) {
+        let statusCode = httpResponse.statusCode
+        print("Status Code:", statusCode)
+        
+        if statusCode == 500 {
+            NotificationManager.shared.postNotification(name: "HttpErrorStatus500")
+            return
+        }
+        
+        if let data = data {
+            if let responseString = String(data: data, encoding: .utf8) {
+                print("Raw Response Data:", responseString)
+                completion(responseString, nil)
+            } else {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    completion(json, nil)
+                } catch {
+                    print("JSON Parsing Error:", error)
+                    completion(nil, error)
+                }
+            }
         }
     }
 }

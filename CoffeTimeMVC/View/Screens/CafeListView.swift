@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 
 protocol CafeListDelegate: AnyObject {
-    func navigateBack() -> Void
+   
 }
 
 class CafeListView: UIView {
     
-    private(set) var backButton = BackButton(frame: .zero)
     private(set) var pageLabel = PageLabel(title: "CoffeTime")
+    private var separatorView = UIView()
     
     weak var delegate: CafeListDelegate?
     
@@ -34,32 +34,38 @@ extension CafeListView {
         self.backgroundColor = .white
         
         configurePageTitleLabel()
-        configureBackButton()
+        configureSeparator()
     }
     
     func configurePageTitleLabel() {
         addSubview(pageLabel)
+        pageLabel.translatesAutoresizingMaskIntoConstraints = false
         
+        var topConstraint: NSLayoutConstraint
+
+        if UIScreen.main.bounds.height >= 812 {
+            topConstraint = pageLabel.topAnchor.constraint(equalTo: topAnchor, constant: 60)
+        } else {
+            topConstraint = pageLabel.topAnchor.constraint(equalTo: topAnchor, constant: 20)
+        }
+
         NSLayoutConstraint.activate([
             pageLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            pageLabel.topAnchor.constraint(equalTo: topAnchor, constant: 60),
+            topConstraint,
             pageLabel.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     
-    func configureBackButton() {
-        backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        addSubview(backButton)
-        
+    func configureSeparator() {
+        separatorView.backgroundColor = Colors.separator
+        addSubview(separatorView)
+        separatorView.translatesAutoresizingMaskIntoConstraints = false
+           
         NSLayoutConstraint.activate([
-            backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 2),
-            backButton.topAnchor.constraint(equalTo: topAnchor, constant: 60),
-            backButton.heightAnchor.constraint(equalToConstant: 40),
-            backButton.widthAnchor.constraint(equalToConstant: 40),
+            separatorView.topAnchor.constraint(equalTo: pageLabel.bottomAnchor, constant: 9),
+            separatorView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
+            separatorView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
+            separatorView.heightAnchor.constraint(equalToConstant: 1)
         ])
-    }
-    
-    @objc func backAction() {
-        delegate?.navigateBack()
     }
 }

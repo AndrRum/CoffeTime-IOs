@@ -93,7 +93,7 @@ extension ErrorView {
     }
     
     func configureScrollingLabel() {
-        scrollingLabel.text = "Status code: 500"
+        scrollingLabel.text = "Я нормально 👍👍👍"
         scrollingLabel.textColor = .white
         scrollingLabel.font = UIFont.boldSystemFont(ofSize: 22)
         scrollingLabel.translatesAutoresizingMaskIntoConstraints = false

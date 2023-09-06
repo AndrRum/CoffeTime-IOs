@@ -32,7 +32,5 @@ class CafeListViewController: UIViewController {
 
 
 extension CafeListViewController: CafeListDelegate {
-    func navigateBack() {
-        goBack()
-    }
+   
 }
