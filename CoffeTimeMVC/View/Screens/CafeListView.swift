@@ -18,7 +18,7 @@ class CafeListView: UIView {
     private var separatorView = UIView()
     private let switchButton = UISegmentedControl(items: ["Map", "List"])
     
-    private var isMarkerMode = true
+    private var isLeftSegmentMode = false
     
     weak var delegate: CafeListDelegate?
     
@@ -82,6 +82,7 @@ extension CafeListView {
         switchButton.selectedSegmentTintColor = Colors.buttonGreen
         
         switchButton.setImage(UIImage(systemName: "mappin.and.ellipse"), forSegmentAt: 0)
+        switchButton.imageForSegment(at: 0)?.accessibilityLabel = "Map"
         switchButton.setImage(UIImage(systemName: "list.dash"), forSegmentAt: 1)
         
         switchButton.selectedSegmentIndex = 1
@@ -103,9 +104,13 @@ extension CafeListView {
         let selectedIndex = sender.selectedSegmentIndex
         
         if selectedIndex == 0 {
-            isMarkerMode = true
+            isLeftSegmentMode = true
+            
+            if (switchButton.imageForSegment(at: 0)?.accessibilityLabel == "Map") {
+                switchButton.setImage(UIImage(systemName: "heart"), forSegmentAt: 0)
+            }
         } else {
-            isMarkerMode = false
+            isLeftSegmentMode = false
         }
     }
 }
