@@ -33,7 +33,7 @@ class UserDataService: UserDataServiceProtocol {
             "password": password
         ]
         
-        httpHelper.sendPostRequest(url: url, jsonData: params) { result, err in
+        httpHelper.sendPostRequest(url: url, jsonData: params, withSid: false) { result, err in
             if let response = result {
                 if let sessionId = response as? String {
                     completion(sessionId)

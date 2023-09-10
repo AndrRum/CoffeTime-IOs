@@ -5,8 +5,18 @@ class HttpRequestHelper {
     
     private let baseUrl = "http://ci2.dextechnology.com:8000/api"
     
-    func sendPostRequest(url: String, jsonData: [String: Any], completion: @escaping CompletionHandler) {
-        guard let url = URL(string: baseUrl + url) else {
+func sendPostRequest(url: String, jsonData: [String: Any], withSid: Bool, completion: @escaping CompletionHandler) {
+        
+        var urlString = baseUrl + url
+        
+        if withSid {
+            let userDataService = UserDataService()
+            userDataService.fetchSid { sessionId in
+                urlString += "?sessionId=\(String(describing: sessionId))"
+            }
+        }
+        
+        guard let url = URL(string: urlString) else {
             completion(nil, NSError(domain: "Invalid URL", code: -1, userInfo: nil))
             return
         }
