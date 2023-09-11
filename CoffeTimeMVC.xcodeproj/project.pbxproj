@@ -75,6 +75,7 @@
 		1F9923F62A863215000852CF /* HttpRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9923F52A863215000852CF /* HttpRequestHelper.swift */; };
 		1F9924282A881091000852CF /* LogoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9924272A881091000852CF /* LogoLabel.swift */; };
 		1F99242B2A881402000852CF /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F99242A2A881402000852CF /* Fonts.swift */; };
+		1FE592902AAFAADE00B255C1 /* AllCafeMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5928F2AAFAADE00B255C1 /* AllCafeMockData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +168,7 @@
 		1F9923F52A863215000852CF /* HttpRequestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestHelper.swift; sourceTree = "<group>"; };
 		1F9924272A881091000852CF /* LogoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoLabel.swift; sourceTree = "<group>"; };
 		1F99242A2A881402000852CF /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		1FE5928F2AAFAADE00B255C1 /* AllCafeMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCafeMockData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,6 +328,7 @@
 		1F9923082A81F082000852CF /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				1FE5928E2AAFAABD00B255C1 /* MockData */,
 				1F99230E2A81FE25000852CF /* CoreDataManager.swift */,
 				1F9923B02A842D8F000852CF /* ProductAttribute+CoreDataClass.swift */,
 				1F9923B12A842D8F000852CF /* ProductAttribute+CoreDataProperties.swift */,
@@ -446,6 +449,14 @@
 				1F2E0A6E2A88BAA400C990E1 /* Lobster-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		1FE5928E2AAFAABD00B255C1 /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				1FE5928F2AAFAADE00B255C1 /* AllCafeMockData.swift */,
+			);
+			path = MockData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -588,6 +599,7 @@
 				1F9923DB2A843002000852CF /* AllProductsModel.swift in Sources */,
 				1F9923C42A842D8F000852CF /* AllCafe+CoreDataClass.swift in Sources */,
 				1F3411742A9A35B2007F228C /* ErrorViewController.swift in Sources */,
+				1FE592902AAFAADE00B255C1 /* AllCafeMockData.swift in Sources */,
 				1F9923C92A842D8F000852CF /* Cafe+CoreDataProperties.swift in Sources */,
 				1F9923C62A842D8F000852CF /* UserData+CoreDataClass.swift in Sources */,
 				1F3411722A9A358D007F228C /* ErrorView.swift in Sources */,

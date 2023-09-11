@@ -11,6 +11,7 @@ protocol UserDataServiceProtocol: AnyObject {
     init(coreDataManager: CoreDataManager)
     func authUser(url: String, email: String, password: String,  completion: @escaping (String?) -> Void)
     func saveResponse(sessionId: String)
+    func fetchSid(completion: @escaping (String?) -> Void) 
 }
 
 class UserDataService: UserDataServiceProtocol {
@@ -64,22 +65,21 @@ class UserDataService: UserDataServiceProtocol {
     
     func fetchSid(completion: @escaping (String?) -> Void) {
         let fetchRequest: NSFetchRequest<UserData> = UserData.fetchRequest()
-            do {
-               let userDataArray = try context.fetch(fetchRequest)
-
-               if let userData = userDataArray.first {
-                   if let sessionId = userData.sessionId {
-                       completion(sessionId)
-                   } else {
-                       completion(nil)
-                   }
-               } else {
-                   completion(nil)
-               }
-           } catch {
-               print("Error fetching UserData from Core Data:", error)
-               completion(nil)
-           }
+        do {
+            let userDataArray = try context.fetch(fetchRequest)
+            if let userData = userDataArray.first {
+                if let sessionId = userData.sessionId {
+                    completion(sessionId)
+                } else {
+                    completion(nil)
+                }
+            } else {
+                completion(nil)
+            }
+        } catch {
+            print("Error fetching UserData from Core Data:", error)
+            completion(nil)
+        }
     }
 }
 

@@ -5,7 +5,7 @@ class HttpRequestHelper {
     
     private let baseUrl = "http://ci2.dextechnology.com:8000/api"
     
-func sendPostRequest(url: String, jsonData: [String: Any], withSid: Bool, completion: @escaping CompletionHandler) {
+func sendPostRequest(url: String, jsonData: [String: Any]?, withSid: Bool, completion: @escaping CompletionHandler) {
         
         var urlString = baseUrl + url
         
@@ -22,12 +22,14 @@ func sendPostRequest(url: String, jsonData: [String: Any], withSid: Bool, comple
         }
         
         do {
-            let jsonData = try JSONSerialization.data(withJSONObject: jsonData, options: [])
-            
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = jsonData
+            
+            if let jsonData = jsonData {
+                let jsonData = try JSONSerialization.data(withJSONObject: jsonData, options: [])
+                request.httpBody = jsonData
+            }
             
             let session = URLSession.shared
             
