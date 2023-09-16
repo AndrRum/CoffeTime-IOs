@@ -28,13 +28,12 @@ class AllCafeService: AllCafeServiceProtocol {
     }
     
     func getAllCafe(url: String, completion: @escaping (NSSet?) -> Void) {
-        httpHelper.sendPostRequest(url: url, jsonData: nil, withSid: false) { result, err in
+        httpHelper.sendPostRequest(url: url, jsonData: nil, withSid: true) { result, err in
             if let response = result {
                 if let cafeList = response as? NSSet {
                     completion(cafeList)
                 } else {
-                    let cafeSet = NSMutableSet(array: allCafeMockDataArray)
-                    completion(cafeSet)
+                    completion(nil)
                 }
             } else {
                 completion(nil)

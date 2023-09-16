@@ -14,12 +14,13 @@ protocol CafeListDelegate: AnyObject {
 
 class CafeListView: UIView {
     
+    var loaderView = LoaderView()
+    
     private(set) var pageLabel = PageLabel(title: "CoffeTime")
     private var separatorView = UIView()
     private let switchButton = UISegmentedControl(items: ["Map", "List"])
     
     private var isLeftSegmentMode = false
-    
     weak var delegate: CafeListDelegate?
     
     override init(frame: CGRect) {
@@ -36,9 +37,20 @@ extension CafeListView {
     func configureUI() {
         self.backgroundColor = .white
         
+        setupLoaderView()
         configurePageTitleLabel()
         configureSeparator()
         configureSwitchButton()
+    }
+    
+    func setupLoaderView() {
+        addSubview(loaderView)
+        loaderView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            loaderView.centerXAnchor.constraint(equalTo:centerXAnchor),
+            loaderView.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
     }
     
     func configurePageTitleLabel() {
@@ -105,10 +117,6 @@ extension CafeListView {
         
         if selectedIndex == 0 {
             isLeftSegmentMode = true
-            
-            if (switchButton.imageForSegment(at: 0)?.accessibilityLabel == "Map") {
-                switchButton.setImage(UIImage(systemName: "heart"), forSegmentAt: 0)
-            }
         } else {
             isLeftSegmentMode = false
         }

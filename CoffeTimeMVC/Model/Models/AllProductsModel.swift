@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 struct AllProductsModel {
-    
+    var productsList: NSSet?
 }
 
 extension AllProductsModel: EntityModelMapProtocol {
@@ -18,7 +18,7 @@ extension AllProductsModel: EntityModelMapProtocol {
     
     func mapToEntityInContext(_ context: NSManagedObjectContext) -> EntityType {
         let allProducts: AllProducts = .init(context: context)
-        
+        allProducts.allproducts = productsList
         return allProducts
     }
     

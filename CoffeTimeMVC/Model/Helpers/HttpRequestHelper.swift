@@ -12,10 +12,16 @@ func sendPostRequest(url: String, jsonData: [String: Any]?, withSid: Bool, compl
         if withSid {
             let userDataService = UserDataService()
             userDataService.fetchSid { sessionId in
-                urlString += "?sessionId=\(String(describing: sessionId))"
+                if let sessionId = sessionId {
+                    let sessionIdWithoutQuotes = sessionId.replacingOccurrences(of: "\"", with: "")
+                    urlString += "?sessionId=\(sessionIdWithoutQuotes)"
+                    print("url", urlString)
+                } else {
+                    print("sessionId is nil")
+                }
             }
         }
-        
+    
         guard let url = URL(string: urlString) else {
             completion(nil, NSError(domain: "Invalid URL", code: -1, userInfo: nil))
             return

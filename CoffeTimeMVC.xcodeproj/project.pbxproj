@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F11764E2AB5DD9700E00180 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F11764D2AB5DD9700E00180 /* LoaderView.swift */; };
 		1F248E322AA501C7002ACA5E /* CafeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F248E312AA501C7002ACA5E /* CafeListViewController.swift */; };
 		1F248E342AA501DD002ACA5E /* CafeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F248E332AA501DD002ACA5E /* CafeListView.swift */; };
 		1F2E0A722A88C18300C990E1 /* Lobster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F2E0A6E2A88BAA400C990E1 /* Lobster-Regular.ttf */; };
@@ -96,6 +97,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F11764D2AB5DD9700E00180 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		1F248E312AA501C7002ACA5E /* CafeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeListViewController.swift; sourceTree = "<group>"; };
 		1F248E332AA501DD002ACA5E /* CafeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeListView.swift; sourceTree = "<group>"; };
 		1F2E0A6E2A88BAA400C990E1 /* Lobster-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lobster-Regular.ttf"; path = "/Users/andrrum/react/CoffeTimeMVC/CoffeTimeMVC/Fonts/Lobster-Regular.ttf"; sourceTree = "<absolute>"; };
@@ -196,6 +198,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F11764C2AB5DD8000E00180 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				1F11764D2AB5DD9700E00180 /* LoaderView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		1F2E0AB02A9240E800C990E1 /* AuthViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +305,7 @@
 		1F9923032A81ECB8000852CF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1F11764C2AB5DD8000E00180 /* Components */,
 				1F9923EE2A860EF0000852CF /* Screens */,
 				1F9924252A881041000852CF /* Labels */,
 				1F9923F22A860FCA000852CF /* Items */,
@@ -608,6 +619,7 @@
 				1F9923CC2A842D8F000852CF /* CafeProduct+CoreDataClass.swift in Sources */,
 				1F44C1FE2A94030200613176 /* ValidationStrategy.swift in Sources */,
 				1F9923D32A842F5A000852CF /* ProductModel.swift in Sources */,
+				1F11764E2AB5DD9700E00180 /* LoaderView.swift in Sources */,
 				1F9923E72A860CC4000852CF /* CafeService.swift in Sources */,
 				1F9923ED2A860E40000852CF /* CafeProductService.swift in Sources */,
 				1F9923C82A842D8F000852CF /* Cafe+CoreDataClass.swift in Sources */,
