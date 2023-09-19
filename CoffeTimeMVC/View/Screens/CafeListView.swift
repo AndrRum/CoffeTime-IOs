@@ -14,11 +14,12 @@ protocol CafeListDelegate: AnyObject {
 
 class CafeListView: UIView {
     
-    var loaderView = LoaderView()
-    
+    private(set) var loaderView = LoaderView()
     private(set) var pageLabel = PageLabel(title: "CoffeTime")
-    private var separatorView = UIView()
-    private let switchButton = UISegmentedControl(items: ["Map", "List"])
+    private(set) var tableView = UITableView(frame: .zero, style: .grouped)
+    private(set) var separatorView = UIView()
+    private(set) var switchButton = UISegmentedControl(items: ["Map", "List"])
+    private(set) var allCafe = [CafeModel]()
     
     private var isLeftSegmentMode = false
     weak var delegate: CafeListDelegate?
@@ -111,6 +112,32 @@ extension CafeListView {
     }
 }
 
+extension CafeListView: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return allCafe.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CafeListItem.reuseId, for: indexPath) as! CafeListItem
+        cell.setParametersForCafeItem(allCafe[indexPath.row])
+        cell.delegate = self
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+}
+
+extension CafeListView: CafeListItemDelegate {
+    
+}
+
 extension CafeListView {
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         let selectedIndex = sender.selectedSegmentIndex
@@ -120,5 +147,13 @@ extension CafeListView {
         } else {
             isLeftSegmentMode = false
         }
+    }
+    
+    func startLoader() {
+        loaderView.startLoader()
+    }
+    
+    func stopLoader() {
+        loaderView.stopLoader()
     }
 }

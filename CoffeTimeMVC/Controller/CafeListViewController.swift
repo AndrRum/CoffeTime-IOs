@@ -39,7 +39,7 @@ class CafeListViewController: UIViewController {
     }
     
     @objc func handleHttpErrorStatus500() {
-       cafeListView.loaderView.stopLoader()
+        cafeListView.stopLoader()
         let cafeMocks = NSMutableSet(array: allCafeMockDataArray)
         // add mock to table view
     }
@@ -48,7 +48,7 @@ class CafeListViewController: UIViewController {
 
 extension CafeListViewController: CafeListDelegate {
     func getAllCafeData() {
-        cafeListView.loaderView.startLoader()
+        cafeListView.startLoader()
         
         allCafeService.getAllCafe(url: ApiEndpoints.allCafe) { [weak self] cafeList in
             

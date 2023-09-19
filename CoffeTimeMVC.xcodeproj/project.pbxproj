@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F11764E2AB5DD9700E00180 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F11764D2AB5DD9700E00180 /* LoaderView.swift */; };
+		1F1176502AB950C200E00180 /* CafeListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F11764F2AB950C200E00180 /* CafeListItem.swift */; };
 		1F248E322AA501C7002ACA5E /* CafeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F248E312AA501C7002ACA5E /* CafeListViewController.swift */; };
 		1F248E342AA501DD002ACA5E /* CafeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F248E332AA501DD002ACA5E /* CafeListView.swift */; };
 		1F2E0A722A88C18300C990E1 /* Lobster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F2E0A6E2A88BAA400C990E1 /* Lobster-Regular.ttf */; };
@@ -98,6 +99,7 @@
 
 /* Begin PBXFileReference section */
 		1F11764D2AB5DD9700E00180 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		1F11764F2AB950C200E00180 /* CafeListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeListItem.swift; sourceTree = "<group>"; };
 		1F248E312AA501C7002ACA5E /* CafeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeListViewController.swift; sourceTree = "<group>"; };
 		1F248E332AA501DD002ACA5E /* CafeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeListView.swift; sourceTree = "<group>"; };
 		1F2E0A6E2A88BAA400C990E1 /* Lobster-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lobster-Regular.ttf"; path = "/Users/andrrum/react/CoffeTimeMVC/CoffeTimeMVC/Fonts/Lobster-Regular.ttf"; sourceTree = "<absolute>"; };
@@ -432,6 +434,7 @@
 		1F9923F22A860FCA000852CF /* Items */ = {
 			isa = PBXGroup;
 			children = (
+				1F11764F2AB950C200E00180 /* CafeListItem.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -609,6 +612,7 @@
 				1F9923CB2A842D8F000852CF /* AllProducts+CoreDataProperties.swift in Sources */,
 				1F9923DB2A843002000852CF /* AllProductsModel.swift in Sources */,
 				1F9923C42A842D8F000852CF /* AllCafe+CoreDataClass.swift in Sources */,
+				1F1176502AB950C200E00180 /* CafeListItem.swift in Sources */,
 				1F3411742A9A35B2007F228C /* ErrorViewController.swift in Sources */,
 				1FE592902AAFAADE00B255C1 /* AllCafeMockData.swift in Sources */,
 				1F9923C92A842D8F000852CF /* Cafe+CoreDataProperties.swift in Sources */,
