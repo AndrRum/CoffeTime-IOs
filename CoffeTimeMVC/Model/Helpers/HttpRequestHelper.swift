@@ -5,7 +5,7 @@ class HttpRequestHelper {
     
     private let baseUrl = "http://ci2.dextechnology.com:8000/api"
     
-func sendPostRequest(url: String, jsonData: [String: Any]?, withSid: Bool, completion: @escaping CompletionHandler) {
+    func sendPostRequest(url: String, jsonData: [String: Any]?, withSid: Bool, completion: @escaping CompletionHandler) {
         
         var urlString = baseUrl + url
         
@@ -32,6 +32,8 @@ func sendPostRequest(url: String, jsonData: [String: Any]?, withSid: Bool, compl
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             
+            request.timeoutInterval = 10.0
+            
             if let jsonData = jsonData {
                 let jsonData = try JSONSerialization.data(withJSONObject: jsonData, options: [])
                 request.httpBody = jsonData
@@ -41,7 +43,7 @@ func sendPostRequest(url: String, jsonData: [String: Any]?, withSid: Bool, compl
             
             let task = session.dataTask(with: request) { data, response, error in
                 
-                if let error = error {
+                if let error = error as NSError?, error.code == NSURLErrorTimedOut {
                     self.errorHandler(error: error, completion: completion)
                 }
                 

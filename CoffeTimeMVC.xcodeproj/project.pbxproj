@@ -30,6 +30,8 @@
 		1F52BE982A987E010003995F /* ApiEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52BE972A987E010003995F /* ApiEndpoints.swift */; };
 		1F5C4E4A2AA7A2B100440CAB /* PageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C4E492AA7A2B100440CAB /* PageLabel.swift */; };
 		1F5C4E4C2AA7A53400440CAB /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C4E4B2AA7A53400440CAB /* BackButton.swift */; };
+		1F7D97172ABD82CA0060CE70 /* UIImg + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D97162ABD82CA0060CE70 /* UIImg + Extension.swift */; };
+		1F7D971A2ABD87B80060CE70 /* Ricardo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1F7D97192ABD87B80060CE70 /* Ricardo.gif */; };
 		1F8649E72AA53D6100CEB609 /* AuthViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8649E62AA53D6100CEB609 /* AuthViewControllerExtension.swift */; };
 		1F9922D32A81EB71000852CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D22A81EB71000852CF /* AppDelegate.swift */; };
 		1F9922D52A81EB71000852CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D42A81EB71000852CF /* SceneDelegate.swift */; };
@@ -121,6 +123,8 @@
 		1F52BE972A987E010003995F /* ApiEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoints.swift; sourceTree = "<group>"; };
 		1F5C4E492AA7A2B100440CAB /* PageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageLabel.swift; sourceTree = "<group>"; };
 		1F5C4E4B2AA7A53400440CAB /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		1F7D97162ABD82CA0060CE70 /* UIImg + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImg + Extension.swift"; sourceTree = "<group>"; };
+		1F7D97192ABD87B80060CE70 /* Ricardo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Ricardo.gif; sourceTree = "<group>"; };
 		1F8649E62AA53D6100CEB609 /* AuthViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewControllerExtension.swift; sourceTree = "<group>"; };
 		1F9922CF2A81EB71000852CF /* CoffeTimeMVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeTimeMVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F9922D22A81EB71000852CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 			children = (
 				1F4D3C992A9D452300915D11 /* ViewControllerExtension.swift */,
 				1F8649E62AA53D6100CEB609 /* AuthViewControllerExtension.swift */,
+				1F7D97162ABD82CA0060CE70 /* UIImg + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -233,6 +238,14 @@
 				1F4D3CA12AA137B200915D11 /* rw.mp3 */,
 			);
 			path = Audio;
+			sourceTree = "<group>";
+		};
+		1F7D97182ABD87800060CE70 /* Gif */ = {
+			isa = PBXGroup;
+			children = (
+				1F7D97192ABD87B80060CE70 /* Ricardo.gif */,
+			);
+			path = Gif;
 			sourceTree = "<group>";
 		};
 		1F9922C62A81EB71000852CF = {
@@ -263,6 +276,7 @@
 				1F9923022A81ECA7000852CF /* Model */,
 				1F4D3CA02AA1376F00915D11 /* Audio */,
 				1F99243B2A88AFCA000852CF /* Fonts */,
+				1F7D97182ABD87800060CE70 /* Gif */,
 				1F9922D22A81EB71000852CF /* AppDelegate.swift */,
 				1F9922D42A81EB71000852CF /* SceneDelegate.swift */,
 				1F9922D62A81EB71000852CF /* ViewController.swift */,
@@ -578,6 +592,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F2E0A722A88C18300C990E1 /* Lobster-Regular.ttf in Resources */,
+				1F7D971A2ABD87B80060CE70 /* Ricardo.gif in Resources */,
 				1F4D3CA22AA137B200915D11 /* rw.mp3 in Resources */,
 				1F9922DF2A81EB72000852CF /* LaunchScreen.storyboard in Resources */,
 				1F9922DC2A81EB72000852CF /* Assets.xcassets in Resources */,
@@ -644,6 +659,7 @@
 				1F248E322AA501C7002ACA5E /* CafeListViewController.swift in Sources */,
 				1F99242B2A881402000852CF /* Fonts.swift in Sources */,
 				1F9924282A881091000852CF /* LogoLabel.swift in Sources */,
+				1F7D97172ABD82CA0060CE70 /* UIImg + Extension.swift in Sources */,
 				1F2E0AA12A8C306300C990E1 /* PasswordInput.swift in Sources */,
 				1F9923F62A863215000852CF /* HttpRequestHelper.swift in Sources */,
 				1F9923C72A842D8F000852CF /* UserData+CoreDataProperties.swift in Sources */,

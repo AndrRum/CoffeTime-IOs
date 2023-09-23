@@ -32,6 +32,14 @@ class CafeListView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func setCafeList(_ cafeList: [CafeModel]) {
+        allCafe = cafeList
+
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }
 
 extension CafeListView {
@@ -42,6 +50,7 @@ extension CafeListView {
         configurePageTitleLabel()
         configureSeparator()
         configureSwitchButton()
+        configureTableView()
     }
     
     func setupLoaderView() {
@@ -108,6 +117,24 @@ extension CafeListView {
             switchButton.heightAnchor.constraint(equalToConstant: 32),
             switchButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             switchButton.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 16)
+        ])
+    }
+    
+    func configureTableView() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .clear
+        tableView.separatorColor = .clear
+        tableView.bounces = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(CafeListItem.self, forCellReuseIdentifier: CafeListItem.reuseId)
+        addSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: switchButton.bottomAnchor, constant: 2),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

@@ -40,8 +40,9 @@ class CafeListViewController: UIViewController {
     
     @objc func handleHttpErrorStatus500() {
         cafeListView.stopLoader()
-        let cafeMocks = NSMutableSet(array: allCafeMockDataArray)
+        let cafeMocks = allCafeMockDataArray
         // add mock to table view
+        cafeListView.setCafeList(cafeMocks as [CafeModel])
     }
 }
 
