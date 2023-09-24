@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol CafeListItemDelegate: AnyObject {
-   
+    func detailsButtonDidTap(for: CafeModel) -> Void
 }
 
 class CafeListItem: UITableViewCell {
@@ -23,6 +23,7 @@ class CafeListItem: UITableViewCell {
     private var titleLabel = UILabel(frame: .zero)
     private var descriptionLabel = UILabel(frame: .zero)
     private var addressLabel = UILabel(frame: .zero)
+    private var detailsButton = UIButton(type: .custom)
     
     weak var delegate: CafeListItemDelegate?
     
@@ -35,6 +36,7 @@ class CafeListItem: UITableViewCell {
         setTitleLabel()
         setDescriptionLabel()
         setAddressLabel()
+        setDetailBtn()
     }
     
     required init?(coder: NSCoder) {
@@ -56,7 +58,7 @@ class CafeListItem: UITableViewCell {
         }
         
         titleLabel.text = cafeItem.name
-        descriptionLabel.text = "Мы находимся:"
+        descriptionLabel.text = "мы находимся:"
         addressLabel.text = cafeItem.address
     }
 }
@@ -67,7 +69,10 @@ private extension CafeListItem {
         contentView.backgroundColor = .white
         container.translatesAutoresizingMaskIntoConstraints = false
         container.backgroundColor = .white
-        container.layer.cornerRadius = 10
+        container.layer.shadowColor = UIColor.lightGray.cgColor
+        container.layer.shadowOffset = CGSize(width: 0, height: 2)
+        container.layer.shadowOpacity = 0.3
+        container.layer.shadowRadius = 4
         contentView.addSubview(container)
         
         NSLayoutConstraint.activate([
@@ -99,32 +104,62 @@ private extension CafeListItem {
         container.addSubview(titleLabel)
         
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 16),
-            titleLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 10)
+            titleLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 14),
+            titleLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 14)
         ])
     }
     
     func setDescriptionLabel() {
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLabel.textColor = .black
-        descriptionLabel.font = .systemFont(ofSize: 16)
+        descriptionLabel.textColor = .gray
+        descriptionLabel.font = .systemFont(ofSize: 14)
         container.addSubview(descriptionLabel)
         
         NSLayoutConstraint.activate([
-            descriptionLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 16),
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5)
+            descriptionLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 14),
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 14)
         ])
     }
     
     func setAddressLabel() {
         addressLabel.translatesAutoresizingMaskIntoConstraints = false
-        addressLabel.textColor = .black
+        addressLabel.textColor = .gray
         addressLabel.font = .systemFont(ofSize: 16)
         container.addSubview(addressLabel)
         
         NSLayoutConstraint.activate([
-            addressLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 16),
+            addressLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 14),
             addressLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 5)
         ])
+    }
+    
+    func setDetailBtn() {
+        detailsButton.translatesAutoresizingMaskIntoConstraints = false
+        detailsButton.setTitle("подробнее", for: .normal)
+        detailsButton.setTitleColor(.lightGray, for: .normal)
+        detailsButton.titleLabel?.font = .systemFont(ofSize: 14, weight: .regular)
+          
+        let arrowImage = UIImage(systemName: "chevron.right")
+        let arrowImageView = UIImageView(image: arrowImage)
+        arrowImageView.translatesAutoresizingMaskIntoConstraints = false
+        arrowImageView.tintColor = .lightGray
+            
+        detailsButton.addSubview(arrowImageView)
+        container.addSubview(detailsButton)
+            
+        NSLayoutConstraint.activate([
+            detailsButton.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -30),
+            detailsButton.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -10),
+                
+            arrowImageView.leadingAnchor.constraint(equalTo: detailsButton.trailingAnchor, constant: 5),
+            arrowImageView.centerYAnchor.constraint(equalTo: detailsButton.centerYAnchor),
+            arrowImageView.widthAnchor.constraint(equalToConstant: 12),
+            arrowImageView.heightAnchor.constraint(equalToConstant: 12)
+        ])
+        detailsButton.addTarget(self, action: #selector(detailsButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func detailsButtonTapped() {
+        delegate?.detailsButtonDidTap(for: cafeItem)
     }
 }

@@ -32,7 +32,7 @@ class HttpRequestHelper {
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             
-            request.timeoutInterval = 10.0
+            request.timeoutInterval = 5.0
             
             if let jsonData = jsonData {
                 let jsonData = try JSONSerialization.data(withJSONObject: jsonData, options: [])

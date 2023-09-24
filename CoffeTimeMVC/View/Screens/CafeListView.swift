@@ -129,7 +129,7 @@ extension CafeListView {
         tableView.dataSource = self
         tableView.register(CafeListItem.self, forCellReuseIdentifier: CafeListItem.reuseId)
         addSubview(tableView)
-        
+                
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -157,12 +157,14 @@ extension CafeListView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 126 + 8
     }
 }
 
 extension CafeListView: CafeListItemDelegate {
-    
+    func detailsButtonDidTap(for: CafeModel) {
+        
+    }
 }
 
 extension CafeListView {
