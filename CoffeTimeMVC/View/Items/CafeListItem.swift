@@ -78,8 +78,8 @@ private extension CafeListItem {
         NSLayoutConstraint.activate([
             container.leadingAnchor.constraint(equalTo: leadingAnchor),
             container.trailingAnchor.constraint(equalTo: trailingAnchor),
-            container.topAnchor.constraint(equalTo: topAnchor, constant: 2),
-            container.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -2)
+            container.topAnchor.constraint(equalTo: topAnchor),
+            container.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     

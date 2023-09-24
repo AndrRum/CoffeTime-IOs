@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import GoogleMaps.GMSMapView
 
 protocol CafeListDelegate: AnyObject {
    
@@ -19,6 +20,7 @@ class CafeListView: UIView {
     private(set) var tableView = UITableView(frame: .zero, style: .grouped)
     private(set) var separatorView = UIView()
     private(set) var switchButton = UISegmentedControl(items: ["Map", "List"])
+    private(set) var mapView: GMSMapView!
     private(set) var allCafe = [CafeModel]()
     
     private var isLeftSegmentMode = false
@@ -51,6 +53,7 @@ extension CafeListView {
         configureSeparator()
         configureSwitchButton()
         configureTableView()
+        setupMapView()
     }
     
     func setupLoaderView() {
@@ -102,6 +105,7 @@ extension CafeListView {
         switchButton.layer.borderWidth = 1.0
         switchButton.layer.borderColor = UIColor.gray.cgColor
         switchButton.selectedSegmentTintColor = Colors.buttonGreen
+        switchButton.layer.zPosition = 1
         
         switchButton.setImage(UIImage(systemName: "mappin.and.ellipse"), forSegmentAt: 0)
         switchButton.imageForSegment(at: 0)?.accessibilityLabel = "Map"
@@ -136,6 +140,44 @@ extension CafeListView {
             tableView.topAnchor.constraint(equalTo: switchButton.bottomAnchor, constant: 2),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+    
+    func setupMapView() {
+        mapView = GMSMapView(frame: .zero)
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        mapView.isHidden = true
+        mapView.isUserInteractionEnabled = false
+        mapView.settings.compassButton = false
+
+        addSubview(mapView)
+
+        NSLayoutConstraint.activate([
+            mapView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            mapView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            mapView.topAnchor.constraint(equalTo: separatorView.bottomAnchor),
+            mapView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+        ])
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMapTap))
+        mapView.addGestureRecognizer(tapGesture)
+
+    }
+    
+    @objc func handleMapTap(_ sender: UITapGestureRecognizer) {
+        let location = sender.location(in: mapView)
+        let coordinate = mapView.projection.coordinate(for: location)
+        
+        print("coord \(coordinate)")
+    }
+
+    
+    func startLoader() {
+        loaderView.startLoader()
+    }
+    
+    func stopLoader() {
+        loaderView.stopLoader()
     }
 }
 
@@ -173,16 +215,12 @@ extension CafeListView {
         
         if selectedIndex == 0 {
             isLeftSegmentMode = true
+            tableView.isHidden = true
+            mapView?.isHidden = false
         } else {
             isLeftSegmentMode = false
+            tableView.isHidden = false
+            mapView?.isHidden = true
         }
-    }
-    
-    func startLoader() {
-        loaderView.startLoader()
-    }
-    
-    func stopLoader() {
-        loaderView.stopLoader()
     }
 }
