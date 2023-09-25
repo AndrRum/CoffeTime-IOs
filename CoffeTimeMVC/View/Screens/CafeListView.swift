@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import GoogleMaps.GMSMapView
+import GoogleMaps
 
 protocol CafeListDelegate: AnyObject {
    
@@ -143,7 +143,9 @@ extension CafeListView {
     }
     
     func setupMapView() {
-        mapView = GMSMapView(frame: .zero)
+        let camera:GMSCameraPosition = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 11)
+        
+        mapView = GMSMapView(frame: .zero, camera: camera)
         mapView.translatesAutoresizingMaskIntoConstraints = false
         mapView.isHidden = true
         mapView.isUserInteractionEnabled = false
@@ -161,7 +163,6 @@ extension CafeListView {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMapTap))
         mapView.addGestureRecognizer(tapGesture)
-
     }
     
     @objc func handleMapTap(_ sender: UITapGestureRecognizer) {
@@ -199,7 +200,7 @@ extension CafeListView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 126 + 8
+        return 126 + 20
     }
 }
 

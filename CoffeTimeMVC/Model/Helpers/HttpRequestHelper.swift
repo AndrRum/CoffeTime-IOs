@@ -3,7 +3,7 @@ import Foundation
 class HttpRequestHelper {
     typealias CompletionHandler = (Any?, Error?) -> Void
     
-    private let baseUrl = "http://ci2.dextechnology.com:8000/api"
+    private let baseUrl = "http://cafe.prox2.dex-it.ru/api"
     
     func sendPostRequest(url: String, jsonData: [String: Any]?, withSid: Bool, completion: @escaping CompletionHandler) {
         
@@ -32,7 +32,7 @@ class HttpRequestHelper {
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             
-            request.timeoutInterval = 5.0
+            request.timeoutInterval = 20.0
             
             if let jsonData = jsonData {
                 let jsonData = try JSONSerialization.data(withJSONObject: jsonData, options: [])

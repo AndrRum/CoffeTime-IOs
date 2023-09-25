@@ -41,7 +41,6 @@ class CafeListViewController: UIViewController {
     @objc func handleHttpErrorStatus500() {
         cafeListView.stopLoader()
         let cafeMocks = allCafeMockDataArray
-        // add mock to table view
         cafeListView.setCafeList(cafeMocks as [CafeModel])
     }
 }
@@ -55,8 +54,10 @@ extension CafeListViewController: CafeListDelegate {
             
             self?.cafeListView.loaderView.stopLoader()
             
-            if let cafeList = cafeList {
-               //configure table view with cells
+            if let cafeSet = cafeList {
+                let cafeArray = cafeSet.allObjects.compactMap { $0 as? CafeModel }
+                                
+                self?.cafeListView.setCafeList(cafeArray)
             } else {
                 print("Failed to fetch cafe data")
             }
