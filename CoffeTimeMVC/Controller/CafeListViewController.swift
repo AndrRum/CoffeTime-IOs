@@ -34,10 +34,6 @@ class CafeListViewController: UIViewController {
         self.view = cafeListView
     }
     
-    private func goBack() {
-        navigationController?.popViewController(animated: true)
-    }
-    
     @objc func handleHttpErrorStatus500() {
         cafeListView.stopLoader()
         let cafeMocks = allCafeMockDataArray
@@ -45,8 +41,7 @@ class CafeListViewController: UIViewController {
     }
 }
 
-
-extension CafeListViewController: CafeListDelegate {
+private extension CafeListViewController {
     func getAllCafeData() {
         cafeListView.startLoader()
         
@@ -62,5 +57,17 @@ extension CafeListViewController: CafeListDelegate {
                 print("Failed to fetch cafe data")
             }
         }
+    }
+}
+
+
+extension CafeListViewController: CafeListDelegate {
+    func handleMapTap(_ sender: UITapGestureRecognizer) {
+        let location = sender.location(in: cafeListView.mapView)
+        let coordinate = cafeListView.mapView.projection.coordinate(for: location)
+        
+        cafeListView.lastCameraCoordinates?.latitude = coordinate.latitude
+        cafeListView.lastCameraCoordinates?.longitude = coordinate.longitude
+        print("coord \(coordinate)")
     }
 }

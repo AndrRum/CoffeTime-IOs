@@ -10,7 +10,7 @@ import UIKit
 import GoogleMaps
 
 protocol CafeListDelegate: AnyObject {
-   
+    func handleMapTap(_ sender: UITapGestureRecognizer) -> Void
 }
 
 class CafeListView: UIView {
@@ -24,6 +24,11 @@ class CafeListView: UIView {
     private(set) var allCafe = [CafeModel]()
     
     private var isLeftSegmentMode = false
+    
+    private let defaultLatitude: Double = -33.86
+    private let defaultLongitude: Double = 151.20
+    public var lastCameraCoordinates: CLLocationCoordinate2D?
+    
     weak var delegate: CafeListDelegate?
     
     override init(frame: CGRect) {
@@ -51,9 +56,9 @@ extension CafeListView {
         setupLoaderView()
         configurePageTitleLabel()
         configureSeparator()
+        setupMapView()
         configureSwitchButton()
         configureTableView()
-        setupMapView()
     }
     
     func setupLoaderView() {
@@ -124,6 +129,25 @@ extension CafeListView {
         ])
     }
     
+    func setupMapView() {
+        
+        mapView = GMSMapView(frame: .zero)
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        mapView.settings.compassButton = false
+
+        addSubview(mapView)
+
+        NSLayoutConstraint.activate([
+            mapView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            mapView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            mapView.topAnchor.constraint(equalTo: separatorView.bottomAnchor),
+            mapView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+        ])
+       
+        hideMapView()
+    }
+
     func configureTableView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .clear
@@ -141,37 +165,6 @@ extension CafeListView {
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
-    
-    func setupMapView() {
-        let camera:GMSCameraPosition = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 11)
-        
-        mapView = GMSMapView(frame: .zero, camera: camera)
-        mapView.translatesAutoresizingMaskIntoConstraints = false
-        mapView.isHidden = true
-        mapView.isUserInteractionEnabled = false
-        mapView.settings.compassButton = false
-
-        addSubview(mapView)
-
-        NSLayoutConstraint.activate([
-            mapView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            mapView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            mapView.topAnchor.constraint(equalTo: separatorView.bottomAnchor),
-            mapView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
-        ])
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMapTap))
-        mapView.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc func handleMapTap(_ sender: UITapGestureRecognizer) {
-        let location = sender.location(in: mapView)
-        let coordinate = mapView.projection.coordinate(for: location)
-        
-        print("coord \(coordinate)")
-    }
-
     
     func startLoader() {
         loaderView.startLoader()
@@ -217,11 +210,69 @@ extension CafeListView {
         if selectedIndex == 0 {
             isLeftSegmentMode = true
             tableView.isHidden = true
-            mapView?.isHidden = false
+            showMapView()
         } else {
             isLeftSegmentMode = false
             tableView.isHidden = false
-            mapView?.isHidden = true
+            hideMapView()
         }
+    }
+    
+    private func showMapView() {
+        mapView.isHidden = false
+        mapView.isUserInteractionEnabled = true
+        
+        if mapView.gestureRecognizers?.isEmpty ?? true {
+            setupTapRecognizer()
+        }
+        
+        setupCamera(cafeList: allCafe)
+    }
+    
+    private func hideMapView() {
+        mapView.isHidden = true
+        mapView.isUserInteractionEnabled = false
+        
+        if let gestures = mapView.gestureRecognizers {
+            for gesture in gestures {
+                mapView.removeGestureRecognizer(gesture)
+            }
+        }
+    }
+    
+    func setupCamera(cafeList: [CafeModel]) {
+        var camera: GMSCameraPosition
+        
+        if let firstCafe = cafeList.first,
+           let coordinates = firstCafe.coordinates,
+           let coordinatesComponents = coordinates.split(separator: ",").map(String.init) as? [String],
+           coordinatesComponents.count == 2,
+           let latitude = Double(coordinatesComponents[0].trimmingCharacters(in: .whitespaces)),
+           let longitude = Double(coordinatesComponents[1].trimmingCharacters(in: .whitespaces)) {
+            
+            let newCoordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            
+            if newCoordinates.latitude == lastCameraCoordinates?.latitude && newCoordinates.longitude == lastCameraCoordinates?.longitude {
+                camera = mapView.camera
+            } else {
+                camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 11)
+                lastCameraCoordinates = newCoordinates
+            }
+        } else {
+            camera = GMSCameraPosition.camera(withLatitude: defaultLatitude, longitude: defaultLongitude, zoom: 11)
+        
+            lastCameraCoordinates = CLLocationCoordinate2D(latitude: defaultLatitude, longitude: defaultLongitude)
+        }
+        
+        mapView.camera = camera
+    }
+    
+    private func setupTapRecognizer() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMapTap(_:)))
+        mapView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func handleMapTap(_ sender: UITapGestureRecognizer) {
+        delegate?.handleMapTap(sender)
     }
 }
