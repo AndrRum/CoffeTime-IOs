@@ -11,9 +11,10 @@ import GoogleMaps
 
 protocol CafeListDelegate: AnyObject {
     func handleMapTap(_ sender: UITapGestureRecognizer) -> Void
+    func showCustomModal(for cafe: CafeModel) -> Void
 }
 
-class CafeListView: UIView {
+class CafeListView: UIView, GMSMapViewDelegate {
     
     private(set) var loaderView = LoaderView()
     private(set) var pageLabel = PageLabel(title: "CoffeTime")
@@ -50,6 +51,7 @@ class CafeListView: UIView {
 }
 
 extension CafeListView {
+    
     func configureUI() {
         self.backgroundColor = .white
         
@@ -59,6 +61,8 @@ extension CafeListView {
         setupMapView()
         configureSwitchButton()
         configureTableView()
+        
+        mapView.delegate = self
     }
     
     func setupLoaderView() {
@@ -130,7 +134,6 @@ extension CafeListView {
     }
     
     func setupMapView() {
-        
         mapView = GMSMapView(frame: .zero)
         mapView.translatesAutoresizingMaskIntoConstraints = false
         mapView.settings.compassButton = false
@@ -198,12 +201,14 @@ extension CafeListView: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension CafeListView: CafeListItemDelegate {
+    
     func detailsButtonDidTap(for: CafeModel) {
         
     }
 }
 
 extension CafeListView {
+    
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         let selectedIndex = sender.selectedSegmentIndex
         
@@ -226,6 +231,7 @@ extension CafeListView {
             setupTapRecognizer()
         }
         
+        setupMarkers()
         setupCamera(cafeList: allCafe)
     }
     
@@ -240,32 +246,56 @@ extension CafeListView {
         }
     }
     
+    func coordinates(from cafe: CafeModel) -> CLLocationCoordinate2D? {
+        guard let coordinates = cafe.coordinates,
+              let coordinatesComponents = coordinates.split(separator: ",").map(String.init) as? [String],
+              coordinatesComponents.count == 2,
+              let latitude = Double(coordinatesComponents[0].trimmingCharacters(in: .whitespaces)),
+              let longitude = Double(coordinatesComponents[1].trimmingCharacters(in: .whitespaces)) else {
+            return nil
+        }
+        
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+
     func setupCamera(cafeList: [CafeModel]) {
         var camera: GMSCameraPosition
         
         if let firstCafe = cafeList.first,
-           let coordinates = firstCafe.coordinates,
-           let coordinatesComponents = coordinates.split(separator: ",").map(String.init) as? [String],
-           coordinatesComponents.count == 2,
-           let latitude = Double(coordinatesComponents[0].trimmingCharacters(in: .whitespaces)),
-           let longitude = Double(coordinatesComponents[1].trimmingCharacters(in: .whitespaces)) {
+           let coordinates = coordinates(from: firstCafe) {
             
-            let newCoordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            
-            if newCoordinates.latitude == lastCameraCoordinates?.latitude && newCoordinates.longitude == lastCameraCoordinates?.longitude {
+            if coordinates == lastCameraCoordinates {
                 camera = mapView.camera
             } else {
-                camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 11)
-                lastCameraCoordinates = newCoordinates
+                camera = GMSCameraPosition.camera(withTarget: coordinates, zoom: 11)
+                lastCameraCoordinates = coordinates
             }
         } else {
             camera = GMSCameraPosition.camera(withLatitude: defaultLatitude, longitude: defaultLongitude, zoom: 11)
-        
             lastCameraCoordinates = CLLocationCoordinate2D(latitude: defaultLatitude, longitude: defaultLongitude)
         }
         
         mapView.camera = camera
     }
+
+    private func setupMarkers() {
+        mapView.clear()
+        
+        let customMarkerImage = UIImage(named: "Marker")
+        
+        for cafe in allCafe {
+            if let coordinates = coordinates(from: cafe) {
+                let marker = GMSMarker(position: coordinates)
+                marker.title = cafe.name
+                marker.icon = customMarkerImage
+                marker.map = mapView
+                
+                marker.userData = cafe
+                marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.2)
+            }
+        }
+    }
+
     
     private func setupTapRecognizer() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMapTap(_:)))
@@ -276,3 +306,16 @@ extension CafeListView {
         delegate?.handleMapTap(sender)
     }
 }
+
+extension CafeListView {
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        guard let cafe = marker.userData as? CafeModel else {
+            return false
+        }
+        
+        delegate?.showCustomModal(for: cafe)
+        
+        return true
+    }
+}
+

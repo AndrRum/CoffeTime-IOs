@@ -75,7 +75,7 @@ private extension HttpRequestHelper {
         let statusCode = httpResponse.statusCode
         print("Status Code:", statusCode)
         
-        if statusCode == 500 {
+        if statusCode == 100 || statusCode == 500 {
             NotificationManager.shared.postNotification(name: "HttpErrorStatus500")
             return
         }

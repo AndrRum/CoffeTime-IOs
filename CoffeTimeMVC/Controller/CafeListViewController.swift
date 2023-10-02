@@ -12,6 +12,7 @@ class CafeListViewController: UIViewController {
     
     private var cafeListView = CafeListView()
     private var allCafeService = AllCafeService()
+    private var customModalViewController = CustomModalViewController()
     
     override func loadView() {
         super.loadView()
@@ -42,6 +43,7 @@ class CafeListViewController: UIViewController {
 }
 
 private extension CafeListViewController {
+    
     func getAllCafeData() {
         cafeListView.startLoader()
         
@@ -62,6 +64,7 @@ private extension CafeListViewController {
 
 
 extension CafeListViewController: CafeListDelegate {
+    
     func handleMapTap(_ sender: UITapGestureRecognizer) {
         let location = sender.location(in: cafeListView.mapView)
         let coordinate = cafeListView.mapView.projection.coordinate(for: location)
@@ -69,5 +72,10 @@ extension CafeListViewController: CafeListDelegate {
         cafeListView.lastCameraCoordinates?.latitude = coordinate.latitude
         cafeListView.lastCameraCoordinates?.longitude = coordinate.longitude
         print("coord \(coordinate)")
+    }
+    
+    func showCustomModal(for cafe: CafeModel) {
+        customModalViewController.configure(with: cafe)
+        self.present(customModalViewController, animated: true, completion: nil)
     }
 }
