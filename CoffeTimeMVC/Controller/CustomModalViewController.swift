@@ -19,7 +19,12 @@ class CustomModalViewController: UIViewController {
     func configure(with cafe: CafeModel) {
         modalView.titleLabel.text = cafe.name
         modalView.descriptionLabel.text = cafe.descr
-        modalView.cafeImageView.image = UIImage(named: cafe.images ?? "ErrorImg")
+        if let imageName = cafe.images, !imageName.isEmpty {
+            modalView.cafeImageView.image = UIImage(named: imageName)
+        } else {
+            modalView.cafeImageView.image = UIImage(named: "ErrorImg")
+        }
+
     }
     
     func setupModalView() {
