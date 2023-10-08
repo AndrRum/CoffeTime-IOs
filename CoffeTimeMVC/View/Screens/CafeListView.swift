@@ -12,22 +12,21 @@ import GoogleMaps
 protocol CafeListDelegate: AnyObject {
     func handleMapTap(_ sender: UITapGestureRecognizer) -> Void
     func showCustomModal(for cafe: CafeModel) -> Void
+    func detailsButtonDidTap() -> Void
 }
 
 class CafeListView: UIView, GMSMapViewDelegate {
     
     private(set) var loaderView = LoaderView()
-    private(set) var pageLabel = PageLabel(title: "CoffeTime")
-    private(set) var tableView = UITableView(frame: .zero, style: .grouped)
-    private(set) var separatorView = UIView()
+    private(set) var pageHeader = PageHeaderView()
     private(set) var switchButton = UISegmentedControl(items: ["Map", "List"])
+    private(set) var tableView = UITableView(frame: .zero, style: .grouped)
     private(set) var mapView: GMSMapView!
     private(set) var allCafe = [CafeModel]()
     
-    private var isLeftSegmentMode = false
-    
     private let defaultLatitude: Double = -33.86
     private let defaultLongitude: Double = 151.20
+    
     public var lastCameraCoordinates: CLLocationCoordinate2D?
     
     weak var delegate: CafeListDelegate?
@@ -55,9 +54,8 @@ extension CafeListView {
     func configureUI() {
         self.backgroundColor = .white
         
+        setupHeaderView()
         setupLoaderView()
-        configurePageTitleLabel()
-        configureSeparator()
         setupMapView()
         configureSwitchButton()
         configureTableView()
@@ -75,36 +73,18 @@ extension CafeListView {
         ])
     }
     
-    func configurePageTitleLabel() {
-        addSubview(pageLabel)
-        pageLabel.translatesAutoresizingMaskIntoConstraints = false
+    func setupHeaderView() {
+        addSubview(pageHeader)
+        pageHeader.translatesAutoresizingMaskIntoConstraints = false
         
-        var topConstraint: NSLayoutConstraint
-
-        if UIScreen.main.bounds.height >= 812 {
-            topConstraint = pageLabel.topAnchor.constraint(equalTo: topAnchor, constant: 60)
-        } else {
-            topConstraint = pageLabel.topAnchor.constraint(equalTo: topAnchor, constant: 20)
-        }
-
         NSLayoutConstraint.activate([
-            pageLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            topConstraint,
-            pageLabel.heightAnchor.constraint(equalToConstant: 40)
+            pageHeader.topAnchor.constraint(equalTo: topAnchor),
+            pageHeader.leadingAnchor.constraint(equalTo: leadingAnchor),
+            pageHeader.trailingAnchor.constraint(equalTo: trailingAnchor),
+            pageHeader.bottomAnchor.constraint(equalTo: pageHeader.bottomAnchor)
         ])
-    }
-    
-    func configureSeparator() {
-        separatorView.backgroundColor = Colors.separator
-        addSubview(separatorView)
-        separatorView.translatesAutoresizingMaskIntoConstraints = false
-           
-        NSLayoutConstraint.activate([
-            separatorView.topAnchor.constraint(equalTo: pageLabel.bottomAnchor, constant: 8),
-            separatorView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
-            separatorView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
-            separatorView.heightAnchor.constraint(equalToConstant: 1)
-        ])
+        
+        pageHeader.configureUI(showBackButton: false)
     }
     
     func configureSwitchButton() {
@@ -129,7 +109,7 @@ extension CafeListView {
             switchButton.widthAnchor.constraint(equalToConstant: 130),
             switchButton.heightAnchor.constraint(equalToConstant: 32),
             switchButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            switchButton.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 16)
+            switchButton.topAnchor.constraint(equalTo: pageHeader.bottomAnchor, constant: 16)
         ])
     }
     
@@ -143,7 +123,7 @@ extension CafeListView {
         NSLayoutConstraint.activate([
             mapView.leadingAnchor.constraint(equalTo: leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            mapView.topAnchor.constraint(equalTo: separatorView.bottomAnchor),
+            mapView.topAnchor.constraint(equalTo: pageHeader.bottomAnchor),
             mapView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
         ])
@@ -203,7 +183,7 @@ extension CafeListView: UITableViewDelegate, UITableViewDataSource {
 extension CafeListView: CafeListItemDelegate {
     
     func detailsButtonDidTap(for: CafeModel) {
-        
+        delegate?.detailsButtonDidTap()
     }
 }
 
@@ -213,11 +193,9 @@ extension CafeListView {
         let selectedIndex = sender.selectedSegmentIndex
         
         if selectedIndex == 0 {
-            isLeftSegmentMode = true
             tableView.isHidden = true
             showMapView()
         } else {
-            isLeftSegmentMode = false
             tableView.isHidden = false
             hideMapView()
         }
@@ -235,7 +213,7 @@ extension CafeListView {
         setupCamera(cafeList: allCafe)
     }
     
-    private func hideMapView() {
+    func hideMapView() {
         mapView.isHidden = true
         mapView.isUserInteractionEnabled = false
         

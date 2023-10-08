@@ -50,6 +50,7 @@ class LoginViewController: UIViewController {
     @objc func handleHttpErrorStatus500() {
         showHttpErrorView(from: self, errorViewController: errorViewController)
         self.loginView.loginButton.stopLoader()
+        self.loginService.saveResponse(sessionId: "Api normalno")
     }
     
     private func setupLoginView() {
@@ -78,7 +79,8 @@ extension LoginViewController: LoginViewDelegate {
                
         if isEmailValid && isPassValid {
             loginView.loginButton.startLoader()
-            loginService.authUser(url: ApiEndpoints.login, email: email, password: pass) { sessionId in
+            loginService.authUser(url: ApiEndpoints.login, email: email, password: pass) { 
+                sessionId in
                 if let sessionId = sessionId {
                     print("Session ID:", sessionId)
                     self.loginService.saveResponse(sessionId: sessionId)

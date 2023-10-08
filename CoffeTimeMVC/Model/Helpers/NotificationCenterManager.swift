@@ -27,8 +27,8 @@ class NotificationManager {
         NotificationCenter.default.post(name: NSNotification.Name(name), object: nil)
     }
     
-    func removeObserver(observer: Any) {
-        NotificationCenter.default.removeObserver(observer)
+    func removeObserver(name: String) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(name), object: nil)
     }
     
     func removeAllObservers() {

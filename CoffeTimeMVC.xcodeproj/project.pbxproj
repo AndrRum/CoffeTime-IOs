@@ -36,6 +36,11 @@
 		1F7D97172ABD82CA0060CE70 /* UIImg + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D97162ABD82CA0060CE70 /* UIImg + Extension.swift */; };
 		1F7D971A2ABD87B80060CE70 /* Ricardo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1F7D97192ABD87B80060CE70 /* Ricardo.gif */; };
 		1F8649E72AA53D6100CEB609 /* AuthViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8649E62AA53D6100CEB609 /* AuthViewControllerExtension.swift */; };
+		1F9916622AD33356003306DA /* CafeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9916612AD33356003306DA /* CafeViewController.swift */; };
+		1F9916642AD33369003306DA /* CafeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9916632AD33369003306DA /* CafeView.swift */; };
+		1F9916662AD333E9003306DA /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9916652AD333E9003306DA /* FavoritesViewController.swift */; };
+		1F9916682AD333F9003306DA /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9916672AD333F9003306DA /* FavoritesView.swift */; };
+		1F99166A2AD33E93003306DA /* PageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9916692AD33E93003306DA /* PageHeaderView.swift */; };
 		1F9922D32A81EB71000852CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D22A81EB71000852CF /* AppDelegate.swift */; };
 		1F9922D52A81EB71000852CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D42A81EB71000852CF /* SceneDelegate.swift */; };
 		1F9922D72A81EB71000852CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9922D62A81EB71000852CF /* ViewController.swift */; };
@@ -136,6 +141,11 @@
 		1F7D97162ABD82CA0060CE70 /* UIImg + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImg + Extension.swift"; sourceTree = "<group>"; };
 		1F7D97192ABD87B80060CE70 /* Ricardo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Ricardo.gif; sourceTree = "<group>"; };
 		1F8649E62AA53D6100CEB609 /* AuthViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewControllerExtension.swift; sourceTree = "<group>"; };
+		1F9916612AD33356003306DA /* CafeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeViewController.swift; sourceTree = "<group>"; };
+		1F9916632AD33369003306DA /* CafeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeView.swift; sourceTree = "<group>"; };
+		1F9916652AD333E9003306DA /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		1F9916672AD333F9003306DA /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		1F9916692AD33E93003306DA /* PageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageHeaderView.swift; sourceTree = "<group>"; };
 		1F9922CF2A81EB71000852CF /* CoffeTimeMVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeTimeMVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F9922D22A81EB71000852CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F9922D42A81EB71000852CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -230,6 +240,7 @@
 			children = (
 				1F11764D2AB5DD9700E00180 /* LoaderView.swift */,
 				1F2491392ACB3CEF00A11802 /* ModalView.swift */,
+				1F9916692AD33E93003306DA /* PageHeaderView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -362,8 +373,10 @@
 			children = (
 				1F9923052A81ECE7000852CF /* LoginViewController.swift */,
 				1F2E0AAC2A92284000C990E1 /* RegistartionViewController.swift */,
-				1F3411732A9A35B2007F228C /* ErrorViewController.swift */,
 				1F248E312AA501C7002ACA5E /* CafeListViewController.swift */,
+				1F9916612AD33356003306DA /* CafeViewController.swift */,
+				1F9916652AD333E9003306DA /* FavoritesViewController.swift */,
+				1F3411732A9A35B2007F228C /* ErrorViewController.swift */,
 				1F2491372ACB3BAE00A11802 /* CustomModalViewController.swift */,
 			);
 			path = Controller;
@@ -439,6 +452,8 @@
 				1F2E0AB02A9240E800C990E1 /* AuthViews */,
 				1F3411712A9A358D007F228C /* ErrorView.swift */,
 				1F248E332AA501DD002ACA5E /* CafeListView.swift */,
+				1F9916632AD33369003306DA /* CafeView.swift */,
+				1F9916672AD333F9003306DA /* FavoritesView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -764,6 +779,7 @@
 				1F9923C32A842D8F000852CF /* Product+CoreDataProperties.swift in Sources */,
 				1F2E0A9E2A8904F600C990E1 /* EmailInput.swift in Sources */,
 				1F9923CB2A842D8F000852CF /* AllProducts+CoreDataProperties.swift in Sources */,
+				1F9916662AD333E9003306DA /* FavoritesViewController.swift in Sources */,
 				1F9923DB2A843002000852CF /* AllProductsModel.swift in Sources */,
 				1F9923C42A842D8F000852CF /* AllCafe+CoreDataClass.swift in Sources */,
 				1F1176502AB950C200E00180 /* CafeListItem.swift in Sources */,
@@ -774,6 +790,7 @@
 				1F3411722A9A358D007F228C /* ErrorView.swift in Sources */,
 				1F5C4E4A2AA7A2B100440CAB /* PageLabel.swift in Sources */,
 				1F9923E12A860ADF000852CF /* ProductService.swift in Sources */,
+				1F99166A2AD33E93003306DA /* PageHeaderView.swift in Sources */,
 				1F9923CC2A842D8F000852CF /* CafeProduct+CoreDataClass.swift in Sources */,
 				1F44C1FE2A94030200613176 /* ValidationStrategy.swift in Sources */,
 				1F9923D32A842F5A000852CF /* ProductModel.swift in Sources */,
@@ -799,8 +816,10 @@
 				1F248E322AA501C7002ACA5E /* CafeListViewController.swift in Sources */,
 				1F99242B2A881402000852CF /* Fonts.swift in Sources */,
 				1F9924282A881091000852CF /* LogoLabel.swift in Sources */,
+				1F9916622AD33356003306DA /* CafeViewController.swift in Sources */,
 				1F7D97172ABD82CA0060CE70 /* UIImg + Extension.swift in Sources */,
 				1F2E0AA12A8C306300C990E1 /* PasswordInput.swift in Sources */,
+				1F9916682AD333F9003306DA /* FavoritesView.swift in Sources */,
 				1F9923F62A863215000852CF /* HttpRequestHelper.swift in Sources */,
 				1F9923C72A842D8F000852CF /* UserData+CoreDataProperties.swift in Sources */,
 				1F9923E92A860CFF000852CF /* AllProductsService.swift in Sources */,
@@ -809,6 +828,7 @@
 				1F2491362ACB37CC00A11802 /* CoordinateLocation+Extension.swift in Sources */,
 				1F2E0AA72A8D6A4600C990E1 /* RegistrationButton.swift in Sources */,
 				1F9922D32A81EB71000852CF /* AppDelegate.swift in Sources */,
+				1F9916642AD33369003306DA /* CafeView.swift in Sources */,
 				1F9923C12A842D8F000852CF /* ProductAttribute+CoreDataProperties.swift in Sources */,
 				1F9923DD2A8430A8000852CF /* CafeProductModel.swift in Sources */,
 				1F9923DF2A8430DF000852CF /* AllCafeProductsModel.swift in Sources */,

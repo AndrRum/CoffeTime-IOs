@@ -1,0 +1,945 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 432269212CA7661476954A7A4DAA814D /* Build configuration list for PBXAggregateTarget "GoogleMaps" */;
+			buildPhases = (
+				942DFFF130A9500FD868DB7E68CB3859 /* [CP] Copy XCFrameworks */,
+			);
+			dependencies = (
+			);
+			name = GoogleMaps;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		09D1AEFF239B55EB70BBF6E742E83ED7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		0B4683CA1F48FB125ACFFA6C530F2E60 /* Pods-CoffeTimeMVCUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AE1D6A8897F6D8AC7F3F2C7C573B56 /* Pods-CoffeTimeMVCUITests-dummy.m */; };
+		10EECB3624EA9E24FD9369F066D6C164 /* Pods-CoffeTimeMVCTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BEC0DE91D66023528BFA13389EE4C2 /* Pods-CoffeTimeMVCTests-dummy.m */; };
+		23DB5BE2B06C462BD3EC8B0411F951D4 /* Pods-CoffeTimeMVCTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BBCA35A9B2FDEC547F7D6471CAD42E13 /* Pods-CoffeTimeMVCTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2FC0411A764BC7F84D613B067D5DA7FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		44E25CE5E411013F1B9775456FDE7427 /* Pods-CoffeTimeMVC-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 042065D66C95A737209015166710CCD4 /* Pods-CoffeTimeMVC-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		56462A35097032C2FE29C7F9E40251B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		67D392BA79A474C1F15C8E3A2369D77C /* Pods-CoffeTimeMVC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF7FFDE647C34056F228B491537D7A3 /* Pods-CoffeTimeMVC-dummy.m */; };
+		915F323B39D6F21825B93821F3FC343A /* Pods-CoffeTimeMVCUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A9B1249410AB62C73FA2C562F0217981 /* Pods-CoffeTimeMVCUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		495F6C53C097DEA3584CAB52E0EA8687 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4395EF88489136695B355738011F7DE8;
+			remoteInfo = "Pods-CoffeTimeMVC";
+		};
+		5EF4E3402E44B906870CB5D409852A9E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4395EF88489136695B355738011F7DE8;
+			remoteInfo = "Pods-CoffeTimeMVC";
+		};
+		77AFF8F4549C11E9B45719F827DBD520 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E5B4BBC6DD552AC8943C7E22772FC1D3;
+			remoteInfo = GoogleMaps;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		042065D66C95A737209015166710CCD4 /* Pods-CoffeTimeMVC-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CoffeTimeMVC-umbrella.h"; sourceTree = "<group>"; };
+		0708B982AB7B42FCC5243CD0FAAE71D2 /* Pods-CoffeTimeMVCTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-CoffeTimeMVCTests"; path = Pods_CoffeTimeMVCTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0800ECD8B3757009F5A3E8B7E87E3737 /* Pods-CoffeTimeMVC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CoffeTimeMVC.debug.xcconfig"; sourceTree = "<group>"; };
+		0C6345B404DD580050B75A3B55852570 /* Pods-CoffeTimeMVCTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CoffeTimeMVCTests.release.xcconfig"; sourceTree = "<group>"; };
+		13C6D421B45C139E0EE8F06AD97FF13D /* Pods-CoffeTimeMVC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CoffeTimeMVC.release.xcconfig"; sourceTree = "<group>"; };
+		224AA45111C6D375A93B5471FEAD5C43 /* Pods-CoffeTimeMVCTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CoffeTimeMVCTests.modulemap"; sourceTree = "<group>"; };
+		2EA6DF138CA064810A516CD797036231 /* Pods-CoffeTimeMVCTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CoffeTimeMVCTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		301433380FECA3FE79152D5A623ABAB3 /* GoogleMaps-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "GoogleMaps-xcframeworks.sh"; sourceTree = "<group>"; };
+		39E3EEC2576BF02392BE44C9A2B9C532 /* Pods-CoffeTimeMVC-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CoffeTimeMVC-acknowledgements.markdown"; sourceTree = "<group>"; };
+		427D7A08768DCDB4D1E97A778BB998C2 /* Pods-CoffeTimeMVC */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-CoffeTimeMVC"; path = Pods_CoffeTimeMVC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		43EA7D17120008BE07A85C687DB6DD6F /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = "Maps/Frameworks/GoogleMaps.xcframework/ios-arm64/GoogleMaps.framework/Resources/GoogleMaps.bundle"; sourceTree = "<group>"; };
+		4BDEBEE84E495D86545F3E6199BE22F2 /* Pods-CoffeTimeMVCTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CoffeTimeMVCTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		50AE1D6A8897F6D8AC7F3F2C7C573B56 /* Pods-CoffeTimeMVCUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CoffeTimeMVCUITests-dummy.m"; sourceTree = "<group>"; };
+		59E6FE59D5F3D68B625433CA9235E808 /* GoogleMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleMaps.debug.xcconfig; sourceTree = "<group>"; };
+		62EFC449512C3285A5808BF9C2DE7294 /* Pods-CoffeTimeMVC-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CoffeTimeMVC-acknowledgements.plist"; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		7C32130250579230EA8F96661D558AC7 /* Pods-CoffeTimeMVCUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CoffeTimeMVCUITests.modulemap"; sourceTree = "<group>"; };
+		8221E188913BA88B17A4F13643EAC6EA /* Pods-CoffeTimeMVCUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CoffeTimeMVCUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		94BEC0DE91D66023528BFA13389EE4C2 /* Pods-CoffeTimeMVCTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CoffeTimeMVCTests-dummy.m"; sourceTree = "<group>"; };
+		958E320BB239AC27631FFAC3D0A2E762 /* Pods-CoffeTimeMVCUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CoffeTimeMVCUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		959DBB00950A4A60F75424A6786785C4 /* Pods-CoffeTimeMVC-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CoffeTimeMVC-resources.sh"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A0D87C3A90DA56CB58371F44F0D5A9A7 /* GoogleMaps.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = GoogleMaps.xcframework; path = Maps/Frameworks/GoogleMaps.xcframework; sourceTree = "<group>"; };
+		A9B1249410AB62C73FA2C562F0217981 /* Pods-CoffeTimeMVCUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CoffeTimeMVCUITests-umbrella.h"; sourceTree = "<group>"; };
+		AED589A91097B1D0D030315D1BCF12B3 /* Pods-CoffeTimeMVCUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CoffeTimeMVCUITests-Info.plist"; sourceTree = "<group>"; };
+		B57328B2099E732E6476A2ACAA7919A0 /* Pods-CoffeTimeMVCUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CoffeTimeMVCUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BBCA35A9B2FDEC547F7D6471CAD42E13 /* Pods-CoffeTimeMVCTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CoffeTimeMVCTests-umbrella.h"; sourceTree = "<group>"; };
+		BE642B7810D20D33D6E9256EBACC1AC0 /* Pods-CoffeTimeMVCUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CoffeTimeMVCUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		BEF7FFDE647C34056F228B491537D7A3 /* Pods-CoffeTimeMVC-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CoffeTimeMVC-dummy.m"; sourceTree = "<group>"; };
+		C21F15F3F55BC5C3B7692D0101C0CD91 /* Pods-CoffeTimeMVC-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CoffeTimeMVC-Info.plist"; sourceTree = "<group>"; };
+		C2CFDD7C98B818A239B2A7424B44F82F /* GoogleMapsBase.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = GoogleMapsBase.xcframework; path = Base/Frameworks/GoogleMapsBase.xcframework; sourceTree = "<group>"; };
+		C485AC53B37C059903E1F9E086AF5DBD /* Pods-CoffeTimeMVCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CoffeTimeMVCTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D48EFB929B0BBB3A0186BD1BDA1CA8DD /* Pods-CoffeTimeMVCUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-CoffeTimeMVCUITests"; path = Pods_CoffeTimeMVCUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA73B8B083934DC5F61E7A2C30158845 /* Pods-CoffeTimeMVCTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CoffeTimeMVCTests-Info.plist"; sourceTree = "<group>"; };
+		DAC73FC96531CCC31CC69DE936A30001 /* GoogleMapsCore.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = GoogleMapsCore.xcframework; path = Maps/Frameworks/GoogleMapsCore.xcframework; sourceTree = "<group>"; };
+		DBEEC59FB4BCCF28045ADC9A6B04C689 /* Pods-CoffeTimeMVC.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CoffeTimeMVC.modulemap"; sourceTree = "<group>"; };
+		E530F1D3A209832F1FC30C4D762FECDC /* GoogleMaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleMaps.release.xcconfig; sourceTree = "<group>"; };
+		EFEE9849B7C7AD87C2D966A65C2BE002 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = "Maps/Frameworks/GoogleMaps.xcframework/ios-arm64_x86_64-simulator/GoogleMaps.framework/Resources/GoogleMaps.bundle"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B7949F15D1D942CE37DDA2F61C55B475 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09D1AEFF239B55EB70BBF6E742E83ED7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E08C904859F7C14728E65C3E4CAAD97C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FC0411A764BC7F84D613B067D5DA7FD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD70DD29A3CB195291D8BB10C1DFBDF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56462A35097032C2FE29C7F9E40251B5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		057DFA261AFC62358E9FF1892337B4AA /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				BBCEACFD88CE966A3F4174134992F969 /* Frameworks */,
+				EAB3551C3FF2B3DB8CCFFBC1659C14FE /* Resources */,
+			);
+			name = Maps;
+			sourceTree = "<group>";
+		};
+		06A07CA45D1AA9FC9F23E1D2943CEC4A /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				DABC705A4F93441144299167BBCD013A /* Frameworks */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		0B64D21C1BB6636E77113D602D95471A /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				06A07CA45D1AA9FC9F23E1D2943CEC4A /* Base */,
+				057DFA261AFC62358E9FF1892337B4AA /* Maps */,
+				1A6C3A5BCEC44910DA49DDD175DABCE2 /* Support Files */,
+			);
+			name = GoogleMaps;
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
+		106DEEC8F8D86B6CA1285818128EF78F /* Pods-CoffeTimeMVCUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7C32130250579230EA8F96661D558AC7 /* Pods-CoffeTimeMVCUITests.modulemap */,
+				BE642B7810D20D33D6E9256EBACC1AC0 /* Pods-CoffeTimeMVCUITests-acknowledgements.markdown */,
+				8221E188913BA88B17A4F13643EAC6EA /* Pods-CoffeTimeMVCUITests-acknowledgements.plist */,
+				50AE1D6A8897F6D8AC7F3F2C7C573B56 /* Pods-CoffeTimeMVCUITests-dummy.m */,
+				AED589A91097B1D0D030315D1BCF12B3 /* Pods-CoffeTimeMVCUITests-Info.plist */,
+				A9B1249410AB62C73FA2C562F0217981 /* Pods-CoffeTimeMVCUITests-umbrella.h */,
+				958E320BB239AC27631FFAC3D0A2E762 /* Pods-CoffeTimeMVCUITests.debug.xcconfig */,
+				B57328B2099E732E6476A2ACAA7919A0 /* Pods-CoffeTimeMVCUITests.release.xcconfig */,
+			);
+			name = "Pods-CoffeTimeMVCUITests";
+			path = "Target Support Files/Pods-CoffeTimeMVCUITests";
+			sourceTree = "<group>";
+		};
+		1A6C3A5BCEC44910DA49DDD175DABCE2 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				301433380FECA3FE79152D5A623ABAB3 /* GoogleMaps-xcframeworks.sh */,
+				59E6FE59D5F3D68B625433CA9235E808 /* GoogleMaps.debug.xcconfig */,
+				E530F1D3A209832F1FC30C4D762FECDC /* GoogleMaps.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/GoogleMaps";
+			sourceTree = "<group>";
+		};
+		315A3BB2F0F11C6CC7AC096C79DA0E22 /* Pods-CoffeTimeMVC */ = {
+			isa = PBXGroup;
+			children = (
+				DBEEC59FB4BCCF28045ADC9A6B04C689 /* Pods-CoffeTimeMVC.modulemap */,
+				39E3EEC2576BF02392BE44C9A2B9C532 /* Pods-CoffeTimeMVC-acknowledgements.markdown */,
+				62EFC449512C3285A5808BF9C2DE7294 /* Pods-CoffeTimeMVC-acknowledgements.plist */,
+				BEF7FFDE647C34056F228B491537D7A3 /* Pods-CoffeTimeMVC-dummy.m */,
+				C21F15F3F55BC5C3B7692D0101C0CD91 /* Pods-CoffeTimeMVC-Info.plist */,
+				959DBB00950A4A60F75424A6786785C4 /* Pods-CoffeTimeMVC-resources.sh */,
+				042065D66C95A737209015166710CCD4 /* Pods-CoffeTimeMVC-umbrella.h */,
+				0800ECD8B3757009F5A3E8B7E87E3737 /* Pods-CoffeTimeMVC.debug.xcconfig */,
+				13C6D421B45C139E0EE8F06AD97FF13D /* Pods-CoffeTimeMVC.release.xcconfig */,
+			);
+			name = "Pods-CoffeTimeMVC";
+			path = "Target Support Files/Pods-CoffeTimeMVC";
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		9AB1C34CDD5D8499C848F1A1B297AE2D /* Pods-CoffeTimeMVCTests */ = {
+			isa = PBXGroup;
+			children = (
+				224AA45111C6D375A93B5471FEAD5C43 /* Pods-CoffeTimeMVCTests.modulemap */,
+				2EA6DF138CA064810A516CD797036231 /* Pods-CoffeTimeMVCTests-acknowledgements.markdown */,
+				4BDEBEE84E495D86545F3E6199BE22F2 /* Pods-CoffeTimeMVCTests-acknowledgements.plist */,
+				94BEC0DE91D66023528BFA13389EE4C2 /* Pods-CoffeTimeMVCTests-dummy.m */,
+				DA73B8B083934DC5F61E7A2C30158845 /* Pods-CoffeTimeMVCTests-Info.plist */,
+				BBCA35A9B2FDEC547F7D6471CAD42E13 /* Pods-CoffeTimeMVCTests-umbrella.h */,
+				C485AC53B37C059903E1F9E086AF5DBD /* Pods-CoffeTimeMVCTests.debug.xcconfig */,
+				0C6345B404DD580050B75A3B55852570 /* Pods-CoffeTimeMVCTests.release.xcconfig */,
+			);
+			name = "Pods-CoffeTimeMVCTests";
+			path = "Target Support Files/Pods-CoffeTimeMVCTests";
+			sourceTree = "<group>";
+		};
+		AF6CE0EFF03C5CD229B9CEE78E8EB894 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				315A3BB2F0F11C6CC7AC096C79DA0E22 /* Pods-CoffeTimeMVC */,
+				9AB1C34CDD5D8499C848F1A1B297AE2D /* Pods-CoffeTimeMVCTests */,
+				106DEEC8F8D86B6CA1285818128EF78F /* Pods-CoffeTimeMVCUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		BBCEACFD88CE966A3F4174134992F969 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0D87C3A90DA56CB58371F44F0D5A9A7 /* GoogleMaps.xcframework */,
+				DAC73FC96531CCC31CC69DE936A30001 /* GoogleMapsCore.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				DF3634087891871FA7B65CC4A8E6DB71 /* Pods */,
+				D1EA0DAB9D96AF98646F7EFFD78C9216 /* Products */,
+				AF6CE0EFF03C5CD229B9CEE78E8EB894 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D1EA0DAB9D96AF98646F7EFFD78C9216 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				427D7A08768DCDB4D1E97A778BB998C2 /* Pods-CoffeTimeMVC */,
+				0708B982AB7B42FCC5243CD0FAAE71D2 /* Pods-CoffeTimeMVCTests */,
+				D48EFB929B0BBB3A0186BD1BDA1CA8DD /* Pods-CoffeTimeMVCUITests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DABC705A4F93441144299167BBCD013A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2CFDD7C98B818A239B2A7424B44F82F /* GoogleMapsBase.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF3634087891871FA7B65CC4A8E6DB71 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0B64D21C1BB6636E77113D602D95471A /* GoogleMaps */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EAB3551C3FF2B3DB8CCFFBC1659C14FE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				43EA7D17120008BE07A85C687DB6DD6F /* GoogleMaps.bundle */,
+				EFEE9849B7C7AD87C2D966A65C2BE002 /* GoogleMaps.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		55941164D2BC8FAF4E0C1B8890C7BCC7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23DB5BE2B06C462BD3EC8B0411F951D4 /* Pods-CoffeTimeMVCTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C41832BBEBA72EDC437B15CBAFDE776 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				915F323B39D6F21825B93821F3FC343A /* Pods-CoffeTimeMVCUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C31754BE588CDC77546B938122F0C708 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44E25CE5E411013F1B9775456FDE7427 /* Pods-CoffeTimeMVC-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		3B87EDF572732A5E39E48E2BF4ACDE13 /* Pods-CoffeTimeMVCTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADD32DB45AF2A14F96487260090D3B0C /* Build configuration list for PBXNativeTarget "Pods-CoffeTimeMVCTests" */;
+			buildPhases = (
+				55941164D2BC8FAF4E0C1B8890C7BCC7 /* Headers */,
+				A0EFDCC7BE5A8340CD3FCBFF9D7AC956 /* Sources */,
+				FD70DD29A3CB195291D8BB10C1DFBDF9 /* Frameworks */,
+				506BBE0034E80A256287B2FE3366738B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				82E84D3A5A8B8477E1CA2B3E57A9516A /* PBXTargetDependency */,
+			);
+			name = "Pods-CoffeTimeMVCTests";
+			productName = Pods_CoffeTimeMVCTests;
+			productReference = 0708B982AB7B42FCC5243CD0FAAE71D2 /* Pods-CoffeTimeMVCTests */;
+			productType = "com.apple.product-type.framework";
+		};
+		4395EF88489136695B355738011F7DE8 /* Pods-CoffeTimeMVC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1CD8BD285D48AB60972F19F81D290BDD /* Build configuration list for PBXNativeTarget "Pods-CoffeTimeMVC" */;
+			buildPhases = (
+				C31754BE588CDC77546B938122F0C708 /* Headers */,
+				AF10F9A8C442C94BF345041EA10D4C16 /* Sources */,
+				B7949F15D1D942CE37DDA2F61C55B475 /* Frameworks */,
+				B1B1E5A5D2802D59A6B2773E0FC703AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B709D3F40D1326579EC7C4EC16178F8D /* PBXTargetDependency */,
+			);
+			name = "Pods-CoffeTimeMVC";
+			productName = Pods_CoffeTimeMVC;
+			productReference = 427D7A08768DCDB4D1E97A778BB998C2 /* Pods-CoffeTimeMVC */;
+			productType = "com.apple.product-type.framework";
+		};
+		788C4B1F9B84E614BEA039333BE245CA /* Pods-CoffeTimeMVCUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAC79726F25390591C0151486F1C57AE /* Build configuration list for PBXNativeTarget "Pods-CoffeTimeMVCUITests" */;
+			buildPhases = (
+				7C41832BBEBA72EDC437B15CBAFDE776 /* Headers */,
+				765260C129EE7FCEC7EE67F9F41E2B1E /* Sources */,
+				E08C904859F7C14728E65C3E4CAAD97C /* Frameworks */,
+				0EBC6C0C1138D3815222F47E9D9C4936 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87522770503A3E0432553495AE8ADE8F /* PBXTargetDependency */,
+			);
+			name = "Pods-CoffeTimeMVCUITests";
+			productName = Pods_CoffeTimeMVCUITests;
+			productReference = D48EFB929B0BBB3A0186BD1BDA1CA8DD /* Pods-CoffeTimeMVCUITests */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = D1EA0DAB9D96AF98646F7EFFD78C9216 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */,
+				4395EF88489136695B355738011F7DE8 /* Pods-CoffeTimeMVC */,
+				3B87EDF572732A5E39E48E2BF4ACDE13 /* Pods-CoffeTimeMVCTests */,
+				788C4B1F9B84E614BEA039333BE245CA /* Pods-CoffeTimeMVCUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0EBC6C0C1138D3815222F47E9D9C4936 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		506BBE0034E80A256287B2FE3366738B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1B1E5A5D2802D59A6B2773E0FC703AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		942DFFF130A9500FD868DB7E68CB3859 /* [CP] Copy XCFrameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/GoogleMaps/GoogleMaps-xcframeworks-input-files.xcfilelist",
+			);
+			name = "[CP] Copy XCFrameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/GoogleMaps/GoogleMaps-xcframeworks-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/GoogleMaps/GoogleMaps-xcframeworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		765260C129EE7FCEC7EE67F9F41E2B1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B4683CA1F48FB125ACFFA6C530F2E60 /* Pods-CoffeTimeMVCUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0EFDCC7BE5A8340CD3FCBFF9D7AC956 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10EECB3624EA9E24FD9369F066D6C164 /* Pods-CoffeTimeMVCTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF10F9A8C442C94BF345041EA10D4C16 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67D392BA79A474C1F15C8E3A2369D77C /* Pods-CoffeTimeMVC-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		82E84D3A5A8B8477E1CA2B3E57A9516A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-CoffeTimeMVC";
+			target = 4395EF88489136695B355738011F7DE8 /* Pods-CoffeTimeMVC */;
+			targetProxy = 5EF4E3402E44B906870CB5D409852A9E /* PBXContainerItemProxy */;
+		};
+		87522770503A3E0432553495AE8ADE8F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-CoffeTimeMVC";
+			target = 4395EF88489136695B355738011F7DE8 /* Pods-CoffeTimeMVC */;
+			targetProxy = 495F6C53C097DEA3584CAB52E0EA8687 /* PBXContainerItemProxy */;
+		};
+		B709D3F40D1326579EC7C4EC16178F8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GoogleMaps;
+			target = E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */;
+			targetProxy = 77AFF8F4549C11E9B45719F827DBD520 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		10C7D89DB7F9E3AA3280A8E932398ABE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 958E320BB239AC27631FFAC3D0A2E762 /* Pods-CoffeTimeMVCUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CoffeTimeMVCUITests/Pods-CoffeTimeMVCUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CoffeTimeMVCUITests/Pods-CoffeTimeMVCUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2871FF9CE6DD60B9298C19F519D31113 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59E6FE59D5F3D68B625433CA9235E808 /* GoogleMaps.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		33540007C36495FA4FD859CEECF85B20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B57328B2099E732E6476A2ACAA7919A0 /* Pods-CoffeTimeMVCUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CoffeTimeMVCUITests/Pods-CoffeTimeMVCUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CoffeTimeMVCUITests/Pods-CoffeTimeMVCUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		70485BE056646874B40011BBF76FE8F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C485AC53B37C059903E1F9E086AF5DBD /* Pods-CoffeTimeMVCTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CoffeTimeMVCTests/Pods-CoffeTimeMVCTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CoffeTimeMVCTests/Pods-CoffeTimeMVCTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7C3FBC45C4966EFE20583918767EFBE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		93AD5F29BFDB95A3821A0ED55DF66480 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0800ECD8B3757009F5A3E8B7E87E3737 /* Pods-CoffeTimeMVC.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CoffeTimeMVC/Pods-CoffeTimeMVC-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CoffeTimeMVC/Pods-CoffeTimeMVC.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		973A796BF7BEF212CC04D3BED5A4113A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13C6D421B45C139E0EE8F06AD97FF13D /* Pods-CoffeTimeMVC.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CoffeTimeMVC/Pods-CoffeTimeMVC-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CoffeTimeMVC/Pods-CoffeTimeMVC.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		97F51D46E847EF0B1C8EB51E9DE80A69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C6345B404DD580050B75A3B55852570 /* Pods-CoffeTimeMVCTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CoffeTimeMVCTests/Pods-CoffeTimeMVCTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CoffeTimeMVCTests/Pods-CoffeTimeMVCTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EE798DD35112381FCC891F4E9D1CF820 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E530F1D3A209832F1FC30C4D762FECDC /* GoogleMaps.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FF0A36149038A192FFD678E1D4A40D3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1CD8BD285D48AB60972F19F81D290BDD /* Build configuration list for PBXNativeTarget "Pods-CoffeTimeMVC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93AD5F29BFDB95A3821A0ED55DF66480 /* Debug */,
+				973A796BF7BEF212CC04D3BED5A4113A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		432269212CA7661476954A7A4DAA814D /* Build configuration list for PBXAggregateTarget "GoogleMaps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2871FF9CE6DD60B9298C19F519D31113 /* Debug */,
+				EE798DD35112381FCC891F4E9D1CF820 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C3FBC45C4966EFE20583918767EFBE2 /* Debug */,
+				FF0A36149038A192FFD678E1D4A40D3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADD32DB45AF2A14F96487260090D3B0C /* Build configuration list for PBXNativeTarget "Pods-CoffeTimeMVCTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				70485BE056646874B40011BBF76FE8F2 /* Debug */,
+				97F51D46E847EF0B1C8EB51E9DE80A69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAC79726F25390591C0151486F1C57AE /* Build configuration list for PBXNativeTarget "Pods-CoffeTimeMVCUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10C7D89DB7F9E3AA3280A8E932398ABE /* Debug */,
+				33540007C36495FA4FD859CEECF85B20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

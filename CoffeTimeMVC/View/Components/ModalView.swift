@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ModalViewDelegate: AnyObject {
-    func goToButtonTapped()
+    func goToCafeButtonTapped() -> Void
 }
 
 class ModalView: UIView {
@@ -38,7 +38,7 @@ class ModalView: UIView {
 
     private let goToButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Перейти", for: .normal)
+        button.setTitle("Подробнее", for: .normal)
         button.tintColor = Colors.buttonGreen
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -147,17 +147,17 @@ class ModalView: UIView {
         goToButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            goToButton.bottomAnchor.constraint(equalTo: backgroundBottomView.bottomAnchor, constant: -20),
+            goToButton.bottomAnchor.constraint(equalTo: backgroundBottomView.bottomAnchor, constant: -30),
             goToButton.centerXAnchor.constraint(equalTo: backgroundBottomView.centerXAnchor)
         ])
 
-        goToButton.addTarget(self, action: #selector(goToButtonTapped), for: .touchUpInside)
+        goToButton.addTarget(self, action: #selector(goToCafeButtonTapped), for: .touchUpInside)
     }
 
 }
 
 extension ModalView: ModalViewDelegate {
-    @objc func goToButtonTapped() {
-        delegate?.goToButtonTapped()
+    @objc func goToCafeButtonTapped() {
+        delegate?.goToCafeButtonTapped()
     }
 }

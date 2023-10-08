@@ -10,6 +10,9 @@ import UIKit
 class CustomModalViewController: UIViewController {
     
     private var modalView = ModalView()
+    private var cafeListView = CafeListView()
+    
+    public var targetCafe: CafeModel? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +27,8 @@ class CustomModalViewController: UIViewController {
         } else {
             modalView.cafeImageView.image = UIImage(named: "ErrorImg")
         }
-
+        
+        targetCafe = cafe
     }
     
     func setupModalView() {
@@ -35,8 +39,13 @@ class CustomModalViewController: UIViewController {
 }
 
 extension CustomModalViewController: ModalViewDelegate {
-    func goToButtonTapped() {
-        
+    func goToCafeButtonTapped() {
+        self.dismiss(animated: true) {
+            NotificationManager.shared.postNotification(name: "ModalClosed")
+            let cafeVC = CafeViewController()
+            cafeVC.selectedCafe = self.targetCafe
+        }
     }
 }
+
 
