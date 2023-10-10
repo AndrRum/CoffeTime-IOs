@@ -55,6 +55,7 @@ extension CafeView {
     }
 }
 
-extension CafeView: CafeViewDelegate {
+extension CafeView {
     
 }
+

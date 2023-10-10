@@ -17,6 +17,7 @@ class CafeListItem: UITableViewCell {
     static let reuseId = "CafeListItem"
     
     private(set) var cafeItem: CafeModel!
+    private(set) var cafeVC: CafeViewController?
     
     private var container = UIView(frame: .zero)
     private var iconView = UIImageView(frame: .zero)
@@ -161,5 +162,7 @@ private extension CafeListItem {
     
     @objc func detailsButtonTapped() {
         delegate?.detailsButtonDidTap(for: cafeItem)
+        cafeVC = CafeViewController()
+        cafeVC?.selectedCafe = cafeItem
     }
 }

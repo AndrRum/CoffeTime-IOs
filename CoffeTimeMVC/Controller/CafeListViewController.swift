@@ -90,7 +90,7 @@ extension CafeListViewController: CafeListDelegate {
     
     func detailsButtonDidTap() {
         goToCafeScreen()
-        //cafeVC.selectedCafe =
+
     }
     
     @objc func goToCafeScreen() {
