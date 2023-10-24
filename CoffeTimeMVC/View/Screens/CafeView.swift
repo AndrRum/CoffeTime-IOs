@@ -14,7 +14,14 @@ protocol CafeViewDelegate: AnyObject {
 
 class CafeView: UIView {
     
+    var cafe: CafeModel? {
+        didSet {
+            updateUI()
+        }
+    }
+    
     private(set) var pageHeader = PageHeaderView()
+    private let cafeImageView = UIImageView()
     
     weak var delegate: CafeViewDelegate?
     
@@ -30,6 +37,15 @@ class CafeView: UIView {
     func setHeaderViewDelegate(_ delegate: PageHeaderViewDelegate?) {
         pageHeader.delegate = delegate
     }
+    
+    private func updateUI() {
+        if let cafeImages = cafe?.images, !cafeImages.isEmpty {
+            cafeImageView.image = UIImage(named: cafeImages)
+        } else {
+            cafeImageView.image = UIImage(named: "Espresso")
+        }
+
+    }
 }
 
 extension CafeView {
@@ -38,6 +54,7 @@ extension CafeView {
         self.backgroundColor = .white
         
         setupHeaderView()
+        setupCafeImageView()
     }
     
     func setupHeaderView() {
@@ -52,6 +69,19 @@ extension CafeView {
         ])
         
         pageHeader.configureUI(showBackButton: true)
+    }
+    
+    func setupCafeImageView() {
+        cafeImageView.contentMode = .scaleAspectFit
+        cafeImageView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(cafeImageView)
+        
+        NSLayoutConstraint.activate([
+            cafeImageView.topAnchor.constraint(equalTo: pageHeader.bottomAnchor),
+            cafeImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            cafeImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            cafeImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 }
 

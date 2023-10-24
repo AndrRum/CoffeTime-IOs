@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol CafeListItemDelegate: AnyObject {
-    func detailsButtonDidTap(for: CafeModel) -> Void
+    func detailsButtonDidTap(data: CafeModel) -> Void
 }
 
 class CafeListItem: UITableViewCell {
@@ -17,7 +17,6 @@ class CafeListItem: UITableViewCell {
     static let reuseId = "CafeListItem"
     
     private(set) var cafeItem: CafeModel!
-    private(set) var cafeVC: CafeViewController?
     
     private var container = UIView(frame: .zero)
     private var iconView = UIImageView(frame: .zero)
@@ -161,8 +160,6 @@ private extension CafeListItem {
     }
     
     @objc func detailsButtonTapped() {
-        delegate?.detailsButtonDidTap(for: cafeItem)
-        cafeVC = CafeViewController()
-        cafeVC?.selectedCafe = cafeItem
+        delegate?.detailsButtonDidTap(data: cafeItem)
     }
 }

@@ -12,7 +12,7 @@ import GoogleMaps
 protocol CafeListDelegate: AnyObject {
     func handleMapTap(_ sender: UITapGestureRecognizer) -> Void
     func showCustomModal(for cafe: CafeModel) -> Void
-    func detailsButtonDidTap() -> Void
+    func detailsButtonDidTap(data: CafeModel) -> Void
 }
 
 class CafeListView: UIView, GMSMapViewDelegate {
@@ -182,8 +182,8 @@ extension CafeListView: UITableViewDelegate, UITableViewDataSource {
 
 extension CafeListView: CafeListItemDelegate {
     
-    func detailsButtonDidTap(for: CafeModel) {
-        delegate?.detailsButtonDidTap()
+    func detailsButtonDidTap(data: CafeModel) {
+        delegate?.detailsButtonDidTap(data: data)
     }
 }
 

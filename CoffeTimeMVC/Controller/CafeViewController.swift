@@ -10,11 +10,9 @@ import UIKit
 
 class CafeViewController: UIViewController {
     
-    var selectedCafe: CafeModel? {
+    var cafe: CafeModel? {
         didSet {
-            if let cafe = selectedCafe {
-                print("Selected cafe: \(String(describing: cafe.name))")
-            }
+            cafeView.cafe = cafe
         }
     }
     
@@ -30,6 +28,7 @@ class CafeViewController: UIViewController {
     func setupCafeView() {
         cafeView.delegate = self
         cafeView.setHeaderViewDelegate(self)
+        cafeView.cafe = cafe
         self.view = cafeView
     }
 }

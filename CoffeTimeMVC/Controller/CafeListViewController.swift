@@ -30,15 +30,9 @@ class CafeListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationManager.shared.addObserver(observer: self, selector: #selector(goToCafeScreen), name: "ModalClosed")
-        
         getAllCafeData()
     }
     
-    deinit {
-        NotificationManager.shared.removeObserver(name: "ModalClosed")
-    }
-
     func setupCafeListView() {
         cafeListView.delegate = self
         self.view = cafeListView
@@ -72,7 +66,8 @@ private extension CafeListViewController {
 }
 
 
-extension CafeListViewController: CafeListDelegate {
+extension CafeListViewController: CafeListDelegate, ModalDelegate {
+    
     
     func handleMapTap(_ sender: UITapGestureRecognizer) {
         let location = sender.location(in: cafeListView.mapView)
@@ -85,20 +80,20 @@ extension CafeListViewController: CafeListDelegate {
     
     func showCustomModal(for cafe: CafeModel) {
         customModalViewController.configure(with: cafe)
+        customModalViewController.delegate = self
         self.present(customModalViewController, animated: true, completion: nil)
     }
     
-    func detailsButtonDidTap() {
+    func modalDidClose(data: CafeModel?) {
+        detailsButtonDidTap(data: data!)
+    }
+    
+    func detailsButtonDidTap(data: CafeModel) {
+        cafeVC.cafe = data
         goToCafeScreen()
-
     }
     
     @objc func goToCafeScreen() {
-        
-        if let existingCafeVC = navigationController?.viewControllers.first(where: { $0 is CafeViewController }) as? CafeViewController {
-            navigationController?.popToViewController(existingCafeVC, animated: true)
-        } else {
-            show(cafeVC, sender: self)
-        }
+        navigationController?.pushViewController(cafeVC, animated: true)
     }
 }
