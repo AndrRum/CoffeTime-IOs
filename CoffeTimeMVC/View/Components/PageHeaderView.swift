@@ -10,13 +10,15 @@ import UIKit
 
 protocol PageHeaderViewDelegate: AnyObject {
     func backButtonTapped()
+    func favoriteButtonTapped()
 }
 
 class PageHeaderView: UIView {
     private(set) var pageLabel = PageLabel(title: "CoffeTime")
     private(set) var separatorView = UIView()
     private(set) var backButton: BackButton?
-    
+    private(set) var favoritesButton: UIButton?
+
     weak var delegate: PageHeaderViewDelegate?
 
     override init(frame: CGRect) {
@@ -37,6 +39,7 @@ class PageHeaderView: UIView {
 
         configurePageTitleLabel()
         configureSeparator()
+        configureFavoritesButton()
     }
 
     func configureBackButton() {
@@ -85,13 +88,37 @@ class PageHeaderView: UIView {
         ])
     }
 
+    func configureFavoritesButton() {
+        favoritesButton = UIButton(type: .custom)
+        guard let favoritesButton = favoritesButton else { return }
+
+        favoritesButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        favoritesButton.tintColor = Colors.buttonGreen
+
+        addSubview(favoritesButton)
+        favoritesButton.translatesAutoresizingMaskIntoConstraints = false
+
+        let topConstraint = calculateTopConstraint(for: favoritesButton, constantIphoneV: 20, constantIphoneX: 60)
+
+        NSLayoutConstraint.activate([
+            favoritesButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
+            topConstraint,
+            favoritesButton.widthAnchor.constraint(equalToConstant: 40),
+            favoritesButton.heightAnchor.constraint(equalToConstant: 40)
+        ])
+
+        favoritesButton.addTarget(self, action: #selector(favoritesButtonTapped), for: .touchUpInside)
+    }
+
     @objc func backButtonTapped() {
         delegate?.backButtonTapped()
     }
-}
 
+    @objc func favoritesButtonTapped() {
+        print("Favorites button tapped!")
+        delegate?.favoriteButtonTapped()
+    }
 
-extension PageHeaderView {
     func calculateTopConstraint(for view: UIView, constantIphoneV: CGFloat, constantIphoneX: CGFloat) -> NSLayoutConstraint {
         let topConstraint: NSLayoutConstraint
 

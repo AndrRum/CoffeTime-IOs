@@ -35,6 +35,10 @@ class CafeListView: UIView, GMSMapViewDelegate {
         super.init(frame: frame)
         configureUI()
     }
+    
+    func setHeaderViewDelegate(_ delegate: PageHeaderViewDelegate?) {
+        pageHeader.delegate = delegate
+    }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

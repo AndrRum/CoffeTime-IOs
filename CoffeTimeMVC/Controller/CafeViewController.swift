@@ -37,6 +37,10 @@ extension CafeViewController: PageHeaderViewDelegate {
     func backButtonTapped() {
         navigationController?.popViewController(animated: true)
     }
+    
+    func favoriteButtonTapped() {
+        
+    }
 }
 
 extension CafeViewController: CafeViewDelegate {

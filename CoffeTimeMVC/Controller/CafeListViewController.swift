@@ -14,6 +14,7 @@ class CafeListViewController: UIViewController {
     private var allCafeService = AllCafeService()
     private var customModalViewController = CustomModalViewController()
     private var cafeVC = CafeViewController()
+    private var drawerMenuViewController: DrawerMenuViewController?
     
     override func loadView() {
         super.loadView()
@@ -95,5 +96,15 @@ extension CafeListViewController: CafeListDelegate, ModalDelegate {
     
     @objc func goToCafeScreen() {
         navigationController?.pushViewController(cafeVC, animated: true)
+    }
+}
+
+extension CafeListViewController: PageHeaderViewDelegate {
+    func backButtonTapped() {
+        
+    }
+    
+    func favoriteButtonTapped() {
+        
     }
 }

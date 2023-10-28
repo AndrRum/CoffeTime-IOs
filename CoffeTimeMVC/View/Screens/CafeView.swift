@@ -85,7 +85,3 @@ extension CafeView {
     }
 }
 
-extension CafeView {
-    
-}
-
