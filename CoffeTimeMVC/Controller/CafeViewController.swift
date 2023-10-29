@@ -65,7 +65,7 @@ extension CafeViewController: DrawerMenuDelegate, DrawerMenuViewControllerDelega
         addChildViewController(drawerMenuViewController!)
         view.addSubview(drawerMenuViewController!.view)
         
-        let width = view.frame.width / 2
+        let width = view.frame.width / 1.5
         let height = view.frame.height
         
         let initialFrame = CGRect(x: view.frame.width, y: 0, width: width, height: height)
