@@ -44,7 +44,13 @@ class CafeView: UIView {
         } else {
             cafeImageView.image = UIImage(named: "Espresso")
         }
-
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let gradientLayer = cafeImageView.layer.sublayers?.first as? CAGradientLayer
+        gradientLayer?.frame = cafeImageView.bounds
     }
 }
 
@@ -76,12 +82,20 @@ extension CafeView {
         cafeImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(cafeImageView)
         
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = cafeImageView.bounds
+        gradientLayer.colors = [UIColor.clear.cgColor, Colors.gradientColor.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        cafeImageView.layer.addSublayer(gradientLayer)
+        
         NSLayoutConstraint.activate([
             cafeImageView.topAnchor.constraint(equalTo: pageHeader.bottomAnchor),
             cafeImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             cafeImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            cafeImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            cafeImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.45)
         ])
     }
+
 }
 
