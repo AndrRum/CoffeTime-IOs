@@ -30,8 +30,25 @@ class DrawerMenuViewController: UIViewController {
 }
 
 extension DrawerMenuViewController: DrawerMenuDelegate, DrawerMenuViewControllerDelegate {
+    
     func drawerMenuDidClose() {
         delegate?.drawerMenuDidClose()
+    }
+    
+    func favoritesCafeButtonTapped() {
+        tapButtonHelper(isCafeFavorites: true)
+    }
+    
+    func favoritesDrinkButtonTapped() {
+        tapButtonHelper(isCafeFavorites: false)
+    }
+    
+    private func tapButtonHelper(isCafeFavorites: Bool) {
+        let favoriteViewController = FavoriteViewController()
+        favoriteViewController.isCafeFavorites = isCafeFavorites
+       
+        delegate?.drawerMenuDidClose()
+        self.present(favoriteViewController, animated: true)
     }
 }
 

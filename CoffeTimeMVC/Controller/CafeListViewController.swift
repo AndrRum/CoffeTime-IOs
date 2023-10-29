@@ -121,7 +121,7 @@ extension CafeListViewController: PageHeaderViewDelegate {
 }
 
 extension CafeListViewController: DrawerMenuDelegate, DrawerMenuViewControllerDelegate {
-    
+
     private func showDrawerMenu() {
         drawerMenuViewController = DrawerMenuViewController()
         drawerMenuViewController?.delegate = self

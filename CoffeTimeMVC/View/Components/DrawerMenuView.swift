@@ -10,6 +10,22 @@ import UIKit
 
 protocol DrawerMenuDelegate: AnyObject {
     func drawerMenuDidClose()
+    func favoritesCafeButtonTapped()
+    func favoritesDrinkButtonTapped()
+}
+
+extension DrawerMenuDelegate {
+    func drawerMenuDidClose() {
+        
+    }
+
+    func favoritesCafeButtonTapped() {
+        
+    }
+
+    func favoritesDrinkButtonTapped() {
+        
+    }
 }
 
 class DrawerMenuView: UIView {
@@ -19,7 +35,7 @@ class DrawerMenuView: UIView {
     
     private lazy var closeButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "xmark"), for: .normal)
+        button.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
         button.tintColor = .white
         button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         return button
@@ -121,17 +137,16 @@ class DrawerMenuView: UIView {
             break
         }
     }
-
     
     @objc private func closeButtonTapped() {
         delegate?.drawerMenuDidClose()
     }
     
     @objc private func favoritesCafeButtonTapped() {
-        // Handle favorites cafe button tap
+        delegate?.favoritesCafeButtonTapped()
     }
-    
+
     @objc private func favoritesDrinksButtonTapped() {
-        // Handle favorites drinks button tap
+        delegate?.favoritesDrinkButtonTapped()
     }
 }

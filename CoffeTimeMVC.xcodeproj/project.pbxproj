@@ -30,6 +30,9 @@
 		1F4918102AED8FD40011CCDE /* DrawerMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F49180F2AED8FD40011CCDE /* DrawerMenuViewController.swift */; };
 		1F4918122AED90BC0011CCDE /* DrawerMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4918112AED90BC0011CCDE /* DrawerMenuView.swift */; };
 		1F4918142AEE3ECB0011CCDE /* Drawer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4918132AEE3ECB0011CCDE /* Drawer+Extension.swift */; };
+		1F4918162AEECF450011CCDE /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4918152AEECF450011CCDE /* FavoriteViewController.swift */; };
+		1F4918182AEECF570011CCDE /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4918172AEECF570011CCDE /* FavoriteView.swift */; };
+		1F49181A2AEED50D0011CCDE /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4918192AEED50D0011CCDE /* EmptyView.swift */; };
 		1F4D3C9A2A9D452300915D11 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D3C992A9D452300915D11 /* ViewControllerExtension.swift */; };
 		1F4D3C9C2A9D477400915D11 /* NotificationCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D3C9B2A9D477400915D11 /* NotificationCenterManager.swift */; };
 		1F4D3CA22AA137B200915D11 /* rw.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1F4D3CA12AA137B200915D11 /* rw.mp3 */; };
@@ -138,6 +141,9 @@
 		1F49180F2AED8FD40011CCDE /* DrawerMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerMenuViewController.swift; sourceTree = "<group>"; };
 		1F4918112AED90BC0011CCDE /* DrawerMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerMenuView.swift; sourceTree = "<group>"; };
 		1F4918132AEE3ECB0011CCDE /* Drawer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Drawer+Extension.swift"; sourceTree = "<group>"; };
+		1F4918152AEECF450011CCDE /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		1F4918172AEECF570011CCDE /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		1F4918192AEED50D0011CCDE /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		1F4D3C992A9D452300915D11 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		1F4D3C9B2A9D477400915D11 /* NotificationCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterManager.swift; sourceTree = "<group>"; };
 		1F4D3CA12AA137B200915D11 /* rw.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rw.mp3; sourceTree = "<group>"; };
@@ -387,6 +393,7 @@
 				1F3411732A9A35B2007F228C /* ErrorViewController.swift */,
 				1F2491372ACB3BAE00A11802 /* CustomModalViewController.swift */,
 				1F49180F2AED8FD40011CCDE /* DrawerMenuViewController.swift */,
+				1F4918152AEECF450011CCDE /* FavoriteViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -463,6 +470,7 @@
 				1F248E332AA501DD002ACA5E /* CafeListView.swift */,
 				1F9916632AD33369003306DA /* CafeView.swift */,
 				1F9916672AD333F9003306DA /* FavoritesView.swift */,
+				1F4918172AEECF570011CCDE /* FavoriteView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -470,6 +478,7 @@
 		1F9923EF2A860F2A000852CF /* EmptyState */ = {
 			isa = PBXGroup;
 			children = (
+				1F4918192AEED50D0011CCDE /* EmptyView.swift */,
 			);
 			path = EmptyState;
 			sourceTree = "<group>";
@@ -817,6 +826,8 @@
 				1F9923F42A861040000852CF /* LoginView.swift in Sources */,
 				1F2E0AA32A8D5C3800C990E1 /* BaseButton.swift in Sources */,
 				1F2E0AAD2A92284000C990E1 /* RegistartionViewController.swift in Sources */,
+				1F49181A2AEED50D0011CCDE /* EmptyView.swift in Sources */,
+				1F4918182AEECF570011CCDE /* FavoriteView.swift in Sources */,
 				1F52BE982A987E010003995F /* ApiEndpoints.swift in Sources */,
 				1F9923CD2A842D8F000852CF /* CafeProduct+CoreDataProperties.swift in Sources */,
 				1F5C4E4C2AA7A53400440CAB /* BackButton.swift in Sources */,
@@ -849,6 +860,7 @@
 				1F9923CF2A842D8F000852CF /* AllCafeProduct+CoreDataProperties.swift in Sources */,
 				1F9923D92A842FDF000852CF /* CafeModel.swift in Sources */,
 				1F9923D52A842F98000852CF /* AllCafeModel.swift in Sources */,
+				1F4918162AEECF450011CCDE /* FavoriteViewController.swift in Sources */,
 				1F9923EB2A860E0A000852CF /* AllCafeProductsService.swift in Sources */,
 				1F9923C22A842D8F000852CF /* Product+CoreDataClass.swift in Sources */,
 				1F9923062A81ECE7000852CF /* LoginViewController.swift in Sources */,
