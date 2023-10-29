@@ -34,8 +34,18 @@ class CafeListViewController: UIViewController {
         getAllCafeData()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let drawerMenuViewController = drawerMenuViewController,
+           drawerMenuViewController.parent != nil {
+            drawerMenuDidClose(viewController: drawerMenuViewController)
+        }
+    }
+    
     func setupCafeListView() {
         cafeListView.delegate = self
+        cafeListView.setHeaderViewDelegate(self)
         self.view = cafeListView
     }
     
@@ -105,6 +115,30 @@ extension CafeListViewController: PageHeaderViewDelegate {
     }
     
     func favoriteButtonTapped() {
+        print("favoriteButtonTapped")
+        showDrawerMenu()
+    }
+}
+
+extension CafeListViewController: DrawerMenuDelegate, DrawerMenuViewControllerDelegate {
+    
+    private func showDrawerMenu() {
+        drawerMenuViewController = DrawerMenuViewController()
+        drawerMenuViewController?.delegate = self
         
+        addChildViewController(drawerMenuViewController!)
+        view.addSubview(drawerMenuViewController!.view)
+        
+        let width = view.frame.width / 2
+        let height = view.frame.height
+        
+        let initialFrame = CGRect(x: view.frame.width, y: 0, width: width, height: height)
+        let finalFrame = CGRect(x: view.frame.width - width, y: 0, width: width, height: height)
+        
+        showDrawerMenu(viewController: drawerMenuViewController!, initialFrame: initialFrame, finalFrame: finalFrame)
+    }
+    
+    func drawerMenuDidClose() {
+        drawerMenuDidClose(viewController: drawerMenuViewController!)
     }
 }

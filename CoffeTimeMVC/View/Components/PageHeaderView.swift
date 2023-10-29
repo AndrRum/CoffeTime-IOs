@@ -115,7 +115,6 @@ class PageHeaderView: UIView {
     }
 
     @objc func favoritesButtonTapped() {
-        print("Favorites button tapped!")
         delegate?.favoriteButtonTapped()
     }
 

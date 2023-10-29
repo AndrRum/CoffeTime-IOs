@@ -300,4 +300,3 @@ extension CafeListView {
         return true
     }
 }
-

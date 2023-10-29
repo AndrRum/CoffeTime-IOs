@@ -29,6 +29,7 @@
 		1F44C1FE2A94030200613176 /* ValidationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44C1FD2A94030200613176 /* ValidationStrategy.swift */; };
 		1F4918102AED8FD40011CCDE /* DrawerMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F49180F2AED8FD40011CCDE /* DrawerMenuViewController.swift */; };
 		1F4918122AED90BC0011CCDE /* DrawerMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4918112AED90BC0011CCDE /* DrawerMenuView.swift */; };
+		1F4918142AEE3ECB0011CCDE /* Drawer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4918132AEE3ECB0011CCDE /* Drawer+Extension.swift */; };
 		1F4D3C9A2A9D452300915D11 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D3C992A9D452300915D11 /* ViewControllerExtension.swift */; };
 		1F4D3C9C2A9D477400915D11 /* NotificationCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D3C9B2A9D477400915D11 /* NotificationCenterManager.swift */; };
 		1F4D3CA22AA137B200915D11 /* rw.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1F4D3CA12AA137B200915D11 /* rw.mp3 */; };
@@ -136,6 +137,7 @@
 		1F44C1FD2A94030200613176 /* ValidationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationStrategy.swift; sourceTree = "<group>"; };
 		1F49180F2AED8FD40011CCDE /* DrawerMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerMenuViewController.swift; sourceTree = "<group>"; };
 		1F4918112AED90BC0011CCDE /* DrawerMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerMenuView.swift; sourceTree = "<group>"; };
+		1F4918132AEE3ECB0011CCDE /* Drawer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Drawer+Extension.swift"; sourceTree = "<group>"; };
 		1F4D3C992A9D452300915D11 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		1F4D3C9B2A9D477400915D11 /* NotificationCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterManager.swift; sourceTree = "<group>"; };
 		1F4D3CA12AA137B200915D11 /* rw.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rw.mp3; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				1F8649E62AA53D6100CEB609 /* AuthViewControllerExtension.swift */,
 				1F7D97162ABD82CA0060CE70 /* UIImg + Extension.swift */,
 				1F2491352ACB37CC00A11802 /* CoordinateLocation+Extension.swift */,
+				1F4918132AEE3ECB0011CCDE /* Drawer+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -802,6 +805,7 @@
 				1F9923D32A842F5A000852CF /* ProductModel.swift in Sources */,
 				1F11764E2AB5DD9700E00180 /* LoaderView.swift in Sources */,
 				1F9923E72A860CC4000852CF /* CafeService.swift in Sources */,
+				1F4918142AEE3ECB0011CCDE /* Drawer+Extension.swift in Sources */,
 				1F9923ED2A860E40000852CF /* CafeProductService.swift in Sources */,
 				1F2491382ACB3BAE00A11802 /* CustomModalViewController.swift in Sources */,
 				1F9923C82A842D8F000852CF /* Cafe+CoreDataClass.swift in Sources */,

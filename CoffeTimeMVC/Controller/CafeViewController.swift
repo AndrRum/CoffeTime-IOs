@@ -17,12 +17,21 @@ class CafeViewController: UIViewController {
     }
     
     private var cafeView = CafeView()
-    private var pageHeaderView = PageHeaderView()
+    private var drawerMenuViewController: DrawerMenuViewController?
     
     override func loadView() {
         super.loadView()
         navigationController?.navigationBar.isHidden = true
         setupCafeView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let drawerMenuViewController = drawerMenuViewController,
+           drawerMenuViewController.parent != nil {
+            drawerMenuDidClose(viewController: drawerMenuViewController)
+        }
     }
     
     func setupCafeView() {
@@ -39,10 +48,34 @@ extension CafeViewController: PageHeaderViewDelegate {
     }
     
     func favoriteButtonTapped() {
-        
+        showDrawerMenu()
     }
 }
 
 extension CafeViewController: CafeViewDelegate {
     
 }
+
+extension CafeViewController: DrawerMenuDelegate, DrawerMenuViewControllerDelegate {
+    
+    private func showDrawerMenu() {
+        drawerMenuViewController = DrawerMenuViewController()
+        drawerMenuViewController?.delegate = self
+        
+        addChildViewController(drawerMenuViewController!)
+        view.addSubview(drawerMenuViewController!.view)
+        
+        let width = view.frame.width / 2
+        let height = view.frame.height
+        
+        let initialFrame = CGRect(x: view.frame.width, y: 0, width: width, height: height)
+        let finalFrame = CGRect(x: view.frame.width - width, y: 0, width: width, height: height)
+        
+        showDrawerMenu(viewController: drawerMenuViewController!, initialFrame: initialFrame, finalFrame: finalFrame)
+    }
+    
+    func drawerMenuDidClose() {
+        drawerMenuDidClose(viewController: drawerMenuViewController!)
+    }
+}
+
