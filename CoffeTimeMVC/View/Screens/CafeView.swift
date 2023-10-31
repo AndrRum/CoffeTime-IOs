@@ -22,6 +22,8 @@ class CafeView: UIView {
     
     private(set) var pageHeader = PageHeaderView()
     private let cafeImageView = UIImageView()
+    private let bottomTextLabel = UILabel()
+    private let bottomAddressLabel = UILabel()
     
     weak var delegate: CafeViewDelegate?
     
@@ -42,8 +44,11 @@ class CafeView: UIView {
         if let cafeImages = cafe?.images, !cafeImages.isEmpty {
             cafeImageView.image = UIImage(named: cafeImages)
         } else {
-            cafeImageView.image = UIImage(named: "Espresso")
+            cafeImageView.image = UIImage(named: "Cafe10")
         }
+        
+        bottomTextLabel.text = cafe?.name
+        bottomAddressLabel.text = cafe?.address
     }
     
     override func layoutSubviews() {
@@ -61,6 +66,8 @@ extension CafeView {
         
         setupHeaderView()
         setupCafeImageView()
+        setupBottomNameTextLabel()
+        setupBottomAddressTextLabel()
     }
     
     func setupHeaderView() {
@@ -96,6 +103,31 @@ extension CafeView {
             cafeImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.45)
         ])
     }
-
+    
+    func setupBottomNameTextLabel() {
+        addSubview(bottomTextLabel)
+        
+        bottomTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        bottomTextLabel.font = UIFont(name: Fonts.logoFont, size: 28)
+        bottomTextLabel.textColor = Colors.gray
+        
+        NSLayoutConstraint.activate([
+            bottomTextLabel.leadingAnchor.constraint(equalTo: cafeImageView.leadingAnchor, constant: 16),
+            bottomTextLabel.bottomAnchor.constraint(equalTo: cafeImageView.bottomAnchor, constant: -40)
+        ])
+    }
+    
+    func setupBottomAddressTextLabel() {
+        addSubview(bottomAddressLabel)
+        
+        bottomAddressLabel.translatesAutoresizingMaskIntoConstraints = false
+        bottomAddressLabel.font = .systemFont(ofSize: 18)
+        bottomAddressLabel.textColor = Colors.gray2
+        
+        NSLayoutConstraint.activate([
+            bottomAddressLabel.leadingAnchor.constraint(equalTo: cafeImageView.leadingAnchor, constant: 16),
+            bottomAddressLabel.bottomAnchor.constraint(equalTo: cafeImageView.bottomAnchor, constant: -8)
+        ])
+    }
 }
 

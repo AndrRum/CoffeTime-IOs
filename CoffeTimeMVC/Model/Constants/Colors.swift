@@ -13,4 +13,6 @@ struct Colors {
     static let gradientColor = UIColor(red: 244/255, green: 238/255, blue: 222/255, alpha: 0.9)
     static let headerTitle = UIColor(red: 71/255, green: 71/255, blue: 71/255, alpha: 1)
     static let separator = UIColor(red: 234/255, green: 234/255, blue: 234/255, alpha: 1)
+    static let gray = UIColor(red: 71/255, green: 71/255, blue: 71/255, alpha: 1)
+    static let gray2 = UIColor(red: 113/255, green: 113/255, blue: 113/255, alpha: 1)
 }
