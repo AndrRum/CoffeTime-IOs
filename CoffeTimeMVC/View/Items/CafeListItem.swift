@@ -54,7 +54,22 @@ class CafeListItem: UITableViewCell {
                 }
             }
         } else {
-            iconView.image = UIImage(named: cafeItem.images ?? "")
+            if let imageUrlString = cafeItem.images, let imageUrl = URL(string: imageUrlString) {
+                if imageUrlString.lowercased().contains("http") {
+                    URLSession.shared.dataTask(with: imageUrl) { data, response, error in
+                        if let data = data, let image = UIImage(data: data) {
+                            DispatchQueue.main.async {
+                                self.iconView.image = image
+                            }
+                        }
+                    }.resume()
+                } else {
+                    if let localImage = UIImage(named: imageUrlString) {
+                        self.iconView.image = localImage
+                    }
+                }
+            }
+
         }
         
         titleLabel.text = cafeItem.name
@@ -129,9 +144,11 @@ private extension CafeListItem {
         
         NSLayoutConstraint.activate([
             addressLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 14),
-            addressLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 5)
+            addressLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 5),
+            addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: container.trailingAnchor, constant: -14)
         ])
     }
+
     
     func setDetailBtn() {
         detailsButton.translatesAutoresizingMaskIntoConstraints = false

@@ -135,6 +135,7 @@ class ModalView: UIView {
 
     private func setupDescription() {
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLabel.numberOfLines = 3 
         
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),

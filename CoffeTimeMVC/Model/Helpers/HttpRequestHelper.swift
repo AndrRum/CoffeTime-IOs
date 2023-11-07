@@ -6,23 +6,34 @@ class HttpRequestHelper {
     private let baseUrl = "http://cafe.prox2.dex-it.ru/api"
     
     func sendPostRequest(url: String, jsonData: [String: Any]?, withSid: Bool, completion: @escaping CompletionHandler) {
-        
-        var urlString = baseUrl + url
-        
+        let urlString = baseUrl + url
+        var requestData: Any?
+
         if withSid {
             let userDataService = UserDataService()
             userDataService.fetchSid { sessionId in
                 if let sessionId = sessionId {
-                    let sessionIdWithoutQuotes = sessionId.replacingOccurrences(of: "\"", with: "")
-                    urlString += "?sessionId=\(sessionIdWithoutQuotes)"
-                    print("url", urlString)
-                } else {
-                    print("sessionId is nil")
+
+                    if var modifiedJsonData = jsonData {
+                        modifiedJsonData["sessionId"] = sessionId
+                        requestData = modifiedJsonData
+                    } else {
+                        requestData = sessionId
+                    }
+
+                    self.performPostRequest(urlString: urlString, requestData: requestData, completion: completion)
                 }
             }
+        } else {
+            // Если не требуется sessionId, просто отправляем запрос с jsonData
+            requestData = jsonData
+            self.performPostRequest(urlString: urlString, requestData: requestData, completion: completion)
         }
-    
+    }
+
+    private func performPostRequest(urlString: String, requestData: Any?, completion: @escaping CompletionHandler) {
         guard let url = URL(string: urlString) else {
+            print("Invalid URL")
             completion(nil, NSError(domain: "Invalid URL", code: -1, userInfo: nil))
             return
         }
@@ -33,12 +44,19 @@ class HttpRequestHelper {
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             
             request.timeoutInterval = 20.0
-            
-            if let jsonData = jsonData {
+
+            if let jsonData = requestData as? [String: Any] {
                 let jsonData = try JSONSerialization.data(withJSONObject: jsonData, options: [])
                 request.httpBody = jsonData
+            } else if let stringData = requestData as? String {
+                if let data = stringData.data(using: .utf8) {
+                    request.httpBody = data
+                }
             }
             
+            print("Request URL: \(urlString)")
+
+
             let session = URLSession.shared
             
             let task = session.dataTask(with: request) { data, response, error in
@@ -50,39 +68,34 @@ class HttpRequestHelper {
                 if let httpResponse = response as? HTTPURLResponse {
                     self.responseHandler(httpResponse: httpResponse, data: data, completion: completion)
                 }
-                
             }
             
             task.resume()
             
         } catch {
+            print("Error performing POST request:", error)
             completion(nil, error)
         }
     }
-}
 
-private extension HttpRequestHelper {
-    func errorHandler(error: Error, completion: @escaping CompletionHandler) {
+    private func errorHandler(error: Error, completion: @escaping CompletionHandler) {
         if error.localizedDescription.range(of: "timed out") != nil {
             NotificationManager.shared.postNotification(name: "HttpErrorStatus500")
-            return
         }
+        print("Error: \(error.localizedDescription)")
         completion(nil, error)
-        return
     }
     
-    func responseHandler(httpResponse: HTTPURLResponse, data: Data?, completion: @escaping CompletionHandler) {
+    private func responseHandler(httpResponse: HTTPURLResponse, data: Data?, completion: @escaping CompletionHandler) {
         let statusCode = httpResponse.statusCode
         print("Status Code:", statusCode)
         
         if statusCode == 100 || statusCode == 500 {
             NotificationManager.shared.postNotification(name: "HttpErrorStatus500")
-            return
         }
         
         if let data = data {
             if let responseString = String(data: data, encoding: .utf8) {
-                print("Raw Response Data:", responseString)
                 completion(responseString, nil)
             } else {
                 do {

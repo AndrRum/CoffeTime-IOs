@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F0AB5F12AFADA5D0036C759 /* LoadImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0AB5F02AFADA5D0036C759 /* LoadImageManager.swift */; };
 		1F11764E2AB5DD9700E00180 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F11764D2AB5DD9700E00180 /* LoaderView.swift */; };
 		1F1176502AB950C200E00180 /* CafeListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F11764F2AB950C200E00180 /* CafeListItem.swift */; };
 		1F248E322AA501C7002ACA5E /* CafeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F248E312AA501C7002ACA5E /* CafeListViewController.swift */; };
@@ -118,6 +119,7 @@
 
 /* Begin PBXFileReference section */
 		03BFDF4C4B3859E09E99A92B /* Pods-CoffeTimeMVCUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeTimeMVCUITests.release.xcconfig"; path = "Target Support Files/Pods-CoffeTimeMVCUITests/Pods-CoffeTimeMVCUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1F0AB5F02AFADA5D0036C759 /* LoadImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageManager.swift; sourceTree = "<group>"; };
 		1F11764D2AB5DD9700E00180 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		1F11764F2AB950C200E00180 /* CafeListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeListItem.swift; sourceTree = "<group>"; };
 		1F248E312AA501C7002ACA5E /* CafeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeListViewController.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 			children = (
 				1F9923F52A863215000852CF /* HttpRequestHelper.swift */,
 				1F4D3C9B2A9D477400915D11 /* NotificationCenterManager.swift */,
+				1F0AB5F02AFADA5D0036C759 /* LoadImageManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -807,6 +810,7 @@
 				1F9923C62A842D8F000852CF /* UserData+CoreDataClass.swift in Sources */,
 				1F3411722A9A358D007F228C /* ErrorView.swift in Sources */,
 				1F5C4E4A2AA7A2B100440CAB /* PageLabel.swift in Sources */,
+				1F0AB5F12AFADA5D0036C759 /* LoadImageManager.swift in Sources */,
 				1F9923E12A860ADF000852CF /* ProductService.swift in Sources */,
 				1F99166A2AD33E93003306DA /* PageHeaderView.swift in Sources */,
 				1F9923CC2A842D8F000852CF /* CafeProduct+CoreDataClass.swift in Sources */,

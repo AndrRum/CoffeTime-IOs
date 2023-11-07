@@ -249,11 +249,11 @@ extension CafeListView {
             if coordinates == lastCameraCoordinates {
                 camera = mapView.camera
             } else {
-                camera = GMSCameraPosition.camera(withTarget: coordinates, zoom: 11)
+                camera = GMSCameraPosition.camera(withTarget: coordinates, zoom: 16)
                 lastCameraCoordinates = coordinates
             }
         } else {
-            camera = GMSCameraPosition.camera(withLatitude: defaultLatitude, longitude: defaultLongitude, zoom: 11)
+            camera = GMSCameraPosition.camera(withLatitude: defaultLatitude, longitude: defaultLongitude, zoom: 16)
             lastCameraCoordinates = CLLocationCoordinate2D(latitude: defaultLatitude, longitude: defaultLongitude)
         }
         

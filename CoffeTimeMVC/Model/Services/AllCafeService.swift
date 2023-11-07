@@ -29,9 +29,15 @@ class AllCafeService: AllCafeServiceProtocol {
     
     func getAllCafe(url: String, completion: @escaping (NSSet?) -> Void) {
         httpHelper.sendPostRequest(url: url, jsonData: nil, withSid: true) { result, err in
-            if let response = result {
-                if let cafeList = response as? NSSet {
-                    completion(cafeList)
+            // Развертываем опционал
+            if let jsonString = result as? String {
+                print("result: \(jsonString)")
+
+                if let jsonData = jsonString.data(using: .utf8),
+                   let jsonArray = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [[String: Any]] {
+                    
+                    let cafeSet = NSSet(array: jsonArray)
+                    completion(cafeSet)
                 } else {
                     completion(nil)
                 }
@@ -40,6 +46,8 @@ class AllCafeService: AllCafeServiceProtocol {
             }
         }
     }
+
+
     
     func saveResponse(cafeList: NSSet) {
         do {

@@ -29,10 +29,25 @@ class CustomModalViewController: UIViewController {
         modalView.titleLabel.text = cafe.name
         modalView.descriptionLabel.text = cafe.descr
         if let imageName = cafe.images, !imageName.isEmpty {
-            modalView.cafeImageView.image = UIImage(named: imageName)
+            if imageName.lowercased().contains("http") {
+                if let imageUrl = URL(string: imageName) {
+                    URLSession.shared.dataTask(with: imageUrl) { data, response, error in
+                        if let data = data, let image = UIImage(data: data) {
+                            DispatchQueue.main.async {
+                                self.modalView.cafeImageView.image = image
+                            }
+                        }
+                    }.resume()
+                }
+            } else {
+                if let localImage = UIImage(named: imageName) {
+                    modalView.cafeImageView.image = localImage
+                }
+            }
         } else {
             modalView.cafeImageView.image = UIImage(named: "Espresso")
         }
+
         
         targetCafe = cafe
     }

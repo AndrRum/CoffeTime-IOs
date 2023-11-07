@@ -42,9 +42,23 @@ class CafeView: UIView {
     
     private func updateUI() {
         if let cafeImages = cafe?.images, !cafeImages.isEmpty {
-            cafeImageView.image = UIImage(named: cafeImages)
+            if cafeImages.lowercased().contains("http") {
+                if let imageUrl = URL(string: cafeImages) {
+                    URLSession.shared.dataTask(with: imageUrl) { data, response, error in
+                        if let data = data, let image = UIImage(data: data) {
+                            DispatchQueue.main.async {
+                                self.cafeImageView.image = image
+                            }
+                        }
+                    }.resume()
+                }
+            } else {
+                if let localImage = UIImage(named: cafeImages) {
+                    self.cafeImageView.image = localImage
+                }
+            }
         } else {
-            cafeImageView.image = UIImage(named: "Cafe10")
+            self.cafeImageView.image = UIImage(named: "Cafe10")
         }
         
         bottomTextLabel.text = cafe?.name

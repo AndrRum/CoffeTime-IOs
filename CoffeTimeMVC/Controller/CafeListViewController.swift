@@ -66,8 +66,21 @@ private extension CafeListViewController {
             self?.cafeListView.loaderView.stopLoader()
             
             if let cafeSet = cafeList {
-                let cafeArray = cafeSet.allObjects.compactMap { $0 as? CafeModel }
-                                
+                let cafeArray = cafeSet.allObjects.compactMap { dict -> CafeModel? in
+                    guard let cafeDict = dict as? [String: Any] else {
+                        return nil
+                    }
+                    
+                    return CafeModel(
+                        address: cafeDict["address"] as? String,
+                        coordinates: cafeDict["coordinates"] as? String,
+                        descr: cafeDict["description"] as? String,
+                        id: cafeDict["id"] as? String,
+                        images: cafeDict["images"] as? String,
+                        name: cafeDict["name"] as? String
+                    )
+                }
+                
                 self?.cafeListView.setCafeList(cafeArray)
             } else {
                 print("Failed to fetch cafe data")
@@ -121,7 +134,7 @@ extension CafeListViewController: PageHeaderViewDelegate {
 }
 
 extension CafeListViewController: DrawerMenuDelegate, DrawerMenuViewControllerDelegate {
-
+    
     private func showDrawerMenu() {
         drawerMenuViewController = DrawerMenuViewController()
         drawerMenuViewController?.delegate = self

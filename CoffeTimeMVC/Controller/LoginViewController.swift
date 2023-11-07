@@ -50,7 +50,7 @@ class LoginViewController: UIViewController {
     @objc func handleHttpErrorStatus500() {
         showHttpErrorView(from: self, errorViewController: errorViewController)
         self.loginView.loginButton.stopLoader()
-        self.loginService.saveResponse(sessionId: "Api normalno")
+        //self.loginService.saveResponse(sessionId: "Api normalno")
     }
     
     private func setupLoginView() {
