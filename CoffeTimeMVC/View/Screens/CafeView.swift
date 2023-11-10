@@ -41,28 +41,35 @@ class CafeView: UIView {
     }
     
     private func updateUI() {
-        if let cafeImages = cafe?.images, !cafeImages.isEmpty {
-            if cafeImages.lowercased().contains("http") {
-                if let imageUrl = URL(string: cafeImages) {
-                    URLSession.shared.dataTask(with: imageUrl) { data, response, error in
-                        if let data = data, let image = UIImage(data: data) {
-                            DispatchQueue.main.async {
-                                self.cafeImageView.image = image
-                            }
-                        }
-                    }.resume()
-                }
-            } else {
-                if let localImage = UIImage(named: cafeImages) {
-                    self.cafeImageView.image = localImage
-                }
-            }
-        } else {
-            self.cafeImageView.image = UIImage(named: "Cafe10")
+        guard let cafeImages = cafe?.images, !cafeImages.isEmpty else {
+            cafeImageView.image = UIImage(named: "Cafe10")
+            bottomTextLabel.text = cafe?.name
+            bottomAddressLabel.text = cafe?.address
+            return
         }
-        
+
+        if cafeImages.lowercased().contains("http"), let imageUrl = URL(string: cafeImages) {
+            downloadImage(from: imageUrl)
+        } else if let localImage = UIImage(named: cafeImages) {
+            cafeImageView.image = localImage
+        }
+
         bottomTextLabel.text = cafe?.name
         bottomAddressLabel.text = cafe?.address
+    }
+
+    func downloadImage(from url: URL) {
+        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self, let data = data, error == nil else {
+                return
+            }
+
+            if let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    self.cafeImageView.image = image
+                }
+            }
+        }.resume()
     }
     
     override func layoutSubviews() {

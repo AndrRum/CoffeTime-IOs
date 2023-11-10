@@ -46,35 +46,49 @@ class CafeListItem: UITableViewCell {
     func setParametersForCafeItem(_ cafeItem: CafeModel) {
         self.cafeItem = cafeItem
         
-        if (cafeItem.images?.count == 0) {
-            if let gifURL = Bundle.main.url(forResource: "Ricardo", withExtension: "gif") {
-                if let imageData = try? Data(contentsOf: gifURL) {
-                    let animatedImage = UIImage.gifImageWithData(imageData)
-                    iconView.image = animatedImage
-                }
-            }
+        if cafeItem.images?.isEmpty ?? true {
+            setDefaultImage()
         } else {
-            if let imageUrlString = cafeItem.images, let imageUrl = URL(string: imageUrlString) {
-                if imageUrlString.lowercased().contains("http") {
-                    URLSession.shared.dataTask(with: imageUrl) { data, response, error in
-                        if let data = data, let image = UIImage(data: data) {
-                            DispatchQueue.main.async {
-                                self.iconView.image = image
-                            }
-                        }
-                    }.resume()
-                } else {
-                    if let localImage = UIImage(named: imageUrlString) {
-                        self.iconView.image = localImage
-                    }
-                }
-            }
-
+            loadImage(for: cafeItem)
         }
-        
+
         titleLabel.text = cafeItem.name
         descriptionLabel.text = "мы находимся:"
         addressLabel.text = cafeItem.address
+    }
+
+    func setDefaultImage() {
+        if let gifURL = Bundle.main.url(forResource: "Ricardo", withExtension: "gif"),
+           let imageData = try? Data(contentsOf: gifURL),
+           let animatedImage = UIImage.gifImageWithData(imageData) {
+            iconView.image = animatedImage
+        }
+    }
+
+    func loadImage(for cafeItem: CafeModel) {
+        guard let imageUrlString = cafeItem.images, let imageUrl = URL(string: imageUrlString) else {
+            return
+        }
+
+        if imageUrlString.lowercased().contains("http") {
+            downloadImage(from: imageUrl)
+        } else if let localImage = UIImage(named: imageUrlString) {
+            iconView.image = localImage
+        }
+    }
+
+    func downloadImage(from url: URL) {
+        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self, let data = data, error == nil else {
+                return
+            }
+
+            if let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    self.iconView.image = image
+                }
+            }
+        }.resume()
     }
 }
 

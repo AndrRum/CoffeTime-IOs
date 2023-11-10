@@ -28,28 +28,36 @@ class CustomModalViewController: UIViewController {
     func configure(with cafe: CafeModel) {
         modalView.titleLabel.text = cafe.name
         modalView.descriptionLabel.text = cafe.descr
+
         if let imageName = cafe.images, !imageName.isEmpty {
-            if imageName.lowercased().contains("http") {
-                if let imageUrl = URL(string: imageName) {
-                    URLSession.shared.dataTask(with: imageUrl) { data, response, error in
-                        if let data = data, let image = UIImage(data: data) {
-                            DispatchQueue.main.async {
-                                self.modalView.cafeImageView.image = image
-                            }
-                        }
-                    }.resume()
-                }
-            } else {
-                if let localImage = UIImage(named: imageName) {
-                    modalView.cafeImageView.image = localImage
-                }
-            }
+            loadImage(with: imageName)
         } else {
             modalView.cafeImageView.image = UIImage(named: "Espresso")
         }
 
-        
         targetCafe = cafe
+    }
+
+    func loadImage(with imageName: String) {
+        if imageName.lowercased().contains("http"), let imageUrl = URL(string: imageName) {
+            downloadImage(from: imageUrl)
+        } else if let localImage = UIImage(named: imageName) {
+            modalView.cafeImageView.image = localImage
+        }
+    }
+
+    func downloadImage(from url: URL) {
+        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self, let data = data, error == nil else {
+                return
+            }
+
+            if let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    self.modalView.cafeImageView.image = image
+                }
+            }
+        }.resume()
     }
     
     func setupModalView() {
