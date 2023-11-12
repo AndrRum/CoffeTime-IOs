@@ -340,6 +340,18 @@ extension CafeListView {
     }
 }
 
+extension CafeListView {
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        guard let cafe = marker.userData as? CafeModel else {
+            return false
+        }
+        
+        delegate?.showCustomModal(for: cafe)
+        
+        return true
+    }
+}
+
 extension CafeListView: CafeCarouselViewDelegate {
     
     @objc private func searchButtonTapped() {
@@ -360,17 +372,5 @@ extension CafeListView: CafeCarouselViewDelegate {
     private func moveMapTo(coordinates: CLLocationCoordinate2D) {
         let camera = GMSCameraPosition.camera(withTarget: coordinates, zoom: 16)
         mapView.animate(to: camera)
-    }
-}
-
-extension CafeListView {
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        guard let cafe = marker.userData as? CafeModel else {
-            return false
-        }
-        
-        delegate?.showCustomModal(for: cafe)
-        
-        return true
     }
 }
