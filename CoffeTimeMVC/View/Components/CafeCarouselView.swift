@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+protocol CafeCarouselViewDelegate: AnyObject {
+    func didSelectCafe(at index: Int)
+}
+
 class CafeCarouselView: UIView {
 
     private let scrollView: UIScrollView = {
@@ -25,6 +29,8 @@ class CafeCarouselView: UIView {
         stackView.distribution = .fillEqually
         return stackView
     }()
+    
+    weak var delegate: CafeCarouselViewDelegate?
 
     private var cafeNames: [String] = []
 
@@ -87,7 +93,14 @@ class CafeCarouselView: UIView {
             button.layer.shadowOffset = CGSize(width: 0, height: 2)
             button.layer.shadowOpacity = 0.1
             button.layer.shadowRadius = 4
-            button.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+            
+            if #available(iOS 15.0, *) {
+                var newConfiguration = UIButton.Configuration.plain()
+                newConfiguration.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+                button.configuration = newConfiguration
+            } else {
+                button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+            }
             
             button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
             
@@ -96,6 +109,8 @@ class CafeCarouselView: UIView {
     }
     
     @objc func buttonTapped(_ sender: UIButton) {
-        print("beb")
+        if let index = stackView.arrangedSubviews.firstIndex(of: sender) {
+            delegate?.didSelectCafe(at: index)
+        }
     }
 }

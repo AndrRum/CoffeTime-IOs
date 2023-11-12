@@ -29,7 +29,15 @@ class SearchButton: UIButton {
         layer.cornerRadius = min(bounds.width, bounds.height) / 2
         layer.borderWidth = 1
         layer.borderColor = UIColor.gray.cgColor
-        contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        
+        if #available(iOS 15.0, *) {
+            var newConfiguration = UIButton.Configuration.plain()
+            newConfiguration.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+            configuration = newConfiguration
+        } else {
+            contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        }
+        
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.3
         layer.shadowOffset = CGSize(width: 0, height: 2)
