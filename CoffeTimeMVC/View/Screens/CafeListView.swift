@@ -17,12 +17,15 @@ protocol CafeListDelegate: AnyObject {
 
 class CafeListView: UIView, GMSMapViewDelegate {
     
+    public var allCafe = [CafeModel]()
+    
     private(set) var loaderView = LoaderView()
     private(set) var pageHeader = PageHeaderView()
     private(set) var switchButton = UISegmentedControl(items: ["Map", "List"])
     private(set) var tableView = UITableView(frame: .zero, style: .grouped)
     private(set) var mapView: GMSMapView!
-    private(set) var allCafe = [CafeModel]()
+    private(set) var searchButton = SearchButton()
+    private(set) var cafeCarouselView = CafeCarouselView()
     
     private let defaultLatitude: Double = -33.86
     private let defaultLongitude: Double = 151.20
@@ -61,6 +64,7 @@ extension CafeListView {
         setupHeaderView()
         setupLoaderView()
         setupMapView()
+        setupSearchButton()
         configureSwitchButton()
         configureTableView()
         
@@ -205,6 +209,35 @@ extension CafeListView {
         }
     }
     
+    func setupSearchButton() {
+        searchButton.translatesAutoresizingMaskIntoConstraints = false
+        searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        searchButton.layer.borderColor = UIColor.white.cgColor
+
+        addSubview(searchButton)
+
+        NSLayoutConstraint.activate([
+            searchButton.widthAnchor.constraint(equalToConstant: 45),
+            searchButton.heightAnchor.constraint(equalToConstant: 45),
+            searchButton.bottomAnchor.constraint(equalTo: mapView.bottomAnchor, constant: -48),
+            searchButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -48)
+        ])
+        
+        searchButton.isHidden = true
+    }
+    
+    func setupCarouselView(_ carouselView: CafeCarouselView) {
+        addSubview(carouselView)
+        carouselView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            carouselView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            carouselView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            carouselView.bottomAnchor.constraint(equalTo: searchButton.topAnchor, constant: -8),
+            carouselView.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+    
     private func showMapView() {
         mapView.isHidden = false
         mapView.isUserInteractionEnabled = true
@@ -215,6 +248,8 @@ extension CafeListView {
         
         setupMarkers()
         setupCamera(cafeList: allCafe)
+        
+        searchButton.isHidden = false
     }
     
     func hideMapView() {
@@ -226,6 +261,8 @@ extension CafeListView {
                 mapView.removeGestureRecognizer(gesture)
             }
         }
+        
+        searchButton.isHidden = true
     }
     
     func coordinates(from cafe: CafeModel) -> CLLocationCoordinate2D? {
@@ -286,6 +323,11 @@ extension CafeListView {
     
     @objc func handleMapTap(_ sender: UITapGestureRecognizer) {
         delegate?.handleMapTap(sender)
+    }
+    
+    @objc private func searchButtonTapped() {
+        cafeCarouselView.configure(with: allCafe)
+        setupCarouselView(cafeCarouselView)
     }
 }
 

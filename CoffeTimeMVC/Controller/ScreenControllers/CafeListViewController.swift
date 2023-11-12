@@ -91,15 +91,13 @@ private extension CafeListViewController {
 
 
 extension CafeListViewController: CafeListDelegate, ModalDelegate {
-    
-    
+        
     func handleMapTap(_ sender: UITapGestureRecognizer) {
         let location = sender.location(in: cafeListView.mapView)
         let coordinate = cafeListView.mapView.projection.coordinate(for: location)
         
         cafeListView.lastCameraCoordinates?.latitude = coordinate.latitude
         cafeListView.lastCameraCoordinates?.longitude = coordinate.longitude
-        print("coord \(coordinate)")
     }
     
     func showCustomModal(for cafe: CafeModel) {
