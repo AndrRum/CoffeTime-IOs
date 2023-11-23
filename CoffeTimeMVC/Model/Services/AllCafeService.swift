@@ -10,8 +10,6 @@ import CoreData
 protocol AllCafeServiceProtocol: AnyObject {
     init(coreDataManager: CoreDataManager)
     func getAllCafe(url: String, completion: @escaping (NSSet?) -> Void) -> Void
-    func saveResponse(cafeList: NSSet) -> Void
-    func fetchCafeListFromCoreData(completion: @escaping (NSSet?) -> Void) -> Void
 }
 
 class AllCafeService: AllCafeServiceProtocol {
@@ -29,7 +27,7 @@ class AllCafeService: AllCafeServiceProtocol {
     
     func getAllCafe(url: String, completion: @escaping (NSSet?) -> Void) {
         httpHelper.sendPostRequest(url: url, jsonData: nil, withSid: true) { result, err in
-            // Развертываем опционал
+
             if let jsonString = result as? String {
                 print("result: \(jsonString)")
 
@@ -44,43 +42,6 @@ class AllCafeService: AllCafeServiceProtocol {
             } else {
                 completion(nil)
             }
-        }
-    }
-
-
-    
-    func saveResponse(cafeList: NSSet) {
-        do {
-            context.performAndWait {
-                let allCafeDataEntity = allCafeModel.mapToEntityInContext(context)
-                allCafeDataEntity.cafelist = cafeList
-                
-                do {
-                    try context.save()
-                    print("Cafe List saved to Core Data.")
-                } catch {
-                    print("Error saving cafelist:", error)
-                }
-            }
-        }
-    }
-    
-    func fetchCafeListFromCoreData(completion: @escaping (NSSet?) -> Void) {
-        let fetchRequest: NSFetchRequest<AllCafe> = AllCafe.fetchRequest()
-        do {
-            let allCafeDataArray = try context.fetch(fetchRequest)
-            if let allCafeData = allCafeDataArray.first {
-                if let list = allCafeData.cafelist {
-                    completion(list)
-                } else {
-                    completion(nil)
-                }
-            } else {
-                completion(nil)
-            }
-        } catch {
-            print("Error fetching AllCafeData from Core Data:", error)
-            completion(nil)
         }
     }
 }

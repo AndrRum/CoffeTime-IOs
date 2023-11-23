@@ -17,12 +17,22 @@ class CafeViewController: UIViewController {
     }
     
     private var cafeView = CafeView()
+    private var cafeProductsService = AllCafeProductsService()
+    
     private var drawerMenuViewController: DrawerMenuViewController?
     
     override func loadView() {
         super.loadView()
         navigationController?.navigationBar.isHidden = true
         setupCafeView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationManager.shared.addObserver(observer: self, selector: #selector(handleHttpErrorStatus500), name: "HttpErrorStatus500")
+        
+        getCafeProductsData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -39,6 +49,23 @@ class CafeViewController: UIViewController {
         cafeView.setHeaderViewDelegate(self)
         cafeView.cafe = cafe
         self.view = cafeView
+    }
+    
+    @objc private func handleHttpErrorStatus500() {
+        
+    }
+}
+
+private extension CafeViewController {
+    
+    func getCafeProductsData() {
+        //cafeListView.startLoader()
+        
+        cafeProductsService.getAllCafeProducts(url: ApiEndpoints.allCafeProducts, cafeId: cafe?.id ?? "") {
+            allProductsList in
+            
+            print("result: \(String(describing: allProductsList))")
+        }
     }
 }
 

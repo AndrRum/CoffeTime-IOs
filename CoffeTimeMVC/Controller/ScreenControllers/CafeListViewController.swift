@@ -80,7 +80,7 @@ private extension CafeListViewController {
                         name: cafeDict["name"] as? String
                     )
                 }
-                
+            
                 self?.cafeListView.setCafeList(cafeArray)
             } else {
                 print("Failed to fetch cafe data")

@@ -16,7 +16,13 @@ class HttpRequestHelper {
 
                     if var modifiedJsonData = jsonData {
                         modifiedJsonData["sessionId"] = sessionId
-                        requestData = modifiedJsonData
+
+                        let transformedRequest = modifiedJsonData.compactMapValues { value in
+                            (value as AnyObject).replacingOccurrences(of: "\"", with: "")
+                        }
+
+                        requestData = transformedRequest
+                        print("request", requestData as Any)
                     } else {
                         requestData = sessionId
                     }
@@ -47,6 +53,7 @@ class HttpRequestHelper {
 
             if let jsonData = requestData as? [String: Any] {
                 let jsonData = try JSONSerialization.data(withJSONObject: jsonData, options: [])
+                print("jsonData", jsonData)
                 request.httpBody = jsonData
             } else if let stringData = requestData as? String {
                 if let data = stringData.data(using: .utf8) {
