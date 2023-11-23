@@ -21,9 +21,10 @@ class CafeView: UIView {
     }
     
     private(set) var pageHeader = PageHeaderView()
-    private let cafeImageView = UIImageView()
-    private let bottomTextLabel = UILabel()
-    private let bottomAddressLabel = UILabel()
+    private(set) var cafeImageView = UIImageView()
+    private(set) var bottomTextLabel = UILabel()
+    private(set) var bottomAddressLabel = UILabel()
+    private(set) var switchButtonView = SwitchButtonView()
     
     weak var delegate: CafeViewDelegate?
     
@@ -55,7 +56,8 @@ class CafeView: UIView {
         }
 
         bottomTextLabel.text = cafe?.name
-        bottomAddressLabel.text = cafe?.address
+        bottomAddressLabel.text = cafe?.address?.components(separatedBy: ",").first?.trimmingCharacters(in: .whitespacesAndNewlines)
+
     }
 
     func downloadImage(from url: URL) {
@@ -89,6 +91,7 @@ extension CafeView {
         setupCafeImageView()
         setupBottomNameTextLabel()
         setupBottomAddressTextLabel()
+        setupSwitchButtonView()
     }
     
     func setupHeaderView() {
@@ -149,6 +152,24 @@ extension CafeView {
             bottomAddressLabel.leadingAnchor.constraint(equalTo: cafeImageView.leadingAnchor, constant: 16),
             bottomAddressLabel.bottomAnchor.constraint(equalTo: cafeImageView.bottomAnchor, constant: -8)
         ])
+    }
+    
+    func setupSwitchButtonView() {
+        addSubview(switchButtonView)
+
+        switchButtonView.translatesAutoresizingMaskIntoConstraints = false
+        switchButtonView.delegate = self
+        
+        NSLayoutConstraint.activate([
+            switchButtonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            switchButtonView.bottomAnchor.constraint(equalTo: cafeImageView.bottomAnchor, constant: -8)
+        ])
+    }
+}
+
+extension CafeView: SwitchButtonViewDelegate {
+    func switchValueChanged(isOn: Bool) {
+        print("click")
     }
 }
 
