@@ -32,7 +32,7 @@ class CustomModalViewController: UIViewController {
         if let imageName = cafe.images, !imageName.isEmpty {
             loadImage(with: imageName)
         } else {
-            modalView.cafeImageView.image = UIImage(named: "Espresso")
+            modalView.cafeImageView.image = UIImage(named: "DefaultProductImage")
         }
 
         targetCafe = cafe
