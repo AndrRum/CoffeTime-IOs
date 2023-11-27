@@ -65,30 +65,24 @@ class CafeView: UIView {
             bottomAddressLabel.text = cafe?.address
             return
         }
-
-        if cafeImages.lowercased().contains("http"), let imageUrl = URL(string: cafeImages) {
-            downloadImage(from: imageUrl)
-        } else if let localImage = UIImage(named: cafeImages) {
-            cafeImageView.image = localImage
-        }
-
-        bottomTextLabel.text = cafe?.name
-        bottomAddressLabel.text = cafe?.address?.components(separatedBy: ",").first?.trimmingCharacters(in: .whitespacesAndNewlines)
-
-    }
-
-    func downloadImage(from url: URL) {
-        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard let self = self, let data = data, error == nil else {
-                return
-            }
-
-            if let image = UIImage(data: data) {
+        
+        LoadImageManager.loadImage(from: cafeImages) { result in
+            switch result {
+            case .success(let image):
                 DispatchQueue.main.async {
                     self.cafeImageView.image = image
                 }
+            case .failure(let error):
+                print("Error loading image: \(error)")
+                DispatchQueue.main.async {
+                    self.cafeImageView.image = UIImage(named: "DefaultImage")
+                }
             }
-        }.resume()
+        }
+        
+        bottomTextLabel.text = cafe?.name
+        bottomAddressLabel.text = cafe?.address?.components(separatedBy: ",").first?.trimmingCharacters(in: .whitespacesAndNewlines)
+
     }
     
     override func layoutSubviews() {

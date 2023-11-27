@@ -47,7 +47,7 @@ class ProductListItem: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureUI(name: String, price: String, imageUrl: String, isFavorite: Bool) {
+    func configureUI(name: String, price: String, imageUrl: String?, isFavorite: Bool) {
         backgroundColor = .white
         layer.borderWidth = 1
         layer.borderColor = UIColor.lightGray.cgColor
@@ -55,9 +55,24 @@ class ProductListItem: UIView {
         nameLabel.text = name
         priceLabel.text = price
         
-        if let imageUrl = URL(string: imageUrl) {
-            loadImage(from: imageUrl, into: productImageView)
+        guard let imageUrlString = imageUrl, let imageUrl = URL(string: imageUrlString) else {
+            return
         }
+        
+        LoadImageManager.loadImage(from: imageUrl) { result in
+            switch result {
+            case .success(let image):
+                DispatchQueue.main.async {
+                    self.productImageView.image = image
+                }
+            case .failure(let error):
+                print("Error loading image: \(error)")
+                DispatchQueue.main.async {
+                    self.productImageView.image = UIImage(named: "DefaultProductImage")
+                }
+            }
+        }
+
         
         if isFavorite {
             favoriteImageView.image = UIImage(systemName: "heart.fill")
@@ -68,16 +83,6 @@ class ProductListItem: UIView {
         }
         
         setupConstraints()
-    }
-    
-    private func loadImage(from url: URL, into imageView: UIImageView) {
-        DispatchQueue.global().async {
-            if let imageData = try? Data(contentsOf: url), let image = UIImage(data: imageData) {
-                DispatchQueue.main.async {
-                    imageView.image = image
-                }
-            }
-        }
     }
     
     private func setupConstraints() {

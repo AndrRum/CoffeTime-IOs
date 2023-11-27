@@ -8,31 +8,38 @@
 import Foundation
 import UIKit
 
-class LoadCafeImageManager {
-    
-    static func loadImage(for cafe: CafeModel?, placeholder: String, completion: @escaping (String) -> Void) {
-        guard let imageName = cafe?.images, !imageName.isEmpty else {
-            completion(placeholder)
-            return
-        }
-
-        if imageName.lowercased().contains("http"), let imageUrl = URL(string: imageName) {
-            URLSession.shared.dataTask(with: imageUrl) { data, response, error in
-                if data != nil {
-                    DispatchQueue.main.async {
-                        completion(imageName)
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        completion(placeholder)
-                    }
-                }
-            }.resume()
-        } else {
-            DispatchQueue.main.async {
-                completion(imageName)
+class LoadImageManager {
+    static func loadImage(from url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
             }
+
+            guard let data = data, let image = UIImage(data: data) else {
+                completion(.failure(ImageLoadingError.invalidData))
+                return
+            }
+
+            DispatchQueue.main.async {
+                completion(.success(image))
+            }
+        }.resume()
+    }
+
+    static func loadImage(from urlString: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
+        if let url = URL(string: urlString) {
+            loadImage(from: url, completion: completion)
+        } else {
+            completion(.failure(ImageLoadingError.invalidURL))
         }
     }
 }
+
+enum ImageLoadingError: Error {
+    case invalidData
+    case invalidURL
+    // Дополнительные возможные ошибки
+}
+
 

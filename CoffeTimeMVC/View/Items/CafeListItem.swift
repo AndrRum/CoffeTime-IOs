@@ -69,26 +69,22 @@ class CafeListItem: UITableViewCell {
         guard let imageUrlString = cafeItem.images, let imageUrl = URL(string: imageUrlString) else {
             return
         }
-
-        if imageUrlString.lowercased().contains("http") {
-            downloadImage(from: imageUrl)
-        } else if let localImage = UIImage(named: imageUrlString) {
-            iconView.image = localImage
-        }
-    }
-
-    func downloadImage(from url: URL) {
-        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard let self = self, let data = data, error == nil else {
-                return
-            }
-
-            if let image = UIImage(data: data) {
+        
+        
+        LoadImageManager.loadImage(from: imageUrl) { result in
+            switch result {
+            case .success(let image):
                 DispatchQueue.main.async {
                     self.iconView.image = image
                 }
+            case .failure(let error):
+                print("Error loading image: \(error)")
+                DispatchQueue.main.async {
+                    self.iconView.image = UIImage(named: "DefaultImage")
+                }
             }
-        }.resume()
+        }
+
     }
 }
 
