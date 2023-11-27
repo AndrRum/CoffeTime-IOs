@@ -20,11 +20,28 @@ class CafeView: UIView {
         }
     }
     
+    var products: [ProductModel]? = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.productsCollectionView.reloadData()
+            }
+        }
+    }
+
+    
     private(set) var pageHeader = PageHeaderView()
     private(set) var cafeImageView = UIImageView()
     private(set) var bottomTextLabel = UILabel()
     private(set) var bottomAddressLabel = UILabel()
     private(set) var switchButtonView = SwitchButtonView()
+    
+    private(set) var productsCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .white
+        return collectionView
+    }()
     
     weak var delegate: CafeViewDelegate?
     
@@ -92,6 +109,7 @@ extension CafeView {
         setupBottomNameTextLabel()
         setupBottomAddressTextLabel()
         setupSwitchButtonView()
+        setupProductsCollectionView()
     }
     
     func setupHeaderView() {
@@ -164,6 +182,44 @@ extension CafeView {
             switchButtonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             switchButtonView.bottomAnchor.constraint(equalTo: cafeImageView.bottomAnchor, constant: -8)
         ])
+    }
+    
+    private func setupProductsCollectionView() {
+        productsCollectionView.register(ProductsCollectionViewCell.self, forCellWithReuseIdentifier: "ProductsCollectionViewCell")
+        productsCollectionView.dataSource = self
+        productsCollectionView.delegate = self
+        productsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(productsCollectionView)
+        
+        NSLayoutConstraint.activate([
+            productsCollectionView.topAnchor.constraint(equalTo: cafeImageView.bottomAnchor, constant: 20),
+            productsCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            productsCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            productsCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+    }
+}
+
+extension CafeView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return products?.count ?? 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductsCollectionViewCell", for: indexPath) as? ProductsCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+
+        if let product = products?[indexPath.item] {
+            cell.configure(with: product)
+        }
+
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.width / 2 - 6, height: 223)
     }
 }
 

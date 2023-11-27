@@ -6,11 +6,16 @@
 //
 
 import Foundation
-
 import CoreData
 
 struct ProductModel {
-    
+    var cofeId: String?
+    var id: String?
+    var productName: String?
+    var price: Int32
+    var favorite: Bool
+    var imagesPath: String?
+    var attribute: NSSet?
 }
 
 extension ProductModel: EntityModelMapProtocol {
@@ -25,6 +30,13 @@ extension ProductModel: EntityModelMapProtocol {
     
     static func mapFromEntity(_ entity: Product) -> Self {
         
-        return .init()
+        return .init(
+            cofeId: entity.cofeId,
+            id: entity.id, 
+            price: entity.price,
+            favorite: entity.favorite,
+            imagesPath: entity.imagesPath,
+            attribute: entity.attribute
+        )
     }
 }

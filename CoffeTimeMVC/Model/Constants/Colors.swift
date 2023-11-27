@@ -15,4 +15,6 @@ struct Colors {
     static let separator = UIColor(red: 234/255, green: 234/255, blue: 234/255, alpha: 1)
     static let gray = UIColor(red: 71/255, green: 71/255, blue: 71/255, alpha: 1)
     static let gray2 = UIColor(red: 113/255, green: 113/255, blue: 113/255, alpha: 1)
+    static let gray3 = UIColor(red: 203/255, green: 203/255, blue: 203/255, alpha: 1)
+    static let red = UIColor(red: 235/255, green: 92/255, blue: 91/255, alpha: 1)
 }

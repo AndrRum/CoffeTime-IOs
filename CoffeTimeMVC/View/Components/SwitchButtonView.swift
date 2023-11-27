@@ -13,7 +13,7 @@ protocol SwitchButtonViewDelegate: AnyObject {
 
 class SwitchButtonView: UIView {
 
-    private let switchButton = UISwitch()
+    private let heartButton = UIButton(type: .system)
     weak var delegate: SwitchButtonViewDelegate?
 
     override init(frame: CGRect) {
@@ -26,24 +26,26 @@ class SwitchButtonView: UIView {
     }
 
     func configureUI() {
-        addSubview(switchButton)
+        addSubview(heartButton)
 
-        switchButton.translatesAutoresizingMaskIntoConstraints = false
-        switchButton.tintColor = Colors.gray
-        switchButton.onTintColor = Colors.buttonGreen
+        heartButton.translatesAutoresizingMaskIntoConstraints = false
+        heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        heartButton.setImage(UIImage(systemName: "heart.fill"), for: .selected)
 
-
-        switchButton.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
+        heartButton.tintColor = Colors.red
+        heartButton.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
-            switchButton.topAnchor.constraint(equalTo: topAnchor),
-            switchButton.leadingAnchor.constraint(equalTo: leadingAnchor),
-            switchButton.trailingAnchor.constraint(equalTo: trailingAnchor),
-            switchButton.bottomAnchor.constraint(equalTo: bottomAnchor),
+            heartButton.topAnchor.constraint(equalTo: topAnchor),
+            heartButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+            heartButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            heartButton.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
 
-    @objc private func switchValueChanged(_ sender: UISwitch) {
-        delegate?.switchValueChanged(isOn: sender.isOn)
+    @objc private func buttonTapped(_ sender: UIButton) {
+        delegate?.switchValueChanged(isOn: !sender.isSelected)
+        sender.isSelected.toggle()
     }
 }
+

@@ -92,8 +92,8 @@ class PageHeaderView: UIView {
         favoritesButton = UIButton(type: .custom)
         guard let favoritesButton = favoritesButton else { return }
 
-        favoritesButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        favoritesButton.tintColor = Colors.buttonGreen
+        favoritesButton.setImage(UIImage(systemName: "text.justify"), for: .normal)
+        favoritesButton.tintColor = Colors.gray
 
         addSubview(favoritesButton)
         favoritesButton.translatesAutoresizingMaskIntoConstraints = false
