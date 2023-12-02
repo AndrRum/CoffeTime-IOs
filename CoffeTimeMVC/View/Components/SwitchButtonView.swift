@@ -32,7 +32,7 @@ class SwitchButtonView: UIView {
         heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
         heartButton.setImage(UIImage(systemName: "heart.fill"), for: .selected)
 
-        heartButton.tintColor = Colors.red
+        heartButton.tintColor = Colors.gray
         heartButton.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
@@ -46,6 +46,12 @@ class SwitchButtonView: UIView {
     @objc private func buttonTapped(_ sender: UIButton) {
         delegate?.switchValueChanged(isOn: !sender.isSelected)
         sender.isSelected.toggle()
+        
+        if (sender.isSelected) {
+            heartButton.tintColor = Colors.red
+        } else {
+            heartButton.tintColor = Colors.gray
+        }
     }
 }
 

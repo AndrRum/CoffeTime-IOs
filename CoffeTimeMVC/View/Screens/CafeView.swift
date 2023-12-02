@@ -201,7 +201,7 @@ extension CafeView {
         addSubview(productsCollectionView)
         
         NSLayoutConstraint.activate([
-            productsCollectionView.topAnchor.constraint(equalTo: cafeImageView.bottomAnchor, constant: 20),
+            productsCollectionView.topAnchor.constraint(equalTo: cafeImageView.bottomAnchor, constant: 8),
             productsCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             productsCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             productsCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
@@ -228,7 +228,15 @@ extension CafeView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width / 2 - 6, height: 223)
+        return CGSize(width: collectionView.bounds.width / 2 - 12, height: 223)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
 }
 
