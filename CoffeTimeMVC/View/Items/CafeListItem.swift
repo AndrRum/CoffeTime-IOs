@@ -18,12 +18,12 @@ class CafeListItem: UITableViewCell {
     
     private(set) var cafeItem: CafeModel!
     
-    private var container = UIView(frame: .zero)
-    private var iconView = UIImageView(frame: .zero)
-    private var titleLabel = UILabel(frame: .zero)
-    private var descriptionLabel = UILabel(frame: .zero)
-    private var addressLabel = UILabel(frame: .zero)
-    private var detailsButton = UIButton(type: .custom)
+    private(set) var container = UIView(frame: .zero)
+    private(set) var iconView = UIImageView(frame: .zero)
+    private(set) var titleLabel = UILabel(frame: .zero)
+    private(set) var descriptionLabel = UILabel(frame: .zero)
+    private(set) var addressLabel = UILabel(frame: .zero)
+    private(set) var detailsButton = UIButton(type: .custom)
     
     weak var delegate: CafeListItemDelegate?
     
@@ -66,25 +66,29 @@ class CafeListItem: UITableViewCell {
     }
 
     func loadImage(for cafeItem: CafeModel) {
-        guard let imageUrlString = cafeItem.images, let imageUrl = URL(string: imageUrlString) else {
+        
+        guard let imageUrlString = cafeItem.images else {
             return
         }
         
-        
-        LoadImageManager.loadImage(from: imageUrl) { result in
-            switch result {
-            case .success(let image):
-                DispatchQueue.main.async {
-                    self.iconView.image = image
-                }
-            case .failure(let error):
-                print("Error loading image: \(error)")
-                DispatchQueue.main.async {
-                    self.iconView.image = UIImage(named: "DefaultImage")
+        if imageUrlString.lowercased().contains("http"), let imageUrl = URL(string: imageUrlString) {
+            LoadImageManager.loadImage(from: imageUrl) { result in
+                switch result {
+                case .success(let image):
+                    DispatchQueue.main.async {
+                        self.iconView.image = image
+                    }
+                case .failure(let error):
+                    print("Error loading image: \(error)")
+                    DispatchQueue.main.async {
+                        self.iconView.image = UIImage(named: "DefaultImage")
+                    }
                 }
             }
+        } else {
+            self.iconView.image = UIImage(named: imageUrlString)
         }
-
+        
     }
 }
 

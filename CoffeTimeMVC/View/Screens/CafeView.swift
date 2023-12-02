@@ -66,19 +66,7 @@ class CafeView: UIView {
             return
         }
         
-        LoadImageManager.loadImage(from: cafeImages) { result in
-            switch result {
-            case .success(let image):
-                DispatchQueue.main.async {
-                    self.cafeImageView.image = image
-                }
-            case .failure(let error):
-                print("Error loading image: \(error)")
-                DispatchQueue.main.async {
-                    self.cafeImageView.image = UIImage(named: "DefaultImage")
-                }
-            }
-        }
+        loadImage(imageUrl: cafeImages)
         
         bottomTextLabel.text = cafe?.name
         bottomAddressLabel.text = cafe?.address?.components(separatedBy: ",").first?.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -90,6 +78,33 @@ class CafeView: UIView {
         
         let gradientLayer = cafeImageView.layer.sublayers?.first as? CAGradientLayer
         gradientLayer?.frame = cafeImageView.bounds
+    }
+}
+
+private extension CafeView {
+    func loadImage(imageUrl: String?) {
+        guard let imageUrlString = imageUrl else {
+            return
+        }
+        
+        
+        if imageUrlString.lowercased().contains("http"), let imageUrl = URL(string: imageUrlString) {
+            LoadImageManager.loadImage(from: imageUrl) { result in
+                switch result {
+                case .success(let image):
+                    DispatchQueue.main.async {
+                        self.cafeImageView.image = image
+                    }
+                case .failure(let error):
+                    print("Error loading image: \(error)")
+                    DispatchQueue.main.async {
+                        self.cafeImageView.image = UIImage(named: "DefaultImage")
+                    }
+                }
+            }
+        } else {
+            self.cafeImageView.image = UIImage(named: imageUrlString)
+        }
     }
 }
 

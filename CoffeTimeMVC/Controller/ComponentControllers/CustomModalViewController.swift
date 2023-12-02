@@ -30,34 +30,37 @@ class CustomModalViewController: UIViewController {
         modalView.descriptionLabel.text = cafe.descr
 
         if let imageName = cafe.images, !imageName.isEmpty {
-            loadImage(with: imageName)
+            loadImage(imageUrl: imageName)
         } else {
             modalView.cafeImageView.image = UIImage(named: "DefaultProductImage")
         }
 
         targetCafe = cafe
     }
-
-    func loadImage(with imageName: String) {
-        if imageName.lowercased().contains("http"), let imageUrl = URL(string: imageName) {
-            downloadImage(from: imageUrl)
-        } else if let localImage = UIImage(named: imageName) {
-            modalView.cafeImageView.image = localImage
+    
+    func loadImage(imageUrl: String?) {
+        guard let imageUrlString = imageUrl else {
+            return
         }
-    }
-
-    func downloadImage(from url: URL) {
-        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard let self = self, let data = data, error == nil else {
-                return
-            }
-
-            if let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    self.modalView.cafeImageView.image = image
+        
+        
+        if imageUrlString.lowercased().contains("http"), let imageUrl = URL(string: imageUrlString) {
+            LoadImageManager.loadImage(from: imageUrl) { result in
+                switch result {
+                case .success(let image):
+                    DispatchQueue.main.async {
+                        self.modalView.cafeImageView.image = image
+                    }
+                case .failure(let error):
+                    print("Error loading image: \(error)")
+                    DispatchQueue.main.async {
+                        self.modalView.cafeImageView.image = UIImage(named: "DefaultImage")
+                    }
                 }
             }
-        }.resume()
+        } else {
+            self.modalView.cafeImageView.image = UIImage(named: imageUrlString)
+        }
     }
     
     func setupModalView() {

@@ -55,24 +55,7 @@ class ProductListItem: UIView {
         nameLabel.text = name
         priceLabel.text = price
         
-        guard let imageUrlString = imageUrl, let imageUrl = URL(string: imageUrlString) else {
-            return
-        }
-        
-        LoadImageManager.loadImage(from: imageUrl) { result in
-            switch result {
-            case .success(let image):
-                DispatchQueue.main.async {
-                    self.productImageView.image = image
-                }
-            case .failure(let error):
-                print("Error loading image: \(error)")
-                DispatchQueue.main.async {
-                    self.productImageView.image = UIImage(named: "DefaultProductImage")
-                }
-            }
-        }
-
+        loadImage(imageUrl: imageUrl)
         
         if isFavorite {
             favoriteImageView.image = UIImage(systemName: "heart.fill")
@@ -83,6 +66,33 @@ class ProductListItem: UIView {
         }
         
         setupConstraints()
+    }
+    
+    func loadImage(imageUrl: String?) {
+        
+        guard let imageUrlString = imageUrl else {
+            return
+        }
+        
+        
+        if imageUrlString.lowercased().contains("http"), let imageUrl = URL(string: imageUrlString) {
+            LoadImageManager.loadImage(from: imageUrl) { result in
+                switch result {
+                case .success(let image):
+                    DispatchQueue.main.async {
+                        self.productImageView.image = image
+                    }
+                case .failure(let error):
+                    print("Error loading image: \(error)")
+                    DispatchQueue.main.async {
+                        self.productImageView.image = UIImage(named: "DefaultProductImage")
+                    }
+                }
+            }
+        } else {
+            self.productImageView.image = UIImage(named: imageUrlString)
+        }
+        
     }
     
     private func setupConstraints() {

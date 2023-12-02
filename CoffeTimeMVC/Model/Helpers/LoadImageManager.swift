@@ -39,7 +39,6 @@ class LoadImageManager {
 enum ImageLoadingError: Error {
     case invalidData
     case invalidURL
-    // Дополнительные возможные ошибки
 }
 
 
