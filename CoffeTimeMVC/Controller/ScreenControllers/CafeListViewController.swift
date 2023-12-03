@@ -14,7 +14,7 @@ class CafeListViewController: UIViewController {
     private var allCafeService = AllCafeService()
     private var customModalViewController = CustomModalViewController()
     private var cafeVC = CafeViewController()
-    private var drawerMenuViewController: DrawerMenuViewController?
+    private var drawerMenuViewController = DrawerMenuViewController()
     
     override func loadView() {
         super.loadView()
@@ -37,8 +37,7 @@ class CafeListViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        if let drawerMenuViewController = drawerMenuViewController,
-           drawerMenuViewController.parent != nil {
+        if drawerMenuViewController.parent != nil {
             drawerMenuDidClose(viewController: drawerMenuViewController)
         }
     }
@@ -120,36 +119,16 @@ extension CafeListViewController: CafeListDelegate, ModalDelegate {
     }
 }
 
-extension CafeListViewController: PageHeaderViewDelegate {
+extension CafeListViewController: PageHeaderViewDelegate, DrawerMenuViewControllerDelegate {
     func backButtonTapped() {
         
     }
     
     func favoriteButtonTapped() {
-        print("favoriteButtonTapped")
-        showDrawerMenu()
-    }
-}
-
-extension CafeListViewController: DrawerMenuDelegate, DrawerMenuViewControllerDelegate {
-    
-    private func showDrawerMenu() {
-        drawerMenuViewController = DrawerMenuViewController()
-        drawerMenuViewController?.delegate = self
-        
-        addChildViewController(drawerMenuViewController!)
-        view.addSubview(drawerMenuViewController!.view)
-        
-        let width = view.frame.width / 1.5
-        let height = view.frame.height
-        
-        let initialFrame = CGRect(x: view.frame.width, y: 0, width: width, height: height)
-        let finalFrame = CGRect(x: view.frame.width - width, y: 0, width: width, height: height)
-        
-        showDrawerMenu(viewController: drawerMenuViewController!, initialFrame: initialFrame, finalFrame: finalFrame)
+        showDrawerMenu(viewController: drawerMenuViewController)
     }
     
     func drawerMenuDidClose() {
-        drawerMenuDidClose(viewController: drawerMenuViewController!)
+        drawerMenuDidClose(viewController: drawerMenuViewController)
     }
 }

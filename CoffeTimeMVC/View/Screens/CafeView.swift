@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol CafeViewDelegate: AnyObject {
-   
+    func productSelected(_ product: ProductModel)
 }
 
 class CafeView: UIView {
@@ -70,7 +70,7 @@ class CafeView: UIView {
         
         bottomTextLabel.text = cafe?.name
         bottomAddressLabel.text = cafe?.address?.components(separatedBy: ",").first?.trimmingCharacters(in: .whitespacesAndNewlines)
-
+        
     }
     
     override func layoutSubviews() {
@@ -200,6 +200,8 @@ extension CafeView {
         productsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(productsCollectionView)
         
+        productsCollectionView.delegate = self
+        
         NSLayoutConstraint.activate([
             productsCollectionView.topAnchor.constraint(equalTo: cafeImageView.bottomAnchor, constant: 8),
             productsCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -239,6 +241,17 @@ extension CafeView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayo
         return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
 }
+
+extension CafeView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let product = products?[indexPath.item] else {
+            return
+        }
+        
+        delegate?.productSelected(product)
+    }
+}
+
 
 extension CafeView: SwitchButtonViewDelegate {
     func switchValueChanged(isOn: Bool) {

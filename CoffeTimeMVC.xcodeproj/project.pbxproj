@@ -98,6 +98,8 @@
 		1F99242B2A881402000852CF /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F99242A2A881402000852CF /* Fonts.swift */; };
 		1FB63D2F2B074CEF00DB8C19 /* SwitchButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB63D2E2B074CEF00DB8C19 /* SwitchButtonView.swift */; };
 		1FD210DC2B1BD03600C90CAD /* CafeProductsMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD210DB2B1BD03600C90CAD /* CafeProductsMocks.swift */; };
+		1FD210DE2B1BF09400C90CAD /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD210DD2B1BF09400C90CAD /* ProductViewController.swift */; };
+		1FD210E02B1BF57400C90CAD /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD210DF2B1BF57400C90CAD /* ProductView.swift */; };
 		1FE592902AAFAADE00B255C1 /* AllCafeMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5928F2AAFAADE00B255C1 /* AllCafeMockData.swift */; };
 		2F41A111202BB2DA7B19EEDF /* Pods_CoffeTimeMVC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7C6DDA886B0F2ECB736AC61 /* Pods_CoffeTimeMVC.framework */; };
 		5C0BF4A4FDD649957B7BB2F8 /* Pods_CoffeTimeMVCUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5047E2E0C872842F4102E3D8 /* Pods_CoffeTimeMVCUITests.framework */; };
@@ -218,6 +220,8 @@
 		1F99242A2A881402000852CF /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		1FB63D2E2B074CEF00DB8C19 /* SwitchButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchButtonView.swift; sourceTree = "<group>"; };
 		1FD210DB2B1BD03600C90CAD /* CafeProductsMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeProductsMocks.swift; sourceTree = "<group>"; };
+		1FD210DD2B1BF09400C90CAD /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		1FD210DF2B1BF57400C90CAD /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		1FE5928F2AAFAADE00B255C1 /* AllCafeMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCafeMockData.swift; sourceTree = "<group>"; };
 		3D1C44CE7DD1BF99C7387FE6 /* Pods-CoffeTimeMVC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeTimeMVC.release.xcconfig"; path = "Target Support Files/Pods-CoffeTimeMVC/Pods-CoffeTimeMVC.release.xcconfig"; sourceTree = "<group>"; };
 		45118370F5BB142DFF3908E1 /* Pods-CoffeTimeMVC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeTimeMVC.debug.xcconfig"; path = "Target Support Files/Pods-CoffeTimeMVC/Pods-CoffeTimeMVC.debug.xcconfig"; sourceTree = "<group>"; };
@@ -275,6 +279,7 @@
 				1F9923052A81ECE7000852CF /* LoginViewController.swift */,
 				1F2E0AAC2A92284000C990E1 /* RegistartionViewController.swift */,
 				1F3411732A9A35B2007F228C /* ErrorViewController.swift */,
+				1FD210DD2B1BF09400C90CAD /* ProductViewController.swift */,
 			);
 			path = ScreenControllers;
 			sourceTree = "<group>";
@@ -498,6 +503,7 @@
 				1F248E332AA501DD002ACA5E /* CafeListView.swift */,
 				1F9916632AD33369003306DA /* CafeView.swift */,
 				1F4918172AEECF570011CCDE /* FavoriteView.swift */,
+				1FD210DF2B1BF57400C90CAD /* ProductView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -839,6 +845,7 @@
 				1F9923C62A842D8F000852CF /* UserData+CoreDataClass.swift in Sources */,
 				1F3411722A9A358D007F228C /* ErrorView.swift in Sources */,
 				1F5C4E4A2AA7A2B100440CAB /* PageLabel.swift in Sources */,
+				1FD210E02B1BF57400C90CAD /* ProductView.swift in Sources */,
 				1F0AB5F12AFADA5D0036C759 /* LoadImageManager.swift in Sources */,
 				1F9923E12A860ADF000852CF /* ProductService.swift in Sources */,
 				1F99166A2AD33E93003306DA /* PageHeaderView.swift in Sources */,
@@ -861,6 +868,7 @@
 				1F08EC9E2AFEDC08007263AF /* SearchButton.swift in Sources */,
 				1F2E0AA32A8D5C3800C990E1 /* BaseButton.swift in Sources */,
 				1F2E0AAD2A92284000C990E1 /* RegistartionViewController.swift in Sources */,
+				1FD210DE2B1BF09400C90CAD /* ProductViewController.swift in Sources */,
 				1F49181A2AEED50D0011CCDE /* EmptyView.swift in Sources */,
 				1F4918182AEECF570011CCDE /* FavoriteView.swift in Sources */,
 				1F52BE982A987E010003995F /* ApiEndpoints.swift in Sources */,

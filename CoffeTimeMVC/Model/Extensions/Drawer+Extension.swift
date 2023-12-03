@@ -17,7 +17,19 @@ extension UIViewController {
 }
 
 extension DrawerMenuViewControllerDelegate where Self: UIViewController {
-    func showDrawerMenu(viewController: DrawerMenuViewController, initialFrame: CGRect, finalFrame: CGRect) {
+    func showDrawerMenu(viewController: DrawerMenuViewController) {
+        
+        viewController.delegate = self
+        
+        addChildViewController(viewController)
+        view.addSubview(viewController.view)
+        
+        let width = view.frame.width / 1.5
+        let height = view.frame.height
+        
+        let initialFrame = CGRect(x: view.frame.width, y: 0, width: width, height: height)
+        let finalFrame = CGRect(x: view.frame.width - width, y: 0, width: width, height: height)
+        
         viewController.view.layer.zPosition = 999
         viewController.view.frame = initialFrame
         
