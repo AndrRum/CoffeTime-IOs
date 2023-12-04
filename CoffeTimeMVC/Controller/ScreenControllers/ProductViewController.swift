@@ -12,7 +12,7 @@ class ProductViewController: UIViewController {
     
     var product: ProductModel? {
         didSet {
-            productView.configure(with: product?.imagesPath)
+            productView.product = product
         }
     }
     
@@ -32,7 +32,9 @@ class ProductViewController: UIViewController {
 }
 
 extension ProductViewController: ProductViewDelegate {
-    
+    func switchValueChanged(isOn: Bool) {
+        
+    }
 }
 
 extension ProductViewController: PageHeaderViewDelegate, DrawerMenuViewControllerDelegate {
@@ -48,5 +50,3 @@ extension ProductViewController: PageHeaderViewDelegate, DrawerMenuViewControlle
         drawerMenuDidClose(viewController: drawerMenuViewController)
     }
 }
-
-

@@ -27,13 +27,30 @@ class CafeView: UIView {
             }
         }
     }
-
     
+    private var isHeartFilled: Bool = false {
+        didSet {
+            let imageName = isHeartFilled ? "heart.fill" : "heart"
+            let imageColor = isHeartFilled ? Colors.red : Colors.gray
+            let image = UIImage(systemName: imageName)
+            heartButton.setImage(image, for: .normal)
+            heartButton.tintColor = imageColor
+        }
+    }
+
     private(set) var pageHeader = PageHeaderView()
     private(set) var cafeImageView = UIImageView()
     private(set) var bottomTextLabel = UILabel()
     private(set) var bottomAddressLabel = UILabel()
-    private(set) var switchButtonView = SwitchButtonView()
+    
+    private let heartButton: UIButton = {
+        let button = UIButton(type: .custom)
+        let image = UIImage(systemName: "heart")
+        button.setImage(image, for: .normal)
+        button.tintColor = Colors.gray
+        button.addTarget(self, action: #selector(heartButtonTapped), for: .touchUpInside)
+        return button
+    }()
     
     private(set) var productsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -117,7 +134,7 @@ extension CafeView {
         setupCafeImageView()
         setupBottomNameTextLabel()
         setupBottomAddressTextLabel()
-        setupSwitchButtonView()
+        setupHeartButton()
         setupProductsCollectionView()
     }
     
@@ -181,15 +198,14 @@ extension CafeView {
         ])
     }
     
-    func setupSwitchButtonView() {
-        addSubview(switchButtonView)
+    func setupHeartButton() {
+        addSubview(heartButton)
 
-        switchButtonView.translatesAutoresizingMaskIntoConstraints = false
-        switchButtonView.delegate = self
-        
+        heartButton.translatesAutoresizingMaskIntoConstraints = false
+       
         NSLayoutConstraint.activate([
-            switchButtonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            switchButtonView.bottomAnchor.constraint(equalTo: cafeImageView.bottomAnchor, constant: -8)
+            heartButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            heartButton.bottomAnchor.constraint(equalTo: cafeImageView.bottomAnchor, constant: -8)
         ])
     }
     
@@ -253,9 +269,9 @@ extension CafeView: UICollectionViewDelegate {
 }
 
 
-extension CafeView: SwitchButtonViewDelegate {
-    func switchValueChanged(isOn: Bool) {
-        print("click")
+extension CafeView {
+    @objc private func heartButtonTapped() {
+        isHeartFilled.toggle()
     }
 }
 

@@ -51,7 +51,6 @@ class CafeViewController: UIViewController {
     }
     
     @objc private func handleHttpErrorStatus500() {
-       // cafeView.stopLoader()
         let cafeProductsMocks = cafeProductsMockDataArray
         cafeView.products = cafeProductsMocks
     }
