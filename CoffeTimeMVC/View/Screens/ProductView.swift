@@ -15,8 +15,10 @@ class ProductView: UIView {
     private var isHeartFilled: Bool = false {
         didSet {
             let imageName = isHeartFilled ? "heart.fill" : "heart"
+            let imageColor = isHeartFilled ? Colors.red : Colors.gray
             let image = UIImage(systemName: imageName)
             heartButton.setImage(image, for: .normal)
+            heartButton.tintColor = imageColor
         }
     }
     
@@ -57,7 +59,7 @@ class ProductView: UIView {
         let button = UIButton(type: .custom)
         let image = UIImage(systemName: "heart")
         button.setImage(image, for: .normal)
-        button.tintColor = Colors.red
+        button.tintColor = Colors.gray
         button.addTarget(self, action: #selector(heartButtonTapped), for: .touchUpInside)
         return button
     }()

@@ -159,6 +159,7 @@ extension CafeView {
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = cafeImageView.bounds
+        gradientLayer.opacity = 0.6
         gradientLayer.colors = [UIColor.clear.cgColor, Colors.gradientColor.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
