@@ -2,9 +2,10 @@
 //  RegistartionViewController.swift
 //  CoffeTimeMVC
 //
-//  Created by AndrRum on 20.08.2023.
+//  Created by AndrRum on 06.12.2023.
 //
 
+import Foundation
 import UIKit
 
 class RegistrationViewController: UIViewController {
