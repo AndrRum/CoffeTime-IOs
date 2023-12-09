@@ -91,7 +91,7 @@ private extension CafeListViewController {
 }
 
 
-extension CafeListViewController: CafeListDelegate, ModalDelegate {
+extension CafeListViewController: CafeListViewDelegate, ModalDelegate {
         
     func handleMapTap(_ sender: UITapGestureRecognizer) {
         let location = sender.location(in: cafeListView.mapView)

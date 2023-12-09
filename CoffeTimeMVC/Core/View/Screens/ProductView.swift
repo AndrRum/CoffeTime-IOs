@@ -170,8 +170,10 @@ extension ProductView {
             heartButton.heightAnchor.constraint(equalToConstant: 100)
         ])
     }
-    
-    private func loadImage(imageUrl: String?) {
+}
+
+private extension ProductView {
+    func loadImage(imageUrl: String?) {
         guard let imageUrlString = imageUrl else {
             return
         }
@@ -195,12 +197,12 @@ extension ProductView {
         }
     }
     
-    @objc private func heartButtonTapped() {
+    @objc func heartButtonTapped() {
         isHeartFilled.toggle()
         animateHeartButton()
     }
 
-    private func animateHeartButton() {
+    func animateHeartButton() {
         UIView.animate(withDuration: 0.2, animations: {
             self.heartButton.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         }) { _ in

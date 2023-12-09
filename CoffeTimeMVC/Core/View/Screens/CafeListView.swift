@@ -9,13 +9,14 @@ import Foundation
 import UIKit
 import GoogleMaps
 
-protocol CafeListDelegate: AnyObject {
-    func handleMapTap(_ sender: UITapGestureRecognizer) -> Void
-    func showCustomModal(for cafe: CafeModel) -> Void
-    func detailsButtonDidTap(data: CafeModel) -> Void
+protocol CafeListViewDelegate: AnyObject {
+    func handleMapTap(_ sender: UITapGestureRecognizer)
+    func showCustomModal(for cafe: CafeModel)
+    func detailsButtonDidTap(data: CafeModel)
 }
 
 class CafeListView: UIView, GMSMapViewDelegate {
+    
     public var allCafe = [CafeModel]()
     
     private(set) var loaderView = LoaderView()
@@ -28,14 +29,17 @@ class CafeListView: UIView, GMSMapViewDelegate {
     
     private let defaultLatitude: Double = -33.86
     private let defaultLongitude: Double = 151.20
-    
     public var lastCameraCoordinates: CLLocationCoordinate2D?
     
-    weak var delegate: CafeListDelegate?
+    weak var delegate: CafeListViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -50,10 +54,6 @@ class CafeListView: UIView, GMSMapViewDelegate {
     func setHeaderViewDelegate(_ delegate: PageHeaderViewDelegate?) {
         pageHeader.delegate = delegate
     }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     func setCafeList(_ cafeList: [CafeModel]) {
         allCafe = cafeList
@@ -64,6 +64,7 @@ class CafeListView: UIView, GMSMapViewDelegate {
     }
 }
 
+// MARK: - CommonElements
 extension CafeListView {
     
     func configureUI() {
@@ -72,12 +73,8 @@ extension CafeListView {
         setupHeaderView()
         setupLoaderView()
         setupMapView()
-        setupSearchButton()
         configureSwitchButton()
         configureTableView()
-        
-        mapView.delegate = self
-        cafeCarouselView.delegate = self
     }
     
     func setupLoaderView() {
@@ -129,110 +126,9 @@ extension CafeListView {
             switchButton.topAnchor.constraint(equalTo: pageHeader.bottomAnchor, constant: 16)
         ])
     }
-    
-    func setupMapView() {
-        mapView = GMSMapView(frame: .zero)
-        mapView.translatesAutoresizingMaskIntoConstraints = false
-        mapView.settings.compassButton = false
-
-        addSubview(mapView)
-
-        NSLayoutConstraint.activate([
-            mapView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            mapView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            mapView.topAnchor.constraint(equalTo: pageHeader.bottomAnchor),
-            mapView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
-        ])
-       
-        hideMapView()
-    }
-
-    func configureTableView() {
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .clear
-        tableView.separatorColor = .clear
-        tableView.bounces = false
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(CafeListItem.self, forCellReuseIdentifier: CafeListItem.reuseId)
-        addSubview(tableView)
-                
-        NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: switchButton.bottomAnchor, constant: 2),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
-    }
-    
-    func setupSearchButton() {
-        searchButton.translatesAutoresizingMaskIntoConstraints = false
-        searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
-        searchButton.layer.borderColor = UIColor.white.cgColor
-
-        addSubview(searchButton)
-
-        NSLayoutConstraint.activate([
-            searchButton.widthAnchor.constraint(equalToConstant: 45),
-            searchButton.heightAnchor.constraint(equalToConstant: 45),
-            searchButton.bottomAnchor.constraint(equalTo: mapView.bottomAnchor, constant: -48),
-            searchButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -48)
-        ])
-        
-        searchButton.isHidden = true
-    }
-    
-    func setupCarouselView(_ carouselView: CafeCarouselView) {
-        addSubview(carouselView)
-        carouselView.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            carouselView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            carouselView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            carouselView.bottomAnchor.constraint(equalTo: searchButton.topAnchor, constant: -8),
-            carouselView.heightAnchor.constraint(equalToConstant: 40)
-        ])
-    }
-    
-    func startLoader() {
-        loaderView.startLoader()
-    }
-    
-    func stopLoader() {
-        loaderView.stopLoader()
-    }
 }
 
-extension CafeListView: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allCafe.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CafeListItem.reuseId, for: indexPath) as! CafeListItem
-        cell.setParametersForCafeItem(allCafe[indexPath.row])
-        cell.delegate = self
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 126 + 20
-    }
-}
-
-extension CafeListView: CafeListItemDelegate {
-    
-    func detailsButtonDidTap(data: CafeModel) {
-        delegate?.detailsButtonDidTap(data: data)
-    }
-}
-
+// MARK: - CommonMethods
 extension CafeListView {
     
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
@@ -276,6 +172,138 @@ extension CafeListView {
         }
         
         searchButton.isHidden = true
+    }
+}
+
+
+// MARK: - CafeListComponent
+extension CafeListView {
+    
+    func configureTableView() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .clear
+        tableView.separatorColor = .clear
+        tableView.bounces = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(CafeListItem.self, forCellReuseIdentifier: CafeListItem.reuseId)
+        addSubview(tableView)
+                
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: switchButton.bottomAnchor, constant: 2),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+    }
+}
+
+// MARK: - CafeListMethods
+extension CafeListView {
+    
+    func startLoader() {
+        loaderView.startLoader()
+    }
+    
+    func stopLoader() {
+        loaderView.stopLoader()
+    }
+}
+
+extension CafeListView: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return allCafe.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CafeListItem.reuseId, for: indexPath) as! CafeListItem
+        cell.setParametersForCafeItem(allCafe[indexPath.row])
+        cell.delegate = self
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 126 + 20
+    }
+}
+
+extension CafeListView: CafeListItemDelegate {
+    
+    func detailsButtonDidTap(data: CafeModel) {
+        delegate?.detailsButtonDidTap(data: data)
+    }
+}
+
+// MARK: - MapComponent
+extension CafeListView {
+    
+    func setupMapView() {
+        mapView = GMSMapView(frame: .zero)
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        mapView.settings.compassButton = false
+
+        addSubview(mapView)
+
+        NSLayoutConstraint.activate([
+            mapView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            mapView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            mapView.topAnchor.constraint(equalTo: pageHeader.bottomAnchor),
+            mapView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
+       
+        hideMapView()
+        setupSearchButton()
+        
+        mapView.delegate = self
+        cafeCarouselView.delegate = self
+    }
+    
+    func setupSearchButton() {
+        searchButton.translatesAutoresizingMaskIntoConstraints = false
+        searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        searchButton.layer.borderColor = UIColor.white.cgColor
+
+        addSubview(searchButton)
+
+        NSLayoutConstraint.activate([
+            searchButton.widthAnchor.constraint(equalToConstant: 45),
+            searchButton.heightAnchor.constraint(equalToConstant: 45),
+            searchButton.bottomAnchor.constraint(equalTo: mapView.bottomAnchor, constant: -48),
+            searchButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -48)
+        ])
+        
+        searchButton.isHidden = true
+    }
+    
+    func setupCarouselView(_ carouselView: CafeCarouselView) {
+        addSubview(carouselView)
+        carouselView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            carouselView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            carouselView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            carouselView.bottomAnchor.constraint(equalTo: searchButton.topAnchor, constant: -8),
+            carouselView.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+}
+
+// MARK: - MapMethods
+extension CafeListView {
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        guard let cafe = marker.userData as? CafeModel else {
+            return false
+        }
+        
+        delegate?.showCustomModal(for: cafe)
+        
+        return true
     }
     
     func coordinates(from cafe: CafeModel) -> CLLocationCoordinate2D? {
@@ -328,7 +356,6 @@ extension CafeListView {
         }
     }
 
-    
     private func setupTapRecognizer() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMapTap(_:)))
         mapView.addGestureRecognizer(tapGesture)
@@ -338,27 +365,15 @@ extension CafeListView {
         cafeCarouselView.isHidden = true
         delegate?.handleMapTap(sender)
     }
-}
-
-extension CafeListView {
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        guard let cafe = marker.userData as? CafeModel else {
-            return false
-        }
-        
-        delegate?.showCustomModal(for: cafe)
-        
-        return true
-    }
-}
-
-extension CafeListView: CafeCarouselViewDelegate {
     
     @objc private func searchButtonTapped() {
         cafeCarouselView.configure(with: allCafe)
         cafeCarouselView.isHidden = false
         setupCarouselView(cafeCarouselView)
     }
+}
+
+extension CafeListView: CafeCarouselViewDelegate {
     
     func didSelectCafe(at index: Int) {
         if index < allCafe.count {
@@ -374,5 +389,3 @@ extension CafeListView: CafeCarouselViewDelegate {
         mapView.animate(to: camera)
     }
 }
-
-
