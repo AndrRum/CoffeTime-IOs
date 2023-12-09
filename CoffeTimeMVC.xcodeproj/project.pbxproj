@@ -304,13 +304,6 @@
 			path = AuthViews;
 			sourceTree = "<group>";
 		};
-		1F2EA9F02B20F05F00282840 /* BaseControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = BaseControllers;
-			sourceTree = "<group>";
-		};
 		1F4D3C982A9D44F400915D11 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,7 +489,6 @@
 		1F9923042A81ECC5000852CF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1F2EA9F02B20F05F00282840 /* BaseControllers */,
 				1F08EC9C2AFEDA2A007263AF /* ScreenControllers */,
 				1F08EC9B2AFEDA13007263AF /* ComponentControllers */,
 			);
