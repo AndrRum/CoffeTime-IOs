@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CafeViewController: UIViewController {
+class CafeViewController: UIViewController, CommonLifecycleMethods {
     
     var cafe: CafeModel? {
         didSet {
@@ -18,7 +18,6 @@ class CafeViewController: UIViewController {
     
     private var cafeView = CafeView()
     private var cafeProductsService = AllCafeProductsService()
-    
     private var drawerMenuViewController = DrawerMenuViewController()
     
     override func loadView() {
@@ -30,13 +29,13 @@ class CafeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NotificationManager.shared.addObserver(observer: self, selector: #selector(handleHttpErrorStatus500), name: "HttpErrorStatus500")
-        
+        commonViewWillAppear()
         getCafeProductsData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        commonViewWillDisappear()
         
         if drawerMenuViewController.parent != nil {
             drawerMenuDidClose(viewController: drawerMenuViewController)
@@ -50,7 +49,7 @@ class CafeViewController: UIViewController {
         self.view = cafeView
     }
     
-    @objc private func handleHttpErrorStatus500() {
+    @objc func handleHttpErrorStatus500() {
         let cafeProductsMocks = cafeProductsMockDataArray
         cafeView.products = cafeProductsMocks
     }

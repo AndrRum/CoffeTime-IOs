@@ -7,31 +7,12 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, CommonLifecycleMethods  {
     
     private var loginView = LoginView()
     private var loginService = UserDataService()
     private let regViewController = RegistrationViewController()
     private let errorViewController = ErrorViewController()
-       
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.barStyle = .black
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        NotificationManager.shared.addObserver(observer: self, selector: #selector(handleHttpErrorStatus500), name: "HttpErrorStatus500")
-        loginView.animConfigureUI()
-    }
-    
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationManager.shared.removeAllObservers()
-    }
-
     
     override func loadView() {
         super.loadView()
@@ -46,11 +27,23 @@ class LoginViewController: UIViewController {
         self.loginView.configureLoginButton()
         self.loginView.configureRegistrationButton()
     }
+       
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.barStyle = .black
+    }
     
-    @objc func handleHttpErrorStatus500() {
-        showHttpErrorView(from: self, errorViewController: errorViewController)
-        self.loginView.loginButton.stopLoader()
-        //self.loginService.saveResponse(sessionId: "Api normalno")
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        commonViewWillAppear()
+        loginView.animConfigureUI()
+    }
+    
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        commonViewWillDisappear()
     }
     
     private func setupLoginView() {
@@ -58,6 +51,12 @@ class LoginViewController: UIViewController {
         self.view = loginView
         
         loginView.configureBackground()
+    }
+    
+    @objc func handleHttpErrorStatus500() {
+        showHttpErrorView(from: self, errorViewController: errorViewController)
+        self.loginView.loginButton.stopLoader()
+        //self.loginService.saveResponse(sessionId: "Api normalno")
     }
 }
 

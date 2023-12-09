@@ -15,17 +15,9 @@ protocol DrawerMenuDelegate: AnyObject {
 }
 
 extension DrawerMenuDelegate {
-    func drawerMenuDidClose() {
-        
-    }
-
-    func favoritesCafeButtonTapped() {
-        
-    }
-
-    func favoritesDrinkButtonTapped() {
-        
-    }
+    func drawerMenuDidClose() {}
+    func favoritesCafeButtonTapped() {}
+    func favoritesDrinkButtonTapped() {}
 }
 
 class DrawerMenuView: UIView {

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class RegistrationViewController: UIViewController {
+class RegistrationViewController: UIViewController, CommonLifecycleMethods {
     
     private var registrationView = RegistrationView()
     private var registartionService = UserDataService()
@@ -19,16 +19,6 @@ class RegistrationViewController: UIViewController {
         setupRegistrationView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NotificationManager.shared.addObserver(observer: self, selector: #selector(handleHttpErrorStatus500), name: "HttpErrorStatus500")
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationManager.shared.removeAllObservers()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +26,16 @@ class RegistrationViewController: UIViewController {
         self.registrationView.configurePassInput()
         self.registrationView.configureRepeatPassInput()
         self.registrationView.configureRegistrationButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        commonViewWillAppear()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        commonViewWillDisappear()
     }
     
     private func setupRegistrationView() {

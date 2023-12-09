@@ -374,3 +374,5 @@ extension CafeListView: CafeCarouselViewDelegate {
         mapView.animate(to: camera)
     }
 }
+
+

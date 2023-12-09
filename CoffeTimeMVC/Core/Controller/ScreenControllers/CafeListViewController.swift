@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CafeListViewController: UIViewController {
+class CafeListViewController: UIViewController, CommonLifecycleMethods {
     
     private var cafeListView = CafeListView()
     private var allCafeService = AllCafeService()
@@ -25,7 +25,7 @@ class CafeListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NotificationManager.shared.addObserver(observer: self, selector: #selector(handleHttpErrorStatus500), name: "HttpErrorStatus500")
+        commonViewWillAppear()
     }
     
     override func viewDidLoad() {
@@ -36,6 +36,8 @@ class CafeListViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        commonViewWillDisappear()
         
         if drawerMenuViewController.parent != nil {
             drawerMenuDidClose(viewController: drawerMenuViewController)

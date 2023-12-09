@@ -99,6 +99,7 @@ class HttpRequestHelper {
         
         if statusCode == 100 || statusCode == 500 {
             NotificationManager.shared.postNotification(name: "HttpErrorStatus500")
+            return
         }
         
         if let data = data {
