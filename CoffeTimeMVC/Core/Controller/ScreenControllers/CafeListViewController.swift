@@ -22,16 +22,16 @@ class CafeListViewController: UIViewController, CommonLifecycleMethods {
         setupCafeListView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        commonViewWillAppear()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getAllCafeData()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        commonViewWillAppear()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

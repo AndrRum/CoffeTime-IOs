@@ -41,23 +41,6 @@ extension ErrorView {
         configureCloseButton()
     }
     
-    func resetAnimations() {
-        scrollingLabel.layer.removeAllAnimations()
-        scrollingLabel.frame.origin.x = bounds.width
-        scrollingLabel.alpha = 0.0
-
-        imageView.layer.removeAllAnimations()
-        imageView.alpha = 0.0
-    }
-    
-    @objc func closeButtonTapped() {
-        delegate?.closeButtonTapped()
-    }
-    
-}
-
-extension ErrorView {
-    
     func configureLabel() {
         firstLabel.text = "Directed by"
         firstLabel.textColor = .white
@@ -121,6 +104,23 @@ extension ErrorView {
             self.imageView.alpha = 1.0
         }, completion: nil)
     }
+}
+
+extension ErrorView {
+    
+    func resetAnimations() {
+        scrollingLabel.layer.removeAllAnimations()
+        scrollingLabel.frame.origin.x = bounds.width
+        scrollingLabel.alpha = 0.0
+
+        imageView.layer.removeAllAnimations()
+        imageView.alpha = 0.0
+    }
+    
+    @objc func closeButtonTapped() {
+        delegate?.closeButtonTapped()
+    }
+    
 }
 
 private extension ErrorView {

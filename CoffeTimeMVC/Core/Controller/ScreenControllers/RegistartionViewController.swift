@@ -72,15 +72,11 @@ extension RegistrationViewController: RegistrationViewDelegate {
                
         registrationView.registrationButton.startLoader()
             
-        registartionService.authUser(url: ApiEndpoints.register, email: email, password: pass) { sessionId in
-            if let sessionId = sessionId {
-                print("Session ID:", sessionId)
-                self.registartionService.saveResponse(sessionId: sessionId)
-                self.navigateToCafeListScreen()
-            } else {
-                print("Authentication failed.")
-            }
+        authenticateAndNavigate(url: ApiEndpoints.register, email: email, password: pass, service: registartionService) { sessionId in
             self.registrationView.registrationButton.stopLoader()
+            if sessionId != nil {
+                self.navigateToCafeListScreen()
+            }
         }
     }
 }

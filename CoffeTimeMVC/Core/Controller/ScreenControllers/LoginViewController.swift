@@ -78,16 +78,11 @@ extension LoginViewController: LoginViewDelegate {
                
         if isEmailValid && isPassValid {
             loginView.loginButton.startLoader()
-            loginService.authUser(url: ApiEndpoints.login, email: email, password: pass) { 
-                sessionId in
-                if let sessionId = sessionId {
-                    print("Session ID:", sessionId)
-                    self.loginService.saveResponse(sessionId: sessionId)
-                    self.navigateToCafeListScreen()
-                } else {
-                    print("Authentication failed.")
-                }
+            authenticateAndNavigate(url: ApiEndpoints.login, email: email, password: pass, service: loginService) { sessionId in
                 self.loginView.loginButton.stopLoader()
+                if sessionId != nil {
+                    self.navigateToCafeListScreen()
+                }
             }
         } else {
             print("Invalid email or password.")
