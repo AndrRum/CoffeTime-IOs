@@ -86,6 +86,7 @@ extension ErrorView {
         
         scrollingLabel.centerYAnchor.constraint(equalTo: self.topAnchor, constant: centerYBetweenSecondLabelAndTop).isActive = true
         scrollingLabel.leadingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        scrollingLabel.leadingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         
         configureScrollingAnimation(startScrollPosition: centerYBetweenSecondLabelAndTop)
     }

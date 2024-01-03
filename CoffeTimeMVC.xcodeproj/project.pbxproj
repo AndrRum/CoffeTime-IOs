@@ -39,6 +39,7 @@
 		1F4D3C9C2A9D477400915D11 /* NotificationCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4D3C9B2A9D477400915D11 /* NotificationCenterManager.swift */; };
 		1F4D3CA22AA137B200915D11 /* rw.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1F4D3CA12AA137B200915D11 /* rw.mp3 */; };
 		1F52BE982A987E010003995F /* ApiEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52BE972A987E010003995F /* ApiEndpoints.swift */; };
+		1F579B9C2B32415000954218 /* ProductMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F579B9B2B32415000954218 /* ProductMockData.swift */; };
 		1F5C4E4A2AA7A2B100440CAB /* PageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C4E492AA7A2B100440CAB /* PageLabel.swift */; };
 		1F5C4E4C2AA7A53400440CAB /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C4E4B2AA7A53400440CAB /* BackButton.swift */; };
 		1F6A5A872B1FC99400B17F71 /* Lobster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F6A5A862B1FC99400B17F71 /* Lobster-Regular.ttf */; };
@@ -156,6 +157,7 @@
 		1F4D3C9B2A9D477400915D11 /* NotificationCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterManager.swift; sourceTree = "<group>"; };
 		1F4D3CA12AA137B200915D11 /* rw.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rw.mp3; sourceTree = "<group>"; };
 		1F52BE972A987E010003995F /* ApiEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoints.swift; sourceTree = "<group>"; };
+		1F579B9B2B32415000954218 /* ProductMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductMockData.swift; sourceTree = "<group>"; };
 		1F5C4E492AA7A2B100440CAB /* PageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageLabel.swift; sourceTree = "<group>"; };
 		1F5C4E4B2AA7A53400440CAB /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		1F6A5A862B1FC99400B17F71 /* Lobster-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lobster-Regular.ttf"; path = "CoffeTimeMVC/Common/Resources/Fonts/Lobster-Regular.ttf"; sourceTree = SOURCE_ROOT; };
@@ -346,7 +348,6 @@
 		1F6A5A842B1FC87200B17F71 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				1F6A5A892B1FC9F000B17F71 /* ApiHelpers */,
 				1F6A5A8B2B1FCAF600B17F71 /* SystemHelpers */,
 			);
 			path = Helpers;
@@ -362,13 +363,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		1F6A5A892B1FC9F000B17F71 /* ApiHelpers */ = {
+		1F6A5A892B1FC9F000B17F71 /* ApiManager */ = {
 			isa = PBXGroup;
 			children = (
 				1F52BE972A987E010003995F /* ApiEndpoints.swift */,
 				1F9923F52A863215000852CF /* HttpRequestHelper.swift */,
 			);
-			path = ApiHelpers;
+			path = ApiManager;
 			sourceTree = "<group>";
 		};
 		1F6A5A8B2B1FCAF600B17F71 /* SystemHelpers */ = {
@@ -537,6 +538,7 @@
 		1F99230A2A81F09B000852CF /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1F6A5A892B1FC9F000B17F71 /* ApiManager */,
 				1F9923E42A860CAA000852CF /* UserDataService.swift */,
 				1F9923E22A860C8A000852CF /* AllCafeService.swift */,
 				1F9923E82A860CFF000852CF /* AllProductsService.swift */,
@@ -632,6 +634,7 @@
 			children = (
 				1FE5928F2AAFAADE00B255C1 /* AllCafeMockData.swift */,
 				1FD210DB2B1BD03600C90CAD /* CafeProductsMocks.swift */,
+				1F579B9B2B32415000954218 /* ProductMockData.swift */,
 			);
 			path = MockData;
 			sourceTree = "<group>";
@@ -909,6 +912,7 @@
 				1F9923D32A842F5A000852CF /* ProductModel.swift in Sources */,
 				1F11764E2AB5DD9700E00180 /* LoaderView.swift in Sources */,
 				1F9923E72A860CC4000852CF /* CafeService.swift in Sources */,
+				1F579B9C2B32415000954218 /* ProductMockData.swift in Sources */,
 				1F4918142AEE3ECB0011CCDE /* Drawer+Extension.swift in Sources */,
 				1F9923ED2A860E40000852CF /* CafeProductService.swift in Sources */,
 				1F2491382ACB3BAE00A11802 /* CustomModalViewController.swift in Sources */,

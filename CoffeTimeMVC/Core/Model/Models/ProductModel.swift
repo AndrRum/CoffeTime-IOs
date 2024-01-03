@@ -8,12 +8,18 @@
 import Foundation
 import CoreData
 
+struct AttributeModel {
+    var id: String
+    var description: String
+    var iconType: String
+}
+
 struct ProductModel {
     var cofeId: String?
     var id: String?
     var productName: String?
-    var price: Int32
-    var favorite: Bool
+    var price: Int32?
+    var favorite: Bool?
     var imagesPath: String?
     var attribute: NSSet?
 }

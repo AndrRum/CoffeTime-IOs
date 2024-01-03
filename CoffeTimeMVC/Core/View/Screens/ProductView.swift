@@ -82,7 +82,7 @@ class ProductView: UIView {
     
     private func updateUI() {
         loadImage(imageUrl: product?.imagesPath)
-        priceLabel.text = "\(String(describing: product!.price))"
+        priceLabel.text = "\(String(describing: product?.price ?? 0))"
     }
 }
 

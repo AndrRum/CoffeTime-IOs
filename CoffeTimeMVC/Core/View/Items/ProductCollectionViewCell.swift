@@ -35,6 +35,6 @@ class ProductsCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(with product: ProductModel) {
-        productListItem?.configureUI(name: product.productName ?? "unknown", price: "\(product.price)", imageUrl: product.imagesPath ?? "", isFavorite: product.favorite)
+        productListItem?.configureUI(name: product.productName ?? "unknown", price: "\(String(describing: product.price!))", imageUrl: product.imagesPath ?? "", isFavorite: product.favorite ?? false)
     }
 }

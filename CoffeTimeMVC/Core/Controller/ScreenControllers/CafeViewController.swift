@@ -71,8 +71,8 @@ private extension CafeViewController {
                         cofeId: productDict["cofeId"] as? String,
                         id: productDict["id"] as? String,
                         productName: productDict["name"] as? String,
-                        price: productDict["price"] as! Int32,
-                        favorite: productDict["favorite"] as! Bool,
+                        price: productDict["price"] as? Int32,
+                        favorite: productDict["favorite"] as? Bool,
                         imagesPath: productDict["imagesPath"] as? String,
                         attribute: productDict["attribute"] as? NSSet
                     )
