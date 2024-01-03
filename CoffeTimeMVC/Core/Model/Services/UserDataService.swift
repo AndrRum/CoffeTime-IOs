@@ -65,17 +65,19 @@ class UserDataService: UserDataServiceProtocol {
     
     func fetchSid(completion: @escaping (String?) -> Void) {
         let fetchRequest: NSFetchRequest<UserData> = UserData.fetchRequest()
+        
         do {
-            let userDataArray = try context.fetch(fetchRequest)
-            if let userData = userDataArray.first {
-                if let sessionId = userData.sessionId {
-                    completion(sessionId)
-                } else {
-                    completion(nil)
-                }
+            guard let userData = try context.fetch(fetchRequest).first else {
+                completion(nil)
+                return
+            }
+            
+            if let sessionId = userData.sessionId {
+                completion(sessionId)
             } else {
                 completion(nil)
             }
+            
         } catch {
             print("Error fetching UserData from Core Data:", error)
             completion(nil)

@@ -45,7 +45,6 @@ extension HttpRequestHelper {
         return transformedRequest
     }
     
-    
     private func performPostRequest(urlString: String, requestData: Any?, completion: @escaping CompletionHandler) {
         guard let url = URL(string: urlString) else {
             handleError(error: NSError(domain: "Invalid URL", code: -1, userInfo: nil), completion: completion)
@@ -71,7 +70,6 @@ extension HttpRequestHelper {
         print("Error: \(error.localizedDescription)")
         completion(nil, error)
     }
-    
     
     private func buildPostRequest(url: URL, requestData: Any?) throws -> URLRequest {
         var request = URLRequest(url: url)
